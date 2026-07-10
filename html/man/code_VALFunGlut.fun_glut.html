@@ -1,0 +1,114 @@
+<html><head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><title>FunGlut.fun_glut</title>
+</head>
+<body>
+<code class="code"><span class="keyword">let</span>&nbsp;fun_glut&nbsp;~display<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?reshape&nbsp;?keyboard&nbsp;?keyboard_up&nbsp;?special&nbsp;?special_up&nbsp;?mouse&nbsp;?motion&nbsp;?passive<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?visibility&nbsp;?entry&nbsp;?timer&nbsp;?idle<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?(full_screen=<span class="keyword">false</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?(window_size=800,&nbsp;600)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?window_position<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?title&nbsp;?display_mode<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?init_gl<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~init&nbsp;()&nbsp;=<br>
+<br>
+&nbsp;&nbsp;ignore(glutInit&nbsp;<span class="constructor">Sys</span>.argv);<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;display_mode&nbsp;<span class="keyword">with</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Some</span>&nbsp;display_mode&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutInitDisplayMode&nbsp;display_mode<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutInitDisplayMode&nbsp;[]<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;window_size&nbsp;<span class="keyword">with</span><br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;width,&nbsp;height&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutInitWindowSize&nbsp;width&nbsp;height<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;window_position&nbsp;<span class="keyword">with</span><br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>(x,&nbsp;y)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutInitWindowPosition&nbsp;x&nbsp;y<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;title&nbsp;<span class="keyword">with</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Some</span>&nbsp;title&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ignore(glutCreateWindow&nbsp;title)<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ignore(glutCreateWindow&nbsp;<span class="constructor">Sys</span>.argv.(0))<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;full_screen&nbsp;<span class="keyword">then</span>&nbsp;glutFullScreen();<br>
+<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;init_gl&nbsp;<span class="keyword">with</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Some</span>&nbsp;f&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;f()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+<br>
+&nbsp;&nbsp;<span class="keyword">let</span>&nbsp;app&nbsp;=&nbsp;ref&nbsp;(init&nbsp;())&nbsp;<span class="keyword">in</span><br>
+<br>
+&nbsp;&nbsp;glutDisplayFunc&nbsp;(<span class="keyword">fun</span>&nbsp;()&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;display&nbsp;!app);<br>
+<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;reshape&nbsp;<span class="keyword">with</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;cb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutReshapeFunc&nbsp;(<span class="keyword">fun</span>&nbsp;~width&nbsp;~height&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;app&nbsp;:=&nbsp;cb&nbsp;!app&nbsp;~width&nbsp;~height)<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;keyboard&nbsp;<span class="keyword">with</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;cb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutKeyboardFunc&nbsp;(<span class="keyword">fun</span>&nbsp;~key&nbsp;~x&nbsp;~y&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;app&nbsp;:=&nbsp;cb&nbsp;!app&nbsp;~key&nbsp;~x&nbsp;~y)<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;keyboard_up&nbsp;<span class="keyword">with</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;cb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutKeyboardUpFunc&nbsp;(<span class="keyword">fun</span>&nbsp;~key&nbsp;~x&nbsp;~y&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;app&nbsp;:=&nbsp;cb&nbsp;!app&nbsp;~key&nbsp;~x&nbsp;~y)<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;special&nbsp;<span class="keyword">with</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;cb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutSpecialFunc&nbsp;(<span class="keyword">fun</span>&nbsp;~key&nbsp;~x&nbsp;~y&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;app&nbsp;:=&nbsp;cb&nbsp;!app&nbsp;~key&nbsp;~x&nbsp;~y)<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;special_up&nbsp;<span class="keyword">with</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;cb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutSpecialUpFunc&nbsp;(<span class="keyword">fun</span>&nbsp;~key&nbsp;~x&nbsp;~y&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;app&nbsp;:=&nbsp;cb&nbsp;!app&nbsp;~key&nbsp;~x&nbsp;~y)<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;mouse&nbsp;<span class="keyword">with</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;cb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutMouseFunc&nbsp;(<span class="keyword">fun</span>&nbsp;~button&nbsp;~state&nbsp;~x&nbsp;~y&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;app&nbsp;:=&nbsp;cb&nbsp;!app&nbsp;~button&nbsp;~state&nbsp;~x&nbsp;~y)<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;motion&nbsp;<span class="keyword">with</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;cb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutMotionFunc&nbsp;(<span class="keyword">fun</span>&nbsp;~x&nbsp;~y&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;app&nbsp;:=&nbsp;cb&nbsp;!app&nbsp;~x&nbsp;~y)<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;passive&nbsp;<span class="keyword">with</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;cb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutPassiveMotionFunc&nbsp;(<span class="keyword">fun</span>&nbsp;~x&nbsp;~y&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;app&nbsp;:=&nbsp;cb&nbsp;!app&nbsp;~x&nbsp;~y)<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;visibility&nbsp;<span class="keyword">with</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;cb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutVisibilityFunc&nbsp;(<span class="keyword">fun</span>&nbsp;~state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;app&nbsp;:=&nbsp;cb&nbsp;!app&nbsp;~state)<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;entry&nbsp;<span class="keyword">with</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;cb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;glutEntryFunc&nbsp;(<span class="keyword">fun</span>&nbsp;~state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;app&nbsp;:=&nbsp;cb&nbsp;!app&nbsp;~state)<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;timer&nbsp;<span class="keyword">with</span><br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;[]&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;timers&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">ListLabels</span>.iter&nbsp;timers&nbsp;~f:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keyword">fun</span>&nbsp;(_timer,&nbsp;msecs)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">let</span>&nbsp;<span class="keyword">rec</span>&nbsp;timer&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keyword">fun</span>&nbsp;~value&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">let</span>&nbsp;_app&nbsp;=&nbsp;_timer&nbsp;!app&nbsp;<span class="keyword">in</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;app&nbsp;:=&nbsp;_app;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;glutTimerFunc&nbsp;~msecs&nbsp;~value:()&nbsp;~timer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">in</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;glutTimerFunc&nbsp;~msecs&nbsp;~value:()&nbsp;~timer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+<br>
+&nbsp;&nbsp;<span class="keyword">begin</span>&nbsp;<span class="keyword">match</span>&nbsp;idle&nbsp;<span class="keyword">with</span>&nbsp;<span class="constructor">None</span>&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;()<br>
+&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Some</span>&nbsp;idle&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;glutIdleFunc&nbsp;(<span class="keyword">fun</span>&nbsp;()&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;app&nbsp;:=&nbsp;idle&nbsp;!app;)<br>
+&nbsp;&nbsp;<span class="keyword">end</span>;<br>
+<br>
+&nbsp;&nbsp;glutMainLoop();</code></body></html>

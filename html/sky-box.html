@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Sky-Box viewer in OCaml / OpenGL</title>
+<meta name="Generator" content="Vim/7.1" />
+<meta http-equiv="content-type" content="text/html; charset=utf8" />
+<style type="text/css">
+<!--
+pre { color: #ffffff; background-color: #000000; border: 1px solid #444; }
+body { color: #ffffff; background-color: #000000; }
+a { color: #4080ff; font-weight: bold; }
+
+.Idt { color: #00ffff; font-weight: bold; }
+.Ty { color: #00ff00; font-weight: bold; }
+.Cnt { color: #ff40ff; font-weight: bold; }
+.Stt { color: #ffff00; font-weight: bold; }
+.Cmt { color: #00ffff; font-weight: bold; }
+.PPr { color: #8080ff; font-weight: bold; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Cmt">(* <a href="http://creativecommons.org/licenses/publicdomain/">http://creativecommons.org/licenses/publicdomain/</a> *)</span>
+
+<span class="Cmt">(* This OCaml-OpenGL script is made to display sky-boxes.</span>
+<span class="Cmt">   You can find very nice sky-boxes that this script can display here:</span>
+<span class="Cmt">   <a href="http://www.humus.name/index.php?page=Textures">http://www.humus.name/index.php?page=Textures</a>  *)</span>
+
+<span class="PPr">#directory</span> <span class="Cnt">&quot;+glMLite&quot;</span>
+<span class="PPr">#load</span> <span class="Cnt">&quot;GL.cma&quot;</span>
+<span class="PPr">#load</span> <span class="Cnt">&quot;Glu.cma&quot;</span>
+<span class="PPr">#load</span> <span class="Cnt">&quot;Glut.cma&quot;</span>
+<span class="PPr">#load</span> <span class="Cnt">&quot;jpeg_loader.cma&quot;</span>
+
+<span class="Stt">open</span> <span class="PPr">GL</span>
+<span class="Stt">open</span> <span class="PPr">Glu</span>
+<span class="Stt">open</span> <span class="PPr">Glut</span>
+
+<span class="Stt">let</span> usage <span class="Cnt">()</span> <span class="Stt">=</span>
+  <span class="PPr">Printf</span>.printf <span class="Cnt">&quot;%s &lt;skybox-directory&gt;\n&quot;</span> <span class="PPr">Sys</span>.argv.<span class="Stt">(</span><span class="Cnt">0</span><span class="Stt">)</span><span class="Stt">;</span>
+  exit <span class="Cnt">1</span>
+<span class="Stt">;;</span>
+
+<span class="Cmt">(* give the directory where to find the sky-box images *)</span>
+<span class="Stt">let</span> skybox_images_dir <span class="Stt">=</span>
+  <span class="Stt">if</span> <span class="PPr">Array</span>.length <span class="PPr">Sys</span>.argv <span class="Stt">&lt;</span> <span class="Cnt">2</span> <span class="Stt">then</span> usage<span class="Cnt">()</span><span class="Stt">;</span>
+  <span class="PPr">Sys</span>.argv.<span class="Stt">(</span><span class="Cnt">1</span><span class="Stt">)</span>
+<span class="Stt">;;</span>
+
+<span class="Cmt">(* loading textures *)</span>
+
+<span class="Stt">type</span> image_data <span class="Stt">=</span> <span class="Stt">{</span>
+  width : <span class="Ty">int</span><span class="Stt">;</span>
+  height : <span class="Ty">int</span><span class="Stt">;</span>
+  pixels : <span class="PPr">GL</span>.image_data<span class="Stt">;</span>
+  internal_format : <span class="PPr">GL</span>.<span class="PPr">InternalFormat</span>.internal_format<span class="Stt">;</span>
+  pixel_data_format : pixel_data_format<span class="Stt">;</span>
+<span class="Stt">}</span>
+
+
+<span class="Stt">let</span> load_textures<span class="Cnt">()</span> <span class="Stt">=</span>
+  <span class="Stt">let</span> src_img <span class="Stt">=</span>
+    <span class="Cmt">(* images files *)</span>
+    <span class="Stt">[|</span> <span class="PPr">Filename</span>.concat skybox_images_dir <span class="Cnt">&quot;negz.jpg&quot;</span><span class="Stt">;</span>
+       <span class="PPr">Filename</span>.concat skybox_images_dir <span class="Cnt">&quot;negx.jpg&quot;</span><span class="Stt">;</span>
+       <span class="PPr">Filename</span>.concat skybox_images_dir <span class="Cnt">&quot;posz.jpg&quot;</span><span class="Stt">;</span>
+       <span class="PPr">Filename</span>.concat skybox_images_dir <span class="Cnt">&quot;posx.jpg&quot;</span><span class="Stt">;</span>
+       <span class="PPr">Filename</span>.concat skybox_images_dir <span class="Cnt">&quot;posy.jpg&quot;</span><span class="Stt">;</span>
+       <span class="PPr">Filename</span>.concat skybox_images_dir <span class="Cnt">&quot;negy.jpg&quot;</span><span class="Stt">;</span> <span class="Stt">|]</span>
+  <span class="Stt">in</span>
+  <span class="Stt">let</span> read_jpeg filename <span class="Stt">=</span>
+    <span class="Cmt">(* load one texture *)</span>
+    <span class="Stt">let</span> pixels, width, height, <span class="Stt">_</span><span class="Cmt">(*color_components*)</span>, color_space <span class="Stt">=</span>
+      <span class="PPr">Jpeg_loader</span>.load_img <span class="Stt">(</span><span class="PPr">Jpeg_loader</span>.<span class="Cnt">Filename</span> filename<span class="Stt">)</span>
+    <span class="Stt">in</span>
+    <span class="Stt">let</span> internal_format, pixel_data_format <span class="Stt">=</span>
+      <span class="Stt">match</span> color_space <span class="Stt">with</span>
+      <span class="Stt">|</span> <span class="PPr">Jpeg_loader</span>.<span class="Cnt">JCS_RGB</span> <span class="Stt">-&gt;</span> <span class="PPr">InternalFormat</span>.<span class="Cnt">GL_RGB</span>, <span class="Cnt">GL_RGB</span>
+      <span class="Stt">|</span> <span class="PPr">Jpeg_loader</span>.<span class="Cnt">JCS_GRAYSCALE</span> <span class="Stt">-&gt;</span> <span class="PPr">InternalFormat</span>.<span class="Cnt">GL_LUMINANCE</span>, <span class="Cnt">GL_LUMINANCE</span>
+      <span class="Stt">|</span> <span class="Stt">_</span> <span class="Stt">-&gt;</span> invalid_arg <span class="Cnt">&quot;Error: texture not RGB, nor Grayscale&quot;</span>
+    <span class="Stt">in</span>
+    <span class="Stt">{</span>
+      width <span class="Stt">=</span> width<span class="Stt">;</span>
+      height <span class="Stt">=</span> height<span class="Stt">;</span>
+      pixels <span class="Stt">=</span> pixels<span class="Stt">;</span>
+      internal_format <span class="Stt">=</span> internal_format<span class="Stt">;</span>
+      pixel_data_format <span class="Stt">=</span> pixel_data_format<span class="Stt">;</span>
+    <span class="Stt">}</span>
+  <span class="Stt">in</span>
+  <span class="Stt">let</span> image <span class="Stt">=</span> <span class="PPr">Array</span>.map read_jpeg src_img <span class="Stt">in</span>  <span class="Cmt">(* load images *)</span>
+
+  <span class="Cmt">(* create OpenGL textures ids *)</span>
+  <span class="Stt">let</span> textures <span class="Stt">=</span> glGenTextures <span class="Cnt">6</span> <span class="Stt">in</span>
+
+  <span class="Stt">for</span> i<span class="Stt">=</span><span class="Cnt">0</span> <span class="Stt">to</span> pred <span class="Cnt">6</span> <span class="Stt">do</span>
+    <span class="Cmt">(* select the texture *)</span>
+    glBindTexture2D textures.<span class="Stt">(</span>i<span class="Stt">)</span><span class="Stt">;</span>
+
+    <span class="Cmt">(* define the parameters of the textures *)</span>
+    <span class="Cmt">(* how the texture should wrap in S direction *)</span>
+    glTexParameter <span class="PPr">TexParam</span>.<span class="Cnt">GL_TEXTURE_2D</span> <span class="Stt">(</span><span class="PPr">TexParam</span>.<span class="Cnt">GL_TEXTURE_WRAP_S</span>  <span class="Cnt">GL_CLAMP</span><span class="Stt">)</span><span class="Stt">;</span>
+    <span class="Cmt">(* how the texture should wrap in T direction *)</span>
+    glTexParameter <span class="PPr">TexParam</span>.<span class="Cnt">GL_TEXTURE_2D</span> <span class="Stt">(</span><span class="PPr">TexParam</span>.<span class="Cnt">GL_TEXTURE_WRAP_T</span>  <span class="Cnt">GL_CLAMP</span><span class="Stt">)</span><span class="Stt">;</span>
+    <span class="Cmt">(* how the texture lookup should be interpolated when the face is smaller than the texture *)</span>
+    glTexParameter <span class="PPr">TexParam</span>.<span class="Cnt">GL_TEXTURE_2D</span> <span class="Stt">(</span><span class="PPr">TexParam</span>.<span class="Cnt">GL_TEXTURE_MIN_FILTER</span>  <span class="PPr">Min</span>.<span class="Cnt">GL_NEAREST</span><span class="Stt">)</span><span class="Stt">;</span>
+    <span class="Cmt">(* how the texture lookup should be interpolated when the face is bigger than the texture *)</span>
+    glTexParameter <span class="PPr">TexParam</span>.<span class="Cnt">GL_TEXTURE_2D</span> <span class="Stt">(</span><span class="PPr">TexParam</span>.<span class="Cnt">GL_TEXTURE_MAG_FILTER</span>  <span class="PPr">Mag</span>.<span class="Cnt">GL_NEAREST</span><span class="Stt">)</span><span class="Stt">;</span>
+
+    <span class="Cmt">(* send the texture image to the renderer *)</span>
+    glTexImage2D <span class="PPr">TexTarget</span>.<span class="Cnt">GL_TEXTURE_2D</span>  <span class="Cnt">0</span>  image.<span class="Stt">(</span>i<span class="Stt">)</span>.internal_format  image.<span class="Stt">(</span>i<span class="Stt">)</span>.width  image.<span class="Stt">(</span>i<span class="Stt">)</span>.height <span class="Cnt">0</span>
+                 image.<span class="Stt">(</span>i<span class="Stt">)</span>.pixel_data_format  <span class="Cnt">GL_UNSIGNED_BYTE</span>  image.<span class="Stt">(</span>i<span class="Stt">)</span>.pixels<span class="Stt">;</span>
+  <span class="Stt">done</span><span class="Stt">;</span>
+  <span class="Stt">(</span>textures<span class="Stt">)</span>
+<span class="Stt">;;</span>
+
+<span class="Cmt">(* display sky-box *)</span>
+<span class="Stt">let</span> display_sky_box <span class="Stt">~</span><span class="Idt">size</span> <span class="Stt">~</span><span class="Idt">textures</span> <span class="Stt">=</span>
+  glEnable <span class="Cnt">GL_TEXTURE_2D</span><span class="Stt">;</span>
+  glColor3 <span class="Cnt">1.0</span> <span class="Cnt">1.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span>
+  glPushMatrix<span class="Cnt">()</span><span class="Stt">;</span>
+  glScale <span class="Stt">(</span>-<span class="Cnt">1.0</span><span class="Stt">)</span> <span class="Cnt">1.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span>
+
+    <span class="Cmt">(* front face *)</span>
+    glBindTexture2D textures.<span class="Stt">(</span><span class="Cnt">2</span><span class="Stt">)</span><span class="Stt">;</span>
+    glBegin <span class="Cnt">GL_QUADS</span><span class="Stt">;</span>
+    glNormal3 <span class="Stt">(</span><span class="Cnt">0.0</span><span class="Stt">)</span> <span class="Stt">(</span><span class="Cnt">0.0</span><span class="Stt">)</span> <span class="Stt">(</span>-<span class="Cnt">1.0</span><span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">0.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">1.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">1.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">0.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span><span class="Stt">;</span>
+    glEnd<span class="Cnt">()</span><span class="Stt">;</span>
+
+    <span class="Cmt">(* right face *)</span>
+    glBindTexture2D textures.<span class="Stt">(</span><span class="Cnt">3</span><span class="Stt">)</span><span class="Stt">;</span>
+    glBegin <span class="Cnt">GL_QUADS</span><span class="Stt">;</span>
+    glNormal3 <span class="Stt">(</span>-<span class="Cnt">1.0</span><span class="Stt">)</span> <span class="Stt">(</span><span class="Cnt">0.0</span><span class="Stt">)</span> <span class="Stt">(</span><span class="Cnt">0.0</span><span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">0.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">1.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">1.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">0.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span><span class="Stt">;</span>
+    glEnd<span class="Cnt">()</span><span class="Stt">;</span>
+
+    <span class="Cmt">(* back face *)</span>
+    glBindTexture2D textures.<span class="Stt">(</span><span class="Cnt">0</span><span class="Stt">)</span><span class="Stt">;</span>
+    glBegin <span class="Cnt">GL_QUADS</span><span class="Stt">;</span>
+    glNormal3 <span class="Cnt">0.0</span> <span class="Cnt">0.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">0.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">1.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">1.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">0.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span><span class="Stt">;</span>
+    glEnd<span class="Cnt">()</span><span class="Stt">;</span>
+
+    <span class="Cmt">(* left face *)</span>
+    glBindTexture2D textures.<span class="Stt">(</span><span class="Cnt">1</span><span class="Stt">)</span><span class="Stt">;</span>
+    glBegin <span class="Cnt">GL_QUADS</span><span class="Stt">;</span>
+    glNormal3 <span class="Cnt">1.0</span> <span class="Cnt">0.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">0.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">1.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">1.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">0.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span><span class="Stt">;</span>
+    glEnd<span class="Cnt">()</span><span class="Stt">;</span>
+
+    <span class="Cmt">(* top face *)</span>
+    glBindTexture2D textures.<span class="Stt">(</span><span class="Cnt">4</span><span class="Stt">)</span><span class="Stt">;</span>
+    glBegin <span class="Cnt">GL_QUADS</span><span class="Stt">;</span>
+    glNormal3 <span class="Stt">(</span><span class="Cnt">0.0</span><span class="Stt">)</span> <span class="Stt">(</span>-<span class="Cnt">1.0</span><span class="Stt">)</span> <span class="Stt">(</span><span class="Cnt">0.0</span><span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">0.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">1.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">1.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">0.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span><span class="Stt">;</span>
+    glEnd<span class="Cnt">()</span><span class="Stt">;</span>
+
+    <span class="Cmt">(* bottom face *)</span>
+    glBindTexture2D textures.<span class="Stt">(</span><span class="Cnt">5</span><span class="Stt">)</span><span class="Stt">;</span>
+    glBegin <span class="Cnt">GL_QUADS</span><span class="Stt">;</span>
+    glNormal3 <span class="Cnt">0.0</span> <span class="Cnt">1.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">0.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">1.0</span> <span class="Cnt">0.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>  size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">1.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>  size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span><span class="Stt">;</span>
+    glTexCoord2 <span class="Cnt">0.0</span> <span class="Cnt">1.0</span><span class="Stt">;</span> glVertex3 <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span> <span class="Stt">(</span>-.size<span class="Stt">)</span><span class="Stt">;</span>
+    glEnd<span class="Cnt">()</span><span class="Stt">;</span>
+
+  glPopMatrix<span class="Cnt">()</span><span class="Stt">;</span>
+<span class="Stt">;;</span>
+
+<span class="Stt">let</span> b_down <span class="Stt">=</span> ref <span class="Cnt">false</span>
+<span class="Stt">let</span> anglex <span class="Stt">=</span> ref <span class="Stt">(</span><span class="Cnt">0</span><span class="Stt">)</span>
+<span class="Stt">let</span> angley <span class="Stt">=</span> ref <span class="Stt">(</span><span class="Cnt">0</span><span class="Stt">)</span>
+<span class="Stt">let</span> xold <span class="Stt">=</span> ref <span class="Cnt">0</span>
+<span class="Stt">let</span> yold <span class="Stt">=</span> ref <span class="Cnt">0</span>
+<span class="Stt">let</span> list_id <span class="Stt">=</span> ref <span class="Cnt">0</span>
+
+<span class="Cmt">(* load datas *)</span>
+<span class="Stt">let</span> compile_list <span class="Stt">~</span><span class="Idt">dirname</span> <span class="Stt">=</span>
+
+  <span class="Stt">let</span> textures <span class="Stt">=</span> load_textures<span class="Cnt">()</span> <span class="Stt">in</span>
+
+  glNewList <span class="Stt">!</span>list_id <span class="Cnt">GL_COMPILE</span><span class="Stt">;</span>
+    display_sky_box <span class="Stt">~</span><span class="Idt">size</span>:<span class="Cnt">8</span>. <span class="Stt">~</span><span class="Idt">textures</span><span class="Stt">;</span>
+  glEndList<span class="Cnt">()</span><span class="Stt">;</span>
+<span class="Stt">;;</span>
+
+<span class="Cmt">(* callback display *)</span>
+<span class="Stt">let</span> display <span class="Cnt">()</span> <span class="Stt">=</span>
+  glClear <span class="Stt">~</span><span class="Idt">mask</span>:<span class="Stt">[</span><span class="Cnt">GL_COLOR_BUFFER_BIT</span><span class="Stt">;</span> <span class="Cnt">GL_DEPTH_BUFFER_BIT</span><span class="Stt">]</span><span class="Stt">;</span>
+
+  glLoadIdentity<span class="Cnt">()</span><span class="Stt">;</span>
+
+  glRotate <span class="Stt">~</span><span class="Idt">angle</span>:<span class="Stt">(</span><span class="Ty">float</span><span class="Stt">(</span>- <span class="Stt">!</span>angley<span class="Stt">))</span> <span class="Stt">~</span><span class="Idt">x</span>:<span class="Cnt">1.0</span> <span class="Stt">~</span><span class="Idt">y</span>:<span class="Cnt">0.0</span> <span class="Stt">~</span><span class="Idt">z</span>:<span class="Cnt">0.0</span><span class="Stt">;</span>
+  glRotate <span class="Stt">~</span><span class="Idt">angle</span>:<span class="Stt">(</span><span class="Ty">float</span><span class="Stt">(</span>- <span class="Stt">!</span>anglex<span class="Stt">))</span> <span class="Stt">~</span><span class="Idt">x</span>:<span class="Cnt">0.0</span> <span class="Stt">~</span><span class="Idt">y</span>:<span class="Cnt">1.0</span> <span class="Stt">~</span><span class="Idt">z</span>:<span class="Cnt">0.0</span><span class="Stt">;</span>
+
+  glCallList <span class="Stt">!</span>list_id<span class="Stt">;</span>
+
+  glFlush<span class="Cnt">()</span><span class="Stt">;</span>
+  glutSwapBuffers<span class="Cnt">()</span><span class="Stt">;</span>
+<span class="Stt">;;</span>
+
+<span class="Cmt">(* callback reshape *)</span>
+<span class="Stt">let</span> reshape <span class="Stt">~</span><span class="Idt">width</span> <span class="Stt">~</span><span class="Idt">height</span> <span class="Stt">=</span>
+  glMatrixMode <span class="Cnt">GL_PROJECTION</span><span class="Stt">;</span>
+  glLoadIdentity<span class="Cnt">()</span><span class="Stt">;</span>
+  gluPerspective <span class="Stt">~</span><span class="Idt">aspect</span>:<span class="Stt">(</span><span class="Ty">float</span> width /. <span class="Ty">float</span> height<span class="Stt">)</span>
+                 <span class="Stt">~</span><span class="Idt">fovy</span>:<span class="Cnt">80</span>. <span class="Stt">~</span><span class="Idt">zNear</span>:<span class="Cnt">0.2</span> <span class="Stt">~</span><span class="Idt">zFar</span>:<span class="Cnt">60</span>.<span class="Stt">;</span>
+  glViewport <span class="Cnt">0</span> <span class="Cnt">0</span> width height<span class="Stt">;</span>
+  glMatrixMode <span class="Cnt">GL_MODELVIEW</span><span class="Stt">;</span>
+  glutPostRedisplay <span class="Cnt">()</span><span class="Stt">;</span>
+<span class="Stt">;;</span>
+
+<span class="Cmt">(* callback keyboard *)</span>
+<span class="Stt">let</span> keyboard <span class="Stt">~</span><span class="Idt">key</span> <span class="Stt">~</span><span class="Idt">x</span> <span class="Stt">~</span><span class="Idt">y</span> <span class="Stt">=</span>
+  <span class="Stt">match</span> key <span class="Stt">with</span>
+  <span class="Stt">|</span> <span class="Cnt">'\027'</span>
+  <span class="Stt">|</span> <span class="Cnt">'q'</span> <span class="Stt">-&gt;</span> exit<span class="Stt">(</span><span class="Cnt">0</span><span class="Stt">)</span>
+  <span class="Stt">|</span> <span class="Stt">_</span> <span class="Stt">-&gt;</span> <span class="Cnt">()</span>
+<span class="Stt">;;</span>
+
+<span class="Cmt">(* callback mouse *)</span>
+<span class="Stt">let</span> mouse <span class="Stt">~</span><span class="Idt">button</span> <span class="Stt">~</span><span class="Idt">state</span> <span class="Stt">~</span><span class="Idt">x</span> <span class="Stt">~</span><span class="Idt">y</span> <span class="Stt">=</span>
+  <span class="Stt">match</span> button, state <span class="Stt">with</span>
+  <span class="Cmt">(* if we press the left button *)</span>
+  <span class="Stt">|</span> <span class="Cnt">GLUT_LEFT_BUTTON</span>, <span class="Cnt">GLUT_DOWN</span> <span class="Stt">-&gt;</span>
+      b_down <span class="Stt">:=</span> <span class="Cnt">true</span><span class="Stt">;</span>
+      xold <span class="Stt">:=</span> x<span class="Stt">;</span>  <span class="Cmt">(* save mouse position *)</span>
+      yold <span class="Stt">:=</span> y<span class="Stt">;</span>
+  <span class="Cmt">(* if we release the left button *)</span>
+  <span class="Stt">|</span> <span class="Cnt">GLUT_LEFT_BUTTON</span>, <span class="Cnt">GLUT_UP</span> <span class="Stt">-&gt;</span>
+      b_down <span class="Stt">:=</span> <span class="Cnt">false</span><span class="Stt">;</span>
+  <span class="Stt">|</span> <span class="Stt">_</span> <span class="Stt">-&gt;</span> <span class="Cnt">()</span>
+<span class="Stt">;;</span>
+
+<span class="Cmt">(* callback motion *)</span>
+<span class="Stt">let</span> motion <span class="Stt">~</span><span class="Idt">x</span> <span class="Stt">~</span><span class="Idt">y</span> <span class="Stt">=</span>
+  <span class="Stt">if</span> <span class="Stt">!</span>b_down <span class="Stt">then</span>  <span class="Cmt">(* if the left button is down *)</span>
+  <span class="Stt">begin</span>
+ <span class="Cmt">(* change the rotation angles according to the last position</span>
+<span class="Cmt">    of the mouse and the new one *)</span>
+    anglex <span class="Stt">:=</span> <span class="Stt">!</span>anglex + <span class="Stt">(</span><span class="Stt">!</span>xold - x<span class="Stt">)</span><span class="Stt">;</span>
+    angley <span class="Stt">:=</span> <span class="Stt">!</span>angley + <span class="Stt">(</span><span class="Stt">!</span>yold - y<span class="Stt">)</span><span class="Stt">;</span>
+    glutPostRedisplay <span class="Cnt">()</span><span class="Stt">;</span>
+  <span class="Stt">end</span><span class="Stt">;</span>
+
+  xold <span class="Stt">:=</span> x<span class="Stt">;</span>
+  yold <span class="Stt">:=</span> y<span class="Stt">;</span>
+<span class="Stt">;;</span>
+
+<span class="Cmt">(* main init of GL &amp; Glut *)</span>
+<span class="Stt">let</span> <span class="Cnt">()</span> <span class="Stt">=</span>
+  ignore<span class="Stt">(</span>glutInit <span class="PPr">Sys</span>.argv<span class="Stt">)</span><span class="Stt">;</span>
+
+  glutInitDisplayMode<span class="Stt">[</span><span class="Cnt">GLUT_RGB</span><span class="Stt">;</span> <span class="Cnt">GLUT_DOUBLE</span><span class="Stt">;</span> <span class="Cnt">GLUT_DEPTH</span><span class="Stt">]</span><span class="Stt">;</span>
+  glutInitWindowPosition <span class="Stt">~</span><span class="Idt">x</span>:<span class="Cnt">200</span> <span class="Stt">~</span><span class="Idt">y</span>:<span class="Cnt">200</span><span class="Stt">;</span>
+  glutInitWindowSize <span class="Stt">~</span><span class="Idt">width</span>:<span class="Cnt">800</span> <span class="Stt">~</span><span class="Idt">height</span>:<span class="Cnt">600</span><span class="Stt">;</span>
+
+  ignore<span class="Stt">(</span>glutCreateWindow <span class="Stt">~</span><span class="Idt">title</span>:<span class="Stt">(</span><span class="Cnt">&quot;Fly-Box &quot;</span> <span class="Stt">^</span> skybox_images_dir<span class="Stt">))</span><span class="Stt">;</span>
+
+  glClearColor <span class="Stt">~</span><span class="Idt">r</span>:<span class="Cnt">0.0</span> <span class="Stt">~</span><span class="Idt">g</span>:<span class="Cnt">0.0</span> <span class="Stt">~</span><span class="Idt">b</span>:<span class="Cnt">0.0</span> <span class="Stt">~</span><span class="Idt">a</span>:<span class="Cnt">0.0</span><span class="Stt">;</span>
+
+  <span class="Cmt">(* init openGL *)</span>
+  glEnable <span class="Cnt">GL_DEPTH_TEST</span><span class="Stt">;</span>
+
+  list_id <span class="Stt">:=</span> glGenLists <span class="Cnt">1</span><span class="Stt">;</span>
+  compile_list <span class="Stt">~</span><span class="Idt">dirname</span>:skybox_images_dir<span class="Stt">;</span>
+
+  <span class="Cmt">(* callback functions *)</span>
+  glutDisplayFunc <span class="Stt">~</span><span class="Idt">display</span><span class="Stt">;</span>
+  glutReshapeFunc <span class="Stt">~</span><span class="Idt">reshape</span><span class="Stt">;</span>
+  glutKeyboardFunc <span class="Stt">~</span><span class="Idt">keyboard</span><span class="Stt">;</span>
+  glutMouseFunc <span class="Stt">~</span><span class="Idt">mouse</span><span class="Stt">;</span>
+  glutMotionFunc <span class="Stt">~</span><span class="Idt">motion</span><span class="Stt">;</span>
+
+  <span class="Cmt">(* enter the main loop *)</span>
+  glutMainLoop <span class="Cnt">()</span><span class="Stt">;</span>
+<span class="Stt">;;</span>
+</pre>
+</body>
+</html>

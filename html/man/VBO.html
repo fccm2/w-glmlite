@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="VertArray.html">
+<link rel="next" href="GLE.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html"><title>VBO</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="VertArray.html" title="VertArray">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="GLE.html" title="GLE">Next</a>
+</div>
+<h1>Module <a href="type_VBO.html">VBO</a></h1>
+
+<pre><span id="MODULEVBO"><span class="keyword">module</span> VBO</span>: <code class="code"><span class="keyword">sig</span></code> <a href="VBO.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<h4 id="3_VBOVertexBufferObject">VBO : Vertex Buffer Object</h4></div>
+</div>
+<hr width="100%">
+<p><a href="http://en.wikipedia.org/wiki/Vertex_Buffer_Object">Wikipedia article about
+    Vertex Buffer Object</a></p>
+
+<pre><span id="TYPEvbo_id"><span class="keyword">type</span> <code class="type"></code>vbo_id</span> </pre>
+
+
+<pre><span id="VALglGenBuffer"><span class="keyword">val</span> glGenBuffer</span> : <code class="type">unit -> <a href="VBO.html#TYPEvbo_id">vbo_id</a></code></pre>
+<pre><span id="VALglGenBuffers"><span class="keyword">val</span> glGenBuffers</span> : <code class="type">n:int -> <a href="VBO.html#TYPEvbo_id">vbo_id</a> array</code></pre><p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glGenBuffers.xml">
+    manual page</a></p>
+
+<pre><span id="VALglDeleteBuffer"><span class="keyword">val</span> glDeleteBuffer</span> : <code class="type">vbo:<a href="VBO.html#TYPEvbo_id">vbo_id</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glDeleteBuffers.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALglDeleteBuffers"><span class="keyword">val</span> glDeleteBuffers</span> : <code class="type">vbos:<a href="VBO.html#TYPEvbo_id">vbo_id</a> array -> unit</code></pre>
+<pre><code><span id="TYPEbuffer_object_target"><span class="keyword">type</span> <code class="type"></code>buffer_object_target</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbuffer_object_target.GL_ARRAY_BUFFER"><span class="constructor">GL_ARRAY_BUFFER</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbuffer_object_target.GL_ELEMENT_ARRAY_BUFFER"><span class="constructor">GL_ELEMENT_ARRAY_BUFFER</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbuffer_object_target.GL_PIXEL_PACK_BUFFER"><span class="constructor">GL_PIXEL_PACK_BUFFER</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbuffer_object_target.GL_PIXEL_UNPACK_BUFFER"><span class="constructor">GL_PIXEL_UNPACK_BUFFER</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALglBindBuffer"><span class="keyword">val</span> glBindBuffer</span> : <code class="type">target:<a href="VBO.html#TYPEbuffer_object_target">buffer_object_target</a> -> vbo:<a href="VBO.html#TYPEvbo_id">vbo_id</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glBindBuffer.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALglUnbindBuffer"><span class="keyword">val</span> glUnbindBuffer</span> : <code class="type">target:<a href="VBO.html#TYPEbuffer_object_target">buffer_object_target</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Equivalent to the function <code class="code">glBindBuffer</code> with 0 as vbo_id, as tells
+    <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glBindBuffer.xml">
+    the manual</a> to unbind buffer objects.</p>
+</div>
+</div>
+
+<pre><code><span id="TYPEvbo_usage_pattern"><span class="keyword">type</span> <code class="type"></code>vbo_usage_pattern</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTvbo_usage_pattern.GL_STREAM_DRAW"><span class="constructor">GL_STREAM_DRAW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTvbo_usage_pattern.GL_STREAM_READ"><span class="constructor">GL_STREAM_READ</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTvbo_usage_pattern.GL_STREAM_COPY"><span class="constructor">GL_STREAM_COPY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTvbo_usage_pattern.GL_STATIC_DRAW"><span class="constructor">GL_STATIC_DRAW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTvbo_usage_pattern.GL_STATIC_READ"><span class="constructor">GL_STATIC_READ</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTvbo_usage_pattern.GL_STATIC_COPY"><span class="constructor">GL_STATIC_COPY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTvbo_usage_pattern.GL_DYNAMIC_DRAW"><span class="constructor">GL_DYNAMIC_DRAW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTvbo_usage_pattern.GL_DYNAMIC_READ"><span class="constructor">GL_DYNAMIC_READ</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTvbo_usage_pattern.GL_DYNAMIC_COPY"><span class="constructor">GL_DYNAMIC_COPY</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALglBufferData"><span class="keyword">val</span> glBufferData</span> : <code class="type">target:<a href="VBO.html#TYPEbuffer_object_target">buffer_object_target</a> -><br>       size:int -><br>       data:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -><br>       usage:<a href="VBO.html#TYPEvbo_usage_pattern">vbo_usage_pattern</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glBufferData.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALglBufferDataNull"><span class="keyword">val</span> glBufferDataNull</span> : <code class="type">target:<a href="VBO.html#TYPEbuffer_object_target">buffer_object_target</a> -><br>       size:int -> usage:<a href="VBO.html#TYPEvbo_usage_pattern">vbo_usage_pattern</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>same than <code class="code">glBufferData</code> but passes a NULL pointer to the data parameter of the C function</p>
+</div>
+</div>
+
+<pre><span id="VALglBufferSubData"><span class="keyword">val</span> glBufferSubData</span> : <code class="type">target:<a href="VBO.html#TYPEbuffer_object_target">buffer_object_target</a> -><br>       offset:int -><br>       size:int -><br>       data:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glBufferSubData.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALelem_size"><span class="keyword">val</span> elem_size</span> : <code class="type">ba:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> int</code></pre><div class="info ">
+<div class="info-desc">
+<p>this function returns the size in octets of the elements of a bigarray</p>
+</div>
+</div>
+
+<pre><span id="VALba_sizeof"><span class="keyword">val</span> ba_sizeof</span> : <code class="type">ba:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> int</code></pre><div class="info ">
+<div class="info-desc">
+<p>you can use this function to provide the <code class="code">size</code> argument of the function <code class="code">glBufferData</code></p>
+</div>
+</div>
+
+<pre><code><span id="TYPEaccess_policy"><span class="keyword">type</span> <code class="type"></code>access_policy</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTaccess_policy.GL_READ_ONLY"><span class="constructor">GL_READ_ONLY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTaccess_policy.GL_WRITE_ONLY"><span class="constructor">GL_WRITE_ONLY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTaccess_policy.GL_READ_WRITE"><span class="constructor">GL_READ_WRITE</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="TYPEmapped_buffer"><span class="keyword">type</span> <code class="type"></code>mapped_buffer</span> </pre>
+
+
+<pre><span id="VALglMapBufferAbs"><span class="keyword">val</span> glMapBufferAbs</span> : <code class="type">target:<a href="VBO.html#TYPEbuffer_object_target">buffer_object_target</a> -><br>       access:<a href="VBO.html#TYPEaccess_policy">access_policy</a> -> <a href="VBO.html#TYPEmapped_buffer">mapped_buffer</a></code></pre><p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glMapBuffer.xml">
+    manual page</a></p>
+
+<pre><span id="VALglUnmapBuffer"><span class="keyword">val</span> glUnmapBuffer</span> : <code class="type">target:<a href="VBO.html#TYPEbuffer_object_target">buffer_object_target</a> -> unit</code></pre>
+<pre><span id="VALmapped_buffer_blit"><span class="keyword">val</span> mapped_buffer_blit</span> : <code class="type"><a href="VBO.html#TYPEmapped_buffer">mapped_buffer</a> -><br>       (float, Stdlib.Bigarray.float32_elt, Stdlib.Bigarray.c_layout)<br>       Stdlib.Bigarray.Array1.t -> len:int -> unit</code></pre>
+<pre><span id="VALmapped_buffer_blit_ofs"><span class="keyword">val</span> mapped_buffer_blit_ofs</span> : <code class="type"><a href="VBO.html#TYPEmapped_buffer">mapped_buffer</a> -><br>       (float, Stdlib.Bigarray.float32_elt, Stdlib.Bigarray.c_layout)<br>       Stdlib.Bigarray.Array1.t -> ofs:int -> len:int -> unit</code></pre>
+<pre><code><span id="TYPEbo_param"><span class="keyword">type</span> <code class="type"></code>bo_param</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbo_param.GL_BUFFER_ACCESS"><span class="constructor">GL_BUFFER_ACCESS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbo_param.GL_BUFFER_MAPPED"><span class="constructor">GL_BUFFER_MAPPED</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbo_param.GL_BUFFER_SIZE"><span class="constructor">GL_BUFFER_SIZE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbo_param.GL_BUFFER_USAGE"><span class="constructor">GL_BUFFER_USAGE</span></span></code></td>
+
+</tr></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>params for <code class="code">glGetBufferParameter</code>, but not used</p>
+</div>
+</div>
+
+<p>in the C API <code class="code">glGetBufferParameteriv</code> can be called with
+    <code class="code"><span class="constructor">GL_BUFFER_ACCESS</span></code>, <code class="code"><span class="constructor">GL_BUFFER_MAPPED</span></code>, <code class="code"><span class="constructor">GL_BUFFER_SIZE</span></code>, or <code class="code"><span class="constructor">GL_BUFFER_USAGE</span></code>,
+    each of these parameters return a different type, so glGetBufferParameter
+    have been wrapped as follow:</p>
+
+<ul>
+<li>glGetBufferParameter <code class="code"><span class="constructor">GL_BUFFER_ACCESS</span></code> =&gt; glGetBufferAccess</li>
+<li>glGetBufferParameter <code class="code"><span class="constructor">GL_BUFFER_MAPPED</span></code> =&gt; glGetBufferMapped</li>
+<li>glGetBufferParameter <code class="code"><span class="constructor">GL_BUFFER_SIZE</span></code>   =&gt; glGetBufferSize</li>
+<li>glGetBufferParameter <code class="code"><span class="constructor">GL_BUFFER_USAGE</span></code>  =&gt; glGetBufferUsage</li>
+</ul>
+
+<pre><span id="VALglGetBufferAccess"><span class="keyword">val</span> glGetBufferAccess</span> : <code class="type">target:<a href="VBO.html#TYPEbuffer_object_target">buffer_object_target</a> -> <a href="VBO.html#TYPEaccess_policy">access_policy</a></code></pre>
+<pre><span id="VALglGetBufferMapped"><span class="keyword">val</span> glGetBufferMapped</span> : <code class="type">target:<a href="VBO.html#TYPEbuffer_object_target">buffer_object_target</a> -> bool</code></pre>
+<pre><span id="VALglGetBufferSize"><span class="keyword">val</span> glGetBufferSize</span> : <code class="type">target:<a href="VBO.html#TYPEbuffer_object_target">buffer_object_target</a> -> int</code></pre>
+<pre><span id="VALglGetBufferUsage"><span class="keyword">val</span> glGetBufferUsage</span> : <code class="type">target:<a href="VBO.html#TYPEbuffer_object_target">buffer_object_target</a> -> <a href="VBO.html#TYPEvbo_usage_pattern">vbo_usage_pattern</a></code></pre><p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glGetBufferParameteriv.xml">
+    manual page</a></p>
+</body></html>

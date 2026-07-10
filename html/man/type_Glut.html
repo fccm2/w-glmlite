@@ -1,0 +1,317 @@
+<html><head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><title>Glut</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutInit&nbsp;:&nbsp;argv:string&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;array&nbsp;=&nbsp;<span class="string">"ml_glutinit"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutInitWindowPosition&nbsp;:&nbsp;x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutinitwindowposition"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutInitWindowSize&nbsp;:&nbsp;width:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;height:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutinitwindowsize"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;init_mode&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLUT_RGBA</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_RGB</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_INDEX</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_SINGLE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_DOUBLE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_ACCUM</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_ALPHA</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_DEPTH</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_STENCIL</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_MULTISAMPLE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_STEREO</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_LUMINANCE</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutInitDisplayMode&nbsp;:&nbsp;mode:<span class="constructor">Glut</span>.init_mode&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutinitdisplaymode"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutInitDisplayString&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutinitdisplaystring"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutInitContextVersion&nbsp;:&nbsp;major:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;minor:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutinitcontextversion"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;context_profile&nbsp;=&nbsp;<span class="constructor">GLUT_CORE_PROFILE</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_COMPATIBILITY_PROFILE</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutInitContextProfile&nbsp;:&nbsp;profile:<span class="constructor">Glut</span>.context_profile&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutinitcontextprofile"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutMainLoop&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutmainloop"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutLeaveMainLoop&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutleavemainloop"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;window_id<br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutCreateWindow&nbsp;:&nbsp;title:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Glut</span>.window_id<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutcreatewindow"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSetWindow&nbsp;:&nbsp;win:<span class="constructor">Glut</span>.window_id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutsetwindow"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutGetWindow&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Glut</span>.window_id&nbsp;=&nbsp;<span class="string">"ml_glutgetwindow"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutCreateSubWindow&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;win:<span class="constructor">Glut</span>.window_id&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;width:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;height:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Glut</span>.window_id<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutcreatesubwindow"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutDestroyWindow&nbsp;:&nbsp;win:<span class="constructor">Glut</span>.window_id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutdestroywindow"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutPostRedisplay&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutpostredisplay"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSwapBuffers&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutswapbuffers"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutPositionWindow&nbsp;:&nbsp;x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutpositionwindow"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutReshapeWindow&nbsp;:&nbsp;width:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;height:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutreshapewindow"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutFullScreen&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutfullscreen"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutPopWindow&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutpopwindow"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutPushWindow&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutpushwindow"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutShowWindow&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutshowwindow"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutHideWindow&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_gluthidewindow"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutIconifyWindow&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_gluticonifywindow"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSetWindowTitle&nbsp;:&nbsp;name:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutsetwindowtitle"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSetIconTitle&nbsp;:&nbsp;name:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutseticontitle"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;cursor_type&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLUT_CURSOR_RIGHT_ARROW</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_LEFT_ARROW</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_INFO</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_DESTROY</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_HELP</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_CYCLE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_SPRAY</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_WAIT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_TEXT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_CROSSHAIR</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_UP_DOWN</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_LEFT_RIGHT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_TOP_SIDE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_BOTTOM_SIDE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_LEFT_SIDE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_RIGHT_SIDE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_TOP_LEFT_CORNER</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_TOP_RIGHT_CORNER</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_BOTTOM_RIGHT_CORNER</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_BOTTOM_LEFT_CORNER</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_FULL_CROSSHAIR</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_NONE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_CURSOR_INHERIT</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSetCursor&nbsp;:&nbsp;cursor:<span class="constructor">Glut</span>.cursor_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutsetcursor"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutWarpPointer&nbsp;:&nbsp;x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutwarppointer"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutIgnoreKeyRepeat&nbsp;:&nbsp;ignore:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutignorekeyrepeat"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;menu_id<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutCreateMenu&nbsp;:&nbsp;menu:(value:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Glut</span>.menu_id<br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutGetMenu&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Glut</span>.menu_id&nbsp;=&nbsp;<span class="string">"ml_glutgetmenu"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSetMenu&nbsp;:&nbsp;menu:<span class="constructor">Glut</span>.menu_id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutsetmenu"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutDestroyMenu&nbsp;:&nbsp;menu:<span class="constructor">Glut</span>.menu_id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutdestroymenu"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutAddMenuEntry&nbsp;:&nbsp;name:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;value:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutaddmenuentry"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutAddSubMenu&nbsp;:&nbsp;name:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;menu:<span class="constructor">Glut</span>.menu_id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutaddsubmenu"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutChangeToMenuEntry&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;entry:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;name:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;value:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutchangetomenuentry"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutChangeToSubMenu&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;entry:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;name:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;menu:<span class="constructor">Glut</span>.menu_id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutchangetosubmenu"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutRemoveMenuItem&nbsp;:&nbsp;entry:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutremovemenuitem"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;mouse_button&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLUT_LEFT_BUTTON</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_MIDDLE_BUTTON</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_RIGHT_BUTTON</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WHEEL_UP</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WHEEL_DOWN</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutAttachMenu&nbsp;:&nbsp;button:<span class="constructor">Glut</span>.mouse_button&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutattachmenu"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutDetachMenu&nbsp;:&nbsp;button:<span class="constructor">Glut</span>.mouse_button&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutdetachmenu"</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutDisplayFunc&nbsp;:&nbsp;display:(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutReshapeFunc&nbsp;:&nbsp;reshape:(width:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;height:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutKeyboardFunc&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;keyboard:(key:char&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutKeyboardUpFunc&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;keyboard_up:(key:char&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;mouse_button_state&nbsp;=&nbsp;<span class="constructor">GLUT_DOWN</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_UP</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutMouseFunc&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse:(button:<span class="constructor">Glut</span>.mouse_button&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state:<span class="constructor">Glut</span>.mouse_button_state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutMotionFunc&nbsp;:&nbsp;motion:(x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutPassiveMotionFunc&nbsp;:&nbsp;passive:(x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;visibility_state&nbsp;=&nbsp;<span class="constructor">GLUT_NOT_VISIBLE</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_VISIBLE</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutVisibilityFunc&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;visibility:(state:<span class="constructor">Glut</span>.visibility_state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;entry_state&nbsp;=&nbsp;<span class="constructor">GLUT_LEFT</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_ENTERED</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutEntryFunc&nbsp;:&nbsp;entry:(state:<span class="constructor">Glut</span>.entry_state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;special_key&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLUT_KEY_F1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_F2</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_F3</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_F4</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_F5</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_F6</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_F7</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_F8</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_F9</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_F10</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_F11</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_F12</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_LEFT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_UP</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_RIGHT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_DOWN</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_PAGE_UP</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_PAGE_DOWN</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_HOME</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_END</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_KEY_INSERT</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutSpecialFunc&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;special:(key:<span class="constructor">Glut</span>.special_key&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutSpecialUpFunc&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;special_up:(key:<span class="constructor">Glut</span>.special_key&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutIdleFunc&nbsp;:&nbsp;idle:(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutRemoveIdleFunc&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutremoveidlefunc"</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;glutTimerFunc&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;msecs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;timer:(value:<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;value:<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSetColor&nbsp;:&nbsp;cell:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;r:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;g:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;b:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutsetcolor"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutGetColor&nbsp;:&nbsp;cell:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutgetcolor"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;get_state&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLUT_WINDOW_X</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_Y</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_WIDTH</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_HEIGHT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_BUFFER_SIZE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_STENCIL_SIZE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_DEPTH_SIZE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_RED_SIZE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_GREEN_SIZE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_BLUE_SIZE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_ALPHA_SIZE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_ACCUM_RED_SIZE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_ACCUM_GREEN_SIZE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_ACCUM_BLUE_SIZE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_ACCUM_ALPHA_SIZE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_DOUBLEBUFFER</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_RGBA</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_PARENT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_NUM_CHILDREN</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_COLORMAP_SIZE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_NUM_SAMPLES</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_STEREO</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_WINDOW_CURSOR</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_SCREEN_WIDTH</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_SCREEN_HEIGHT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_SCREEN_WIDTH_MM</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_SCREEN_HEIGHT_MM</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_MENU_NUM_ITEMS</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_DISPLAY_MODE_POSSIBLE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_INIT_DISPLAY_MODE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_INIT_WINDOW_X</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_INIT_WINDOW_Y</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_INIT_WINDOW_WIDTH</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_INIT_WINDOW_HEIGHT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_ELAPSED_TIME</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutGet&nbsp;:&nbsp;state:<span class="constructor">Glut</span>.get_state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;=&nbsp;<span class="string">"ml_glutget"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;glut_device&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLUT_HAS_KEYBOARD</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_HAS_MOUSE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_HAS_SPACEBALL</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_HAS_DIAL_AND_BUTTON_BOX</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_HAS_TABLET</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_NUM_MOUSE_BUTTONS</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_NUM_SPACEBALL_BUTTONS</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_NUM_BUTTON_BOX_BUTTONS</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_NUM_DIALS</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_NUM_TABLET_BUTTONS</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutDeviceGet&nbsp;:&nbsp;device:<span class="constructor">Glut</span>.glut_device&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutdeviceget"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;active_modifier&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLUT_ACTIVE_SHIFT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_ACTIVE_CTRL</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_ACTIVE_ALT</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutGetModifiers&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Glut</span>.active_modifier&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutgetmodifiers"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutGetModifiersB&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool&nbsp;*&nbsp;bool&nbsp;*&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutgetmodifiers_t"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutExtensionSupported&nbsp;:&nbsp;extension:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutextensionsupported"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;stroke_font&nbsp;=&nbsp;<span class="constructor">GLUT_STROKE_ROMAN</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_STROKE_MONO_ROMAN</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;bitmap_font&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLUT_BITMAP_9_BY_15</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_BITMAP_8_BY_13</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_BITMAP_TIMES_ROMAN_10</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_BITMAP_TIMES_ROMAN_24</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_BITMAP_HELVETICA_10</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_BITMAP_HELVETICA_12</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_BITMAP_HELVETICA_18</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutBitmapCharacter&nbsp;:&nbsp;font:<span class="constructor">Glut</span>.bitmap_font&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;c:char&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutbitmapcharacter"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutBitmapWidth&nbsp;:&nbsp;font:<span class="constructor">Glut</span>.bitmap_font&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;c:char&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutbitmapwidth"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutStrokeCharacter&nbsp;:&nbsp;font:<span class="constructor">Glut</span>.stroke_font&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;c:char&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutstrokecharacter"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutStrokeWidth&nbsp;:&nbsp;font:<span class="constructor">Glut</span>.stroke_font&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;c:char&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutstrokewidth"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutBitmapHeight&nbsp;:&nbsp;font:<span class="constructor">Glut</span>.bitmap_font&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutbitmapheight"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutStrokeHeight&nbsp;:&nbsp;font:<span class="constructor">Glut</span>.stroke_font&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutstrokeheight"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutBitmapLength&nbsp;:&nbsp;font:<span class="constructor">Glut</span>.bitmap_font&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;str:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutbitmaplength"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutStrokeLength&nbsp;:&nbsp;font:<span class="constructor">Glut</span>.stroke_font&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;str:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutstrokelength"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutWireSphere&nbsp;:&nbsp;radius:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;slices:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stacks:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutwiresphere"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSolidSphere&nbsp;:&nbsp;radius:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;slices:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stacks:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutsolidsphere"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutWireCone&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;base:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;height:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;slices:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stacks:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutwirecone"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSolidCone&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;base:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;height:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;slices:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stacks:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutsolidcone"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutWireCube&nbsp;:&nbsp;size:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutwirecube"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSolidCube&nbsp;:&nbsp;size:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutsolidcube"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutWireTorus&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;innerRadius:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;outerRadius:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;sides:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;rings:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutwiretorus"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSolidTorus&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;innerRadius:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;outerRadius:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;sides:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;rings:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutsolidtorus"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutWireDodecahedron&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutwiredodecahedron"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSolidDodecahedron&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutsoliddodecahedron"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutWireTeapot&nbsp;:&nbsp;size:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutwireteapot"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSolidTeapot&nbsp;:&nbsp;size:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutsolidteapot"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutWireOctahedron&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutwireoctahedron"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSolidOctahedron&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutsolidoctahedron"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutWireTetrahedron&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutwiretetrahedron"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSolidTetrahedron&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutsolidtetrahedron"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutWireIcosahedron&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutwireicosahedron"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSolidIcosahedron&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutsolidicosahedron"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutWireRhombicDodecahedron&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutwirerhombicdodecahedron"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutSolidRhombicDodecahedron&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutsolidrhombicdodecahedron"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutGameModeString&nbsp;:&nbsp;mode:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutgamemodestring"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutEnterGameMode&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutentergamemode"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutLeaveGameMode&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glutleavegamemode"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;game_mode&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLUT_GAME_MODE_ACTIVE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_GAME_MODE_POSSIBLE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_GAME_MODE_WIDTH</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_GAME_MODE_HEIGHT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_GAME_MODE_PIXEL_DEPTH</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_GAME_MODE_REFRESH_RATE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLUT_GAME_MODE_DISPLAY_CHANGED</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glutGameModeGet&nbsp;:&nbsp;game_mode:<span class="constructor">Glut</span>.game_mode&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutgamemodeget"</span><br>
+<span class="keyword">end</span></code></body></html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Ogl_draw.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><link title="projection matrices" rel="Section" href="#3_projectionmatrices">
+<link title="transformation matrices" rel="Section" href="#3_transformationmatrices">
+<title>Ogl_matrix</title>
+</head>
+<body>
+<div class="navbar"><a href="Ogl_draw.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;</div>
+<center><h1>Module <a href="type_Ogl_matrix.html">Ogl_matrix</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> Ogl_matrix: <code class="code"><span class="keyword">sig</span></code> <a href="Ogl_matrix.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>a module to manage opengl matrices<br>
+<hr width="100%">
+<br>
+matrices handling by opengl is now deprecated,
+    programmers are now supposed to handle matrices themselves,
+    so here is a module to do so<br>
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type">float array</code> </pre>
+
+<pre><span id="VALget_identity"><span class="keyword">val</span> get_identity</span> : <code class="type">unit -> <a href="Ogl_matrix.html#TYPEt">t</a></code></pre><br>
+<span id="3_projectionmatrices"><h3>projection matrices</h3></span><br>
+<pre><span id="VALperspective_projection"><span class="keyword">val</span> perspective_projection</span> : <code class="type">fov:float -> ratio:float -> near:float -> far:float -> <a href="Ogl_matrix.html#TYPEt">t</a></code></pre><div class="info">
+replaces <code class="code">gluPerspective</code><br>
+</div>
+<pre><span id="VALortho_projection"><span class="keyword">val</span> ortho_projection</span> : <code class="type">left:float -><br>       right:float -><br>       bottom:float -> top:float -> near:float -> far:float -> <a href="Ogl_matrix.html#TYPEt">t</a></code></pre><div class="info">
+replaces <code class="code">glOrtho</code><br>
+</div>
+<pre><span id="VALfrustum"><span class="keyword">val</span> frustum</span> : <code class="type">left:float -><br>       right:float -><br>       bottom:float -> top:float -> near:float -> far:float -> <a href="Ogl_matrix.html#TYPEt">t</a></code></pre><div class="info">
+replaces <code class="code">glFrustum</code><br>
+</div>
+<br>
+<span id="3_transformationmatrices"><h3>transformation matrices</h3></span><br>
+<pre><span id="VALtranslation_matrix"><span class="keyword">val</span> translation_matrix</span> : <code class="type">float * float * float -> <a href="Ogl_matrix.html#TYPEt">t</a></code></pre><pre><span id="VALscale_matrix"><span class="keyword">val</span> scale_matrix</span> : <code class="type">float * float * float -> <a href="Ogl_matrix.html#TYPEt">t</a></code></pre><pre><span id="VALx_rotation_matrix"><span class="keyword">val</span> x_rotation_matrix</span> : <code class="type">angle:float -> <a href="Ogl_matrix.html#TYPEt">t</a></code></pre><pre><span id="VALy_rotation_matrix"><span class="keyword">val</span> y_rotation_matrix</span> : <code class="type">angle:float -> <a href="Ogl_matrix.html#TYPEt">t</a></code></pre><pre><span id="VALz_rotation_matrix"><span class="keyword">val</span> z_rotation_matrix</span> : <code class="type">angle:float -> <a href="Ogl_matrix.html#TYPEt">t</a></code></pre><br>
+the following:
+<pre></pre><code class="code">&nbsp;&nbsp;<span class="keyword">let</span>&nbsp;scale&nbsp;=&nbsp;<span class="constructor">Ogl_matrix</span>.scale_matrix&nbsp;(0.1,&nbsp;0.1,&nbsp;0.1)<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;rot&nbsp;&nbsp;&nbsp;=&nbsp;<span class="constructor">Ogl_matrix</span>.x_rotation_matrix&nbsp;20.0<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;trans&nbsp;=&nbsp;<span class="constructor">Ogl_matrix</span>.translation_matrix&nbsp;(3.0,&nbsp;4.0,&nbsp;5.0)<br>
+&nbsp;&nbsp;<span class="keyword">in</span><br>
+&nbsp;&nbsp;<span class="keyword">let</span>&nbsp;m&nbsp;=&nbsp;<span class="constructor">Ogl_matrix</span>.get_identity()&nbsp;<span class="keyword">in</span><br>
+&nbsp;&nbsp;<span class="keyword">let</span>&nbsp;m&nbsp;=&nbsp;<span class="constructor">Ogl_matrix</span>.mult_matrix&nbsp;m&nbsp;scale&nbsp;<span class="keyword">in</span><br>
+&nbsp;&nbsp;<span class="keyword">let</span>&nbsp;m&nbsp;=&nbsp;<span class="constructor">Ogl_matrix</span>.mult_matrix&nbsp;m&nbsp;rot&nbsp;<span class="keyword">in</span><br>
+&nbsp;&nbsp;<span class="keyword">let</span>&nbsp;m&nbsp;=&nbsp;<span class="constructor">Ogl_matrix</span>.mult_matrix&nbsp;m&nbsp;trans&nbsp;<span class="keyword">in</span><br>
+&nbsp;&nbsp;(m)<br>
+</code><pre></pre>
+  is equivalent to:
+<pre></pre><code class="code">&nbsp;&nbsp;glScale&nbsp;0.1&nbsp;0.1&nbsp;0.1;<br>
+&nbsp;&nbsp;glRotate&nbsp;(20.0)&nbsp;1.0&nbsp;0.0&nbsp;0.0;<br>
+&nbsp;&nbsp;glTranslate&nbsp;3.0&nbsp;4.0&nbsp;5.0;<br>
+</code><pre></pre><br>
+<pre><span id="VALmult_matrix"><span class="keyword">val</span> mult_matrix</span> : <code class="type">m1:<a href="Ogl_matrix.html#TYPEt">t</a> -> m2:<a href="Ogl_matrix.html#TYPEt">t</a> -> <a href="Ogl_matrix.html#TYPEt">t</a></code></pre><pre><span id="VALmatrix_translate"><span class="keyword">val</span> matrix_translate</span> : <code class="type">matrix:<a href="Ogl_matrix.html#TYPEt">t</a> -> float * float * float -> unit</code></pre><div class="info">
+imperative, modifies the matrix parameter<br>
+</div>
+</body></html>

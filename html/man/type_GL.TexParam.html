@@ -1,0 +1,49 @@
+<html><head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><title>GL.TexParam</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;tex_param_target&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GL_TEXTURE_1D</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_2D</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_3D</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_CUBE_MAP</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;texture_compare_mode&nbsp;=&nbsp;<span class="constructor">GL_NONE</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;depth_texture_mode&nbsp;=&nbsp;<span class="constructor">GL_LUMINANCE</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_INTENSITY</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_ALPHA</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;tex_param&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GL_TEXTURE_MIN_FILTER</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">GL</span>.<span class="constructor">Min</span>.min_filter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_MAG_FILTER</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">GL</span>.<span class="constructor">Mag</span>.mag_filter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_MIN_LOD</span>&nbsp;<span class="keyword">of</span>&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_MAX_LOD</span>&nbsp;<span class="keyword">of</span>&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_BASE_LEVEL</span>&nbsp;<span class="keyword">of</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_MAX_LEVEL</span>&nbsp;<span class="keyword">of</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_WRAP_S</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">GL</span>.wrap_param<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_WRAP_T</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">GL</span>.wrap_param<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_WRAP_R</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">GL</span>.wrap_param<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_BORDER_COLOR</span>&nbsp;<span class="keyword">of</span>&nbsp;(float&nbsp;*&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_PRIORITY</span>&nbsp;<span class="keyword">of</span>&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_COMPARE_MODE</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">GL</span>.<span class="constructor">TexParam</span>.texture_compare_mode<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_COMPARE_FUNC</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">GL</span>.gl_func<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_DEPTH_TEXTURE_MODE</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">GL</span>.<span class="constructor">TexParam</span>.depth_texture_mode<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_GENERATE_MIPMAP</span>&nbsp;<span class="keyword">of</span>&nbsp;bool<br>
+<span class="keyword">end</span></code></body></html>

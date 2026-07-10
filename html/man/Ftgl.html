@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="GLE.html">
+<link rel="next" href="Jpeg_loader.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><title>Ftgl</title>
+</head>
+<body>
+<div class="navbar"><a href="GLE.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="Jpeg_loader.html">Next</a>
+</div>
+<center><h1>Module <a href="type_Ftgl.html">Ftgl</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> Ftgl: <code class="code"><span class="keyword">sig</span></code> <a href="Ftgl.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>Bindings to the FTGL library.<br>
+<hr width="100%">
+<br>
+FTGL is a library for rendering TrueType fonts in OpenGL.<br>
+<pre><span id="TYPEftglFont"><span class="keyword">type</span> <code class="type"></code>ftglFont</span> </pre>
+
+<pre><span id="VALftglCreatePixmapFont"><span class="keyword">val</span> <a href="code_VALFtgl.ftglCreatePixmapFont.html">ftglCreatePixmapFont</a></span> : <code class="type">filename:string -> <a href="Ftgl.html#TYPEftglFont">ftglFont</a></code></pre><pre><span id="VALftglCreateBitmapFont"><span class="keyword">val</span> <a href="code_VALFtgl.ftglCreateBitmapFont.html">ftglCreateBitmapFont</a></span> : <code class="type">filename:string -> <a href="Ftgl.html#TYPEftglFont">ftglFont</a></code></pre><pre><span id="VALftglCreateBufferFont"><span class="keyword">val</span> <a href="code_VALFtgl.ftglCreateBufferFont.html">ftglCreateBufferFont</a></span> : <code class="type">filename:string -> <a href="Ftgl.html#TYPEftglFont">ftglFont</a></code></pre><pre><span id="VALftglCreateTextureFont"><span class="keyword">val</span> <a href="code_VALFtgl.ftglCreateTextureFont.html">ftglCreateTextureFont</a></span> : <code class="type">filename:string -> <a href="Ftgl.html#TYPEftglFont">ftglFont</a></code></pre><pre><span id="VALftglCreateOutlineFont"><span class="keyword">val</span> <a href="code_VALFtgl.ftglCreateOutlineFont.html">ftglCreateOutlineFont</a></span> : <code class="type">filename:string -> <a href="Ftgl.html#TYPEftglFont">ftglFont</a></code></pre><pre><span id="VALftglCreateExtrudeFont"><span class="keyword">val</span> <a href="code_VALFtgl.ftglCreateExtrudeFont.html">ftglCreateExtrudeFont</a></span> : <code class="type">filename:string -> <a href="Ftgl.html#TYPEftglFont">ftglFont</a></code></pre><pre><span id="VALftglCreatePolygonFont"><span class="keyword">val</span> <a href="code_VALFtgl.ftglCreatePolygonFont.html">ftglCreatePolygonFont</a></span> : <code class="type">filename:string -> <a href="Ftgl.html#TYPEftglFont">ftglFont</a></code></pre><pre><span id="VALftglDestroyFont"><span class="keyword">val</span> <a href="code_VALFtgl.ftglDestroyFont.html">ftglDestroyFont</a></span> : <code class="type">font:<a href="Ftgl.html#TYPEftglFont">ftglFont</a> -> unit</code></pre><pre><span id="VALftglSetFontFaceSize"><span class="keyword">val</span> <a href="code_VALFtgl.ftglSetFontFaceSize.html">ftglSetFontFaceSize</a></span> : <code class="type">font:<a href="Ftgl.html#TYPEftglFont">ftglFont</a> -> size:int -> res:int -> unit</code></pre><pre><span id="VALftglGetFontFaceSize"><span class="keyword">val</span> <a href="code_VALFtgl.ftglGetFontFaceSize.html">ftglGetFontFaceSize</a></span> : <code class="type">font:<a href="Ftgl.html#TYPEftglFont">ftglFont</a> -> int</code></pre><br><code><span id="TYPErender_mode"><span class="keyword">type</span> <code class="type"></code>render_mode</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">FTGL_RENDER_FRONT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">FTGL_RENDER_BACK</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">FTGL_RENDER_SIDE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">FTGL_RENDER_ALL</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALftglRenderFont"><span class="keyword">val</span> <a href="code_VALFtgl.ftglRenderFont.html">ftglRenderFont</a></span> : <code class="type">font:<a href="Ftgl.html#TYPEftglFont">ftglFont</a> -> str:string -> mode:<a href="Ftgl.html#TYPErender_mode">render_mode</a> -> unit</code></pre><pre><span id="VALftglSetFontDepth"><span class="keyword">val</span> <a href="code_VALFtgl.ftglSetFontDepth.html">ftglSetFontDepth</a></span> : <code class="type">font:<a href="Ftgl.html#TYPEftglFont">ftglFont</a> -> depth:float -> unit</code></pre><pre><span id="VALftglSetFontOutset"><span class="keyword">val</span> <a href="code_VALFtgl.ftglSetFontOutset.html">ftglSetFontOutset</a></span> : <code class="type">font:<a href="Ftgl.html#TYPEftglFont">ftglFont</a> -> front:float -> back:float -> unit</code></pre><pre><span id="VALftglGetFontAscender"><span class="keyword">val</span> <a href="code_VALFtgl.ftglGetFontAscender.html">ftglGetFontAscender</a></span> : <code class="type">font:<a href="Ftgl.html#TYPEftglFont">ftglFont</a> -> float</code></pre><pre><span id="VALftglGetFontDescender"><span class="keyword">val</span> <a href="code_VALFtgl.ftglGetFontDescender.html">ftglGetFontDescender</a></span> : <code class="type">font:<a href="Ftgl.html#TYPEftglFont">ftglFont</a> -> float</code></pre><pre><span id="VALftglGetFontLineHeight"><span class="keyword">val</span> <a href="code_VALFtgl.ftglGetFontLineHeight.html">ftglGetFontLineHeight</a></span> : <code class="type">font:<a href="Ftgl.html#TYPEftglFont">ftglFont</a> -> float</code></pre><pre><span id="VALftglGetFontAdvance"><span class="keyword">val</span> <a href="code_VALFtgl.ftglGetFontAdvance.html">ftglGetFontAdvance</a></span> : <code class="type">font:<a href="Ftgl.html#TYPEftglFont">ftglFont</a> -> str:string -> float</code></pre><pre><span id="TYPEftglLayout"><span class="keyword">type</span> <code class="type"></code>ftglLayout</span> </pre>
+
+<pre><span id="VALftglCreateSimpleLayout"><span class="keyword">val</span> <a href="code_VALFtgl.ftglCreateSimpleLayout.html">ftglCreateSimpleLayout</a></span> : <code class="type">unit -> <a href="Ftgl.html#TYPEftglLayout">ftglLayout</a></code></pre><pre><span id="VALftglSetLayoutFont"><span class="keyword">val</span> <a href="code_VALFtgl.ftglSetLayoutFont.html">ftglSetLayoutFont</a></span> : <code class="type">layout:<a href="Ftgl.html#TYPEftglLayout">ftglLayout</a> -> font:<a href="Ftgl.html#TYPEftglFont">ftglFont</a> -> unit</code></pre><pre><span id="VALftglGetLayoutFont"><span class="keyword">val</span> <a href="code_VALFtgl.ftglGetLayoutFont.html">ftglGetLayoutFont</a></span> : <code class="type">layout:<a href="Ftgl.html#TYPEftglLayout">ftglLayout</a> -> <a href="Ftgl.html#TYPEftglFont">ftglFont</a></code></pre><pre><span id="VALftglSetLayoutLineLength"><span class="keyword">val</span> <a href="code_VALFtgl.ftglSetLayoutLineLength.html">ftglSetLayoutLineLength</a></span> : <code class="type">layout:<a href="Ftgl.html#TYPEftglLayout">ftglLayout</a> -> lineLength:float -> unit</code></pre><pre><span id="VALftglGetLayoutLineLength"><span class="keyword">val</span> <a href="code_VALFtgl.ftglGetLayoutLineLength.html">ftglGetLayoutLineLength</a></span> : <code class="type">layout:<a href="Ftgl.html#TYPEftglLayout">ftglLayout</a> -> float</code></pre><pre><span id="VALftglSetLayoutAlignment"><span class="keyword">val</span> <a href="code_VALFtgl.ftglSetLayoutAlignment.html">ftglSetLayoutAlignment</a></span> : <code class="type">layout:<a href="Ftgl.html#TYPEftglLayout">ftglLayout</a> -> alignment:int -> unit</code></pre><pre><span id="VALftglGetLayoutAlignement"><span class="keyword">val</span> <a href="code_VALFtgl.ftglGetLayoutAlignement.html">ftglGetLayoutAlignement</a></span> : <code class="type">layout:<a href="Ftgl.html#TYPEftglLayout">ftglLayout</a> -> int</code></pre><pre><span id="VALftglSetLayoutLineSpacing"><span class="keyword">val</span> <a href="code_VALFtgl.ftglSetLayoutLineSpacing.html">ftglSetLayoutLineSpacing</a></span> : <code class="type">layout:<a href="Ftgl.html#TYPEftglLayout">ftglLayout</a> -> lineSpacing:float -> unit</code></pre><pre><span id="VALftglDestroyLayout"><span class="keyword">val</span> <a href="code_VALFtgl.ftglDestroyLayout.html">ftglDestroyLayout</a></span> : <code class="type">layout:<a href="Ftgl.html#TYPEftglLayout">ftglLayout</a> -> unit</code></pre></body></html>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="next" href="Ogl_matrix.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><title>Ogl_draw</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Ogl_matrix.html" title="Ogl_matrix">Next</a>
+</div>
+<h1>Module <a href="type_Ogl_draw.html">Ogl_draw</a></h1>
+
+<pre><span id="MODULEOgl_draw"><span class="keyword">module</span> Ogl_draw</span>: <code class="code">sig</code> <a href="Ogl_draw.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<div class="info-desc">
+<p>Higher level interface</p>
+</div>
+</div>
+<hr width="100%">
+
+<pre><span id="TYPEvertex3"><span class="keyword">type</span> <code class="type"></code>vertex3</span> = <code class="type">float * float * float</code> </pre>
+
+
+<pre><span id="TYPErgb"><span class="keyword">type</span> <code class="type"></code>rgb</span> = <code class="type">float * float * float</code> </pre>
+
+
+<pre><span id="TYPEuv"><span class="keyword">type</span> <code class="type"></code>uv</span> = <code class="type">float * float</code> </pre>
+
+
+<pre><code><span id="TYPEcharacterised_vertices"><span class="keyword">type</span> <code class="type"></code>characterised_vertices</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcharacterised_vertices.PlainColor3_Vertices3"><span class="constructor">PlainColor3_Vertices3</span></span> <span class="keyword">of</span> <code class="type"><a href="Ogl_draw.html#TYPErgb">rgb</a> * <a href="Ogl_draw.html#TYPEvertex3">vertex3</a> array</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcharacterised_vertices.Vertices3"><span class="constructor">Vertices3</span></span> <span class="keyword">of</span> <code class="type"><a href="Ogl_draw.html#TYPEvertex3">vertex3</a> array</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcharacterised_vertices.RGB_Vertices3"><span class="constructor">RGB_Vertices3</span></span> <span class="keyword">of</span> <code class="type">(<a href="Ogl_draw.html#TYPErgb">rgb</a> * <a href="Ogl_draw.html#TYPEvertex3">vertex3</a>) array</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcharacterised_vertices.UV_Vertices3"><span class="constructor">UV_Vertices3</span></span> <span class="keyword">of</span> <code class="type">(<a href="Ogl_draw.html#TYPEuv">uv</a> * <a href="Ogl_draw.html#TYPEvertex3">vertex3</a>) array</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcharacterised_vertices.UV_RGB_Vertices3"><span class="constructor">UV_RGB_Vertices3</span></span> <span class="keyword">of</span> <code class="type">(<a href="Ogl_draw.html#TYPEuv">uv</a> * <a href="Ogl_draw.html#TYPErgb">rgb</a> * <a href="Ogl_draw.html#TYPEvertex3">vertex3</a>) array</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="TYPEmesh"><span class="keyword">type</span> <code class="type"></code>mesh</span> </pre>
+
+
+<pre><span id="VALmake_mesh_unsafe"><span class="keyword">val</span> make_mesh_unsafe</span> : <code class="type">indices:(int * int * int) array -><br>       vertices:<a href="Ogl_draw.html#TYPEcharacterised_vertices">characterised_vertices</a> -> <a href="Ogl_draw.html#TYPEmesh">mesh</a></code></pre>
+<pre><span id="VALmake_mesh"><span class="keyword">val</span> make_mesh</span> : <code class="type">indices:(int * int * int) array -><br>       vertices:<a href="Ogl_draw.html#TYPEcharacterised_vertices">characterised_vertices</a> -> <a href="Ogl_draw.html#TYPEmesh">mesh</a></code></pre>
+<pre><code><span id="TYPEtexenv"><span class="keyword">type</span> <code class="type"></code>texenv</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtexenv.MODULATE"><span class="constructor">MODULATE</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>multiply texture color and vertex color, the result is a nice mix</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtexenv.DECAL"><span class="constructor">DECAL</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>in the transparent part of the texture, use the vertex color</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtexenv.ADD"><span class="constructor">ADD</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtexenv.ADD_SIGNED"><span class="constructor">ADD_SIGNED</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtexenv.SUBTRACT"><span class="constructor">SUBTRACT</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALdraw_mesh"><span class="keyword">val</span> draw_mesh</span> : <code class="type">float array -><br>       ?color:<a href="Ogl_draw.html#TYPErgb">rgb</a> -> ?texenv:<a href="Ogl_draw.html#TYPEtexenv">texenv</a> -> <a href="Ogl_draw.html#TYPEmesh">mesh</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>The first parameter is the product of the modelview matrix and the
+    projection matrix. You can create these matrices with the module
+    <a href="Ogl_matrix.html"><code class="code">Ogl_matrix</code></a>.</p>
+</div>
+</div>
+<div class="param_info"><code class="code">color</code> : provide this parameter only with <code class="code">Vertices3</code> data.</div>
+<div class="param_info"><code class="code">texenv</code> : provide this parameter only with <code class="code">UV_RGB_Vertices3</code> data
+    where it is used to select how to mix the vertex color with the texture
+    texel.</div>
+
+<pre><span id="VALdelete_mesh"><span class="keyword">val</span> delete_mesh</span> : <code class="type"><a href="Ogl_draw.html#TYPEmesh">mesh</a> -> unit</code></pre>
+<pre><span id="VALtris_of_quads"><span class="keyword">val</span> tris_of_quads</span> : <code class="type">(int * int * int * int) array -> (int * int * int) array</code></pre>
+<pre><code><span id="TYPEface"><span class="keyword">type</span> <code class="type"></code>face</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTface.Tri"><span class="constructor">Tri</span></span> <span class="keyword">of</span> <code class="type">(int * int * int)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTface.Quad"><span class="constructor">Quad</span></span> <span class="keyword">of</span> <code class="type">(int * int * int * int)</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALtris_of_mixed"><span class="keyword">val</span> tris_of_mixed</span> : <code class="type"><a href="Ogl_draw.html#TYPEface">face</a> array -> (int * int * int) array</code></pre></body></html>

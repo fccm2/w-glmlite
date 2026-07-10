@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="VBO.html">
+<link rel="next" href="Ftgl.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><title>GLE</title>
+</head>
+<body>
+<div class="navbar"><a href="VBO.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="Ftgl.html">Next</a>
+</div>
+<center><h1>Module <a href="type_GLE.html">GLE</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> GLE: <code class="code"><span class="keyword">sig</span></code> <a href="GLE.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>Bindings to the GLE library. A set of functions to make extrusions.<br>
+<hr width="100%">
+<br>
+GLE is a library that draws extruded surfaces, including surfaces of
+    revolution, sweeps, tubes, polycones, polycylinders and helicoids.
+    Generically, the extruded surface is specified with a 2D polyline that
+    is extruded along a 3D path.  A local coordinate system allows for
+    additional flexibility in the primitives drawn.  Extrusions may be
+    texture mapped in a variety of ways.  The GLE library generates 3D
+    triangle coordinates, lighting normal vectors and texture coordinates
+    as output.<br>
+<br><code><span id="TYPEjoin_style"><span class="keyword">type</span> <code class="type"></code>join_style</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TUBE_JN_RAW</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TUBE_JN_ANGLE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TUBE_JN_CUT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TUBE_JN_ROUND</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TUBE_JN_CAP</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TUBE_NORM_FACET</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TUBE_NORM_EDGE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TUBE_NORM_PATH_EDGE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TUBE_CONTOUR_CLOSED</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALgleSetJoinStyle"><span class="keyword">val</span> gleSetJoinStyle</span> : <code class="type"><a href="GLE.html#TYPEjoin_style">join_style</a> list -> unit</code></pre><pre><span id="VALgleGetJoinStyle"><span class="keyword">val</span> gleGetJoinStyle</span> : <code class="type">unit -> <a href="GLE.html#TYPEjoin_style">join_style</a> list</code></pre><div class="info">
+control join style of the tubes<br>
+</div>
+<pre><span id="VALgleDestroyGC"><span class="keyword">val</span> gleDestroyGC</span> : <code class="type">unit -> unit</code></pre><div class="info">
+clean up global memory usage<br>
+</div>
+<pre><span id="TYPEgle_float"><span class="keyword">type</span> <code class="type"></code>gle_float</span> </pre>
+
+<pre><span id="VALba2_float32_of_array"><span class="keyword">val</span> ba2_float32_of_array</span> : <code class="type">float array array -><br>       (float, Bigarray.float32_elt, Bigarray.c_layout) Bigarray.Array2.t</code></pre><div class="info">
+identical to <code class="code"><span class="constructor">Bigarray</span>.<span class="constructor">Array2</span>.of_array <span class="constructor">Bigarray</span>.float32 <span class="constructor">Bigarray</span>.c_layout array</code><br>
+</div>
+<pre><span id="VALba2_float32_create"><span class="keyword">val</span> ba2_float32_create</span> : <code class="type">int -><br>       int -> (float, Bigarray.float32_elt, Bigarray.c_layout) Bigarray.Array2.t</code></pre><div class="info">
+identical to <code class="code"><span class="constructor">Bigarray</span>.<span class="constructor">Array2</span>.create <span class="constructor">Bigarray</span>.float32 <span class="constructor">Bigarray</span>.c_layout dim1 dim2</code><br>
+</div>
+<pre><span id="VALba2_glefloat_of_array"><span class="keyword">val</span> ba2_glefloat_of_array</span> : <code class="type">float array array -><br>       (float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t</code></pre><div class="info">
+identical to <code class="code">ba2_float32_of_array</code> but with <code class="code">gle_float</code><br>
+</div>
+<pre><span id="VALba2_glefloat_create"><span class="keyword">val</span> ba2_glefloat_create</span> : <code class="type">int -> int -> (float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t</code></pre><div class="info">
+identical to <code class="code">ba2_float32_create</code> but with <code class="code">gle_float</code><br>
+</div>
+<pre><span id="VALba1_glefloat_of_array"><span class="keyword">val</span> ba1_glefloat_of_array</span> : <code class="type">float array -> (float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array1.t</code></pre><pre><span id="VALba1_glefloat_create"><span class="keyword">val</span> ba1_glefloat_create</span> : <code class="type">int -> (float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array1.t</code></pre><pre><span id="VALcolors_none"><span class="keyword">val</span> colors_none</span> : <code class="type">(float, Bigarray.float32_elt, Bigarray.c_layout) Bigarray.Array2.t</code></pre><pre><span id="VALglePolyCylinder"><span class="keyword">val</span> glePolyCylinder</span> : <code class="type">points:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t -><br>       colors:(float, Bigarray.float32_elt, Bigarray.c_layout) Bigarray.Array2.t -><br>       radius:float -> unit</code></pre><div class="info">
+draw polyclinder, specified as a polyline<br>
+</div>
+<div class="param_info"><code class="code">points</code> : polyline vertices</div>
+<div class="param_info"><code class="code">colors</code> : colors at polyline verts</div>
+<div class="param_info"><code class="code">radius</code> : radius of polycylinder</div>
+<pre><span id="VALglePolyCone"><span class="keyword">val</span> glePolyCone</span> : <code class="type">points:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t -><br>       colors:(float, Bigarray.float32_elt, Bigarray.c_layout) Bigarray.Array2.t -><br>       radii:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array1.t -> unit</code></pre><div class="info">
+draw polycone, specified as a polyline with radii<br>
+</div>
+<div class="param_info"><code class="code">points</code> : polyline vertices</div>
+<div class="param_info"><code class="code">colors</code> : colors at polyline verts</div>
+<div class="param_info"><code class="code">radii</code> : cone radii at polyline verts</div>
+<pre><span id="VALglePolyCone_c4f"><span class="keyword">val</span> glePolyCone_c4f</span> : <code class="type">points:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t -><br>       colors:(float, Bigarray.float32_elt, Bigarray.c_layout) Bigarray.Array2.t -><br>       radii:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array1.t -> unit</code></pre><div class="info">
+same than <code class="code">glePolyCone</code> but with RGBA colors<br>
+</div>
+<pre><span id="VALgleExtrusion"><span class="keyword">val</span> gleExtrusion</span> : <code class="type">contour:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t -><br>       cont_normals:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t -><br>       up:(float * float * float) option -><br>       points:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t -><br>       colors:(float, Bigarray.float32_elt, Bigarray.c_layout) Bigarray.Array2.t -><br>       unit</code></pre><div class="info">
+extrude arbitrary 2D contour along arbitrary 3D path<br>
+</div>
+<div class="param_info"><code class="code">contour</code> : 2D contour</div>
+<div class="param_info"><code class="code">cont_normals</code> : 2D contour normals</div>
+<div class="param_info"><code class="code">up</code> : up vector for contour</div>
+<div class="param_info"><code class="code">points</code> : polyline vertices</div>
+<div class="param_info"><code class="code">colors</code> : colors at polyline verts</div>
+<pre><span id="VALgleTwistExtrusion"><span class="keyword">val</span> gleTwistExtrusion</span> : <code class="type">contour:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t -><br>       cont_normals:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t -><br>       up:(float * float * float) option -><br>       points:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t -><br>       colors:(float, Bigarray.float32_elt, Bigarray.c_layout) Bigarray.Array2.t -><br>       twist:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array1.t -> unit</code></pre><div class="info">
+extrude 2D contour, specifying local rotations (twists)<br>
+</div>
+<div class="param_info"><code class="code">contour</code> : 2D contour</div>
+<div class="param_info"><code class="code">up</code> : up vector for contour</div>
+<pre><span id="VALgleSpiral"><span class="keyword">val</span> gleSpiral</span> : <code class="type">contour:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t -><br>       cont_normals:(float, <a href="GLE.html#TYPEgle_float">gle_float</a>, Bigarray.c_layout) Bigarray.Array2.t -><br>       up:(float * float * float) option -><br>       start_radius:float -><br>       drd_theta:float -><br>       start_z:float -><br>       dzd_theta:float -><br>       start_xform:((float * float * float) * (float * float * float)) option -><br>       dx_formd_theta:((float * float * float) * (float * float * float)) option -><br>       start_theta:float -> sweep_theta:float -> unit</code></pre><div class="info">
+sweep an arbitrary contour along a helical path<br>
+</div>
+<div class="param_info"><code class="code">contour</code> : 2D contour</div>
+<div class="param_info"><code class="code">up</code> : up vector for contour</div>
+<div class="param_info"><code class="code">start_radius</code> : spiral starts in x-y plane</div>
+<div class="param_info"><code class="code">drd_theta</code> : change in radius per revolution</div>
+<div class="param_info"><code class="code">start_z</code> : starting z value</div>
+<div class="param_info"><code class="code">dzd_theta</code> : change in z per revolution</div>
+<div class="param_info"><code class="code">start_xform</code> : starting contour affine transform</div>
+<div class="param_info"><code class="code">dx_formd_theta</code> : tangent change transform per revolution</div>
+<div class="param_info"><code class="code">start_theta</code> : start angle in x-y plane</div>
+<div class="param_info"><code class="code">sweep_theta</code> : degrees to spiral around</div>
+<pre><span id="VALgleHelicoid"><span class="keyword">val</span> gleHelicoid</span> : <code class="type">torus_radius:float -><br>       start_radius:float -><br>       drd_theta:float -><br>       start_z:float -><br>       dzd_theta:float -><br>       start_xform:((float * float * float) * (float * float * float)) option -><br>       dx_formd_theta:((float * float * float) * (float * float * float)) option -><br>       start_theta:float -> sweep_theta:float -> unit</code></pre><div class="info">
+Generalized Torus. Similar to gleSpiral, except contour is a circle.<br>
+</div>
+<div class="param_info"><code class="code">torus_radius</code> : circle contour (torus) radius</div>
+<div class="param_info"><code class="code">start_radius</code> : spiral starts in x-y plane</div>
+<div class="param_info"><code class="code">drd_theta</code> : change in radius per revolution</div>
+<div class="param_info"><code class="code">start_z</code> : starting z value</div>
+<div class="param_info"><code class="code">dzd_theta</code> : change in z per revolution</div>
+<div class="param_info"><code class="code">start_xform</code> : starting contour affine transform</div>
+<div class="param_info"><code class="code">dx_formd_theta</code> : tangent change transform per revolution</div>
+<div class="param_info"><code class="code">start_theta</code> : start angle in x-y plane</div>
+<div class="param_info"><code class="code">sweep_theta</code> : degrees to spiral around</div>
+</body></html>

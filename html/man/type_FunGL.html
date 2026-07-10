@@ -1,0 +1,112 @@
+<html><head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><title>FunGL</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;vertex2&nbsp;=&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;vertex3&nbsp;=&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;vertex4&nbsp;=&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;vector&nbsp;=&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;rgb&nbsp;=&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;rgba&nbsp;=&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;uv&nbsp;=&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;matrix4x4&nbsp;=&nbsp;float&nbsp;array<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_translated&nbsp;:&nbsp;<span class="constructor">FunGL</span>.vector&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_rotated&nbsp;:&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">FunGL</span>.vector&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_scaled&nbsp;:&nbsp;<span class="constructor">FunGL</span>.vector&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_as_identity&nbsp;:&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_matrix&nbsp;:&nbsp;<span class="constructor">FunGL</span>.matrix4x4&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_rgb&nbsp;:&nbsp;<span class="constructor">FunGL</span>.rgb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_rgba&nbsp;:&nbsp;<span class="constructor">FunGL</span>.rgba&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_material&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;face:<span class="constructor">GL</span>.face_mode&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;mode:<span class="constructor">GL</span>.<span class="constructor">Material</span>.material_mode&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_lightModel&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;light_model:<span class="constructor">GL</span>.light_model&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_shadeModel&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shade_mode:<span class="constructor">GL</span>.shade_mode&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_frontFace&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;orientation:<span class="constructor">GL</span>.orientation&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_cullFace&nbsp;:&nbsp;mode:<span class="constructor">GL</span>.face_mode&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_enabled&nbsp;:&nbsp;cap:<span class="constructor">GL</span>.gl_capability&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;with_enablements&nbsp;:&nbsp;caps:<span class="constructor">GL</span>.gl_capability&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_disabled&nbsp;:&nbsp;cap:<span class="constructor">GL</span>.gl_capability&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_viewport&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;viewport:int&nbsp;*&nbsp;int&nbsp;*&nbsp;int&nbsp;*&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_polygonMode&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;face:<span class="constructor">GL</span>.face_mode&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;mode:<span class="constructor">GL</span>.polygon_mode&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_polygonMode2&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;front:<span class="constructor">GL</span>.polygon_mode&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;back:<span class="constructor">GL</span>.polygon_mode&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;do_with_matrixMode&nbsp;:&nbsp;mode:<span class="constructor">GL</span>.matrix_mode&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_lineWidth&nbsp;:&nbsp;width:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_with_pointSize&nbsp;:&nbsp;size:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;draw_using_program&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;program:<span class="constructor">GL</span>.shader_program&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;qualified_vertices&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Vertices2</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">FunGL</span>.vertex2&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Vertices3</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">FunGL</span>.vertex3&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Vertices4</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">FunGL</span>.vertex4&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Normal_Vertices2</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex2)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Normal_Vertices3</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex3)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Normal_Vertices4</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex4)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RGB_Vertices2</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.rgb&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex2)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RGB_Vertices3</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.rgb&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex3)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RGB_Vertices4</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.rgb&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex4)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RGBA_Vertices2</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.rgba&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex2)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RGBA_Vertices3</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.rgba&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex3)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RGBA_Vertices4</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.rgba&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex4)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Normal_RGB_Vertices2</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgb&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex2)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Normal_RGB_Vertices3</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgb&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex3)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Normal_RGB_Vertices4</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgb&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex4)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Normal_RGBA_Vertices2</span>&nbsp;<span class="keyword">of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgba&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex2)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Normal_RGBA_Vertices3</span>&nbsp;<span class="keyword">of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgba&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex3)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Normal_RGBA_Vertices4</span>&nbsp;<span class="keyword">of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgba&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex4)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_Vertices2</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex2)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_Vertices3</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex3)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_Vertices4</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex4)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_Normal_Vertices2</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex2)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_Normal_Vertices3</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex3)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_Normal_Vertices4</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex4)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_RGB_Vertices2</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgb&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex2)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_RGB_Vertices3</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgb&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex3)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_RGB_Vertices4</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgb&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex4)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_RGBA_Vertices2</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgba&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex2)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_RGBA_Vertices3</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgba&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex3)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_RGBA_Vertices4</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgba&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex4)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_Normal_RGB_Vertices2</span>&nbsp;<span class="keyword">of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgb&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex2)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_Normal_RGB_Vertices3</span>&nbsp;<span class="keyword">of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgb&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex3)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_Normal_RGB_Vertices4</span>&nbsp;<span class="keyword">of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgb&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex4)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_Normal_RGBA_Vertices2</span>&nbsp;<span class="keyword">of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgba&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex2)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_Normal_RGBA_Vertices3</span>&nbsp;<span class="keyword">of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgba&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex3)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">UV_Normal_RGBA_Vertices4</span>&nbsp;<span class="keyword">of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">FunGL</span>.uv&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vector&nbsp;*&nbsp;<span class="constructor">FunGL</span>.rgba&nbsp;*&nbsp;<span class="constructor">FunGL</span>.vertex4)&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;render_primitive&nbsp;:&nbsp;<span class="constructor">GL</span>.primitive&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">FunGL</span>.qualified_vertices&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+<span class="keyword">end</span></code></body></html>

@@ -1,0 +1,1272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Glu.html">
+<link rel="next" href="VertArray.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><link title="Initialization" rel="Section" href="#2_Initialization">
+<link title="Beginning Event Processing" rel="Section" href="#2_BeginningEventProcessing">
+<link title="Window Management" rel="Section" href="#2_WindowManagement">
+<link title="Menu Management" rel="Section" href="#2_MenuManagement">
+<link title="Callback Registration" rel="Section" href="#2_CallbackRegistration">
+<link title="Color Index Colormap Management" rel="Section" href="#2_ColorIndexColormapManagement">
+<link title="State Retrieval" rel="Section" href="#2_StateRetrieval">
+<link title="Font Rendering" rel="Section" href="#2_FontRendering">
+<link title="Geometric Object Rendering" rel="Section" href="#2_GeometricObjectRendering">
+<link title="Game Mode" rel="Section" href="#2_GameMode">
+<title>Glut</title>
+</head>
+<body>
+<div class="navbar"><a href="Glu.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="VertArray.html">Next</a>
+</div>
+<center><h1>Module <a href="type_Glut.html">Glut</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> Glut: <code class="code"><span class="keyword">sig</span></code> <a href="Glut.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>Glut interface<br>
+<hr width="100%">
+<br>
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/spec3.html">Online documentation of the C API</a><br>
+<br>
+<span id="2_Initialization"><h2>Initialization</h2></span><br>
+<pre><span id="VALglutInit"><span class="keyword">val</span> glutInit</span> : <code class="type">argv:string array -> string array</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node10.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutInitWindowPosition"><span class="keyword">val</span> glutInitWindowPosition</span> : <code class="type">x:int -> y:int -> unit</code></pre><pre><span id="VALglutInitWindowSize"><span class="keyword">val</span> glutInitWindowSize</span> : <code class="type">width:int -> height:int -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node11.html">
+    doc on opengl.org</a><br>
+</div>
+<br><code><span id="TYPEinit_mode"><span class="keyword">type</span> <code class="type"></code>init_mode</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_RGBA</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_RGB</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_INDEX</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_SINGLE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_DOUBLE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_ACCUM</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_ALPHA</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_DEPTH</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_STENCIL</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_MULTISAMPLE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_STEREO</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_LUMINANCE</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutInitDisplayMode"><span class="keyword">val</span> glutInitDisplayMode</span> : <code class="type">mode:<a href="Glut.html#TYPEinit_mode">init_mode</a> list -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node12.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutInitDisplayString"><span class="keyword">val</span> glutInitDisplayString</span> : <code class="type">string -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/documentation/specs/glut/spec3/node70.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutInitContextVersion"><span class="keyword">val</span> glutInitContextVersion</span> : <code class="type">major:int -> minor:int -> unit</code></pre><br><code><span id="TYPEcontext_profile"><span class="keyword">type</span> <code class="type"></code>context_profile</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CORE_PROFILE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_COMPATIBILITY_PROFILE</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutInitContextProfile"><span class="keyword">val</span> glutInitContextProfile</span> : <code class="type">profile:<a href="Glut.html#TYPEcontext_profile">context_profile</a> -> unit</code></pre><br>
+<span id="2_BeginningEventProcessing"><h2>Beginning Event Processing</h2></span><br>
+<pre><span id="VALglutMainLoop"><span class="keyword">val</span> glutMainLoop</span> : <code class="type">unit -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node14.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutLeaveMainLoop"><span class="keyword">val</span> glutLeaveMainLoop</span> : <code class="type">unit -> unit</code></pre><div class="info">
+function only available with some implementations (ex: 
+    <a href="http://freeglut.sourceforge.net/">FreeGlut</a> or
+    <a href="http://openglut.sourceforge.net/">OpenGlut</a>)<br>
+</div>
+<br>
+<span id="2_WindowManagement"><h2>Window Management</h2></span><br>
+<pre><span id="TYPEwindow_id"><span class="keyword">type</span> <code class="type"></code>window_id</span> </pre>
+
+<pre><span id="VALglutCreateWindow"><span class="keyword">val</span> glutCreateWindow</span> : <code class="type">title:string -> <a href="Glut.html#TYPEwindow_id">window_id</a></code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node16.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutSetWindow"><span class="keyword">val</span> glutSetWindow</span> : <code class="type">win:<a href="Glut.html#TYPEwindow_id">window_id</a> -> unit</code></pre><pre><span id="VALglutGetWindow"><span class="keyword">val</span> glutGetWindow</span> : <code class="type">unit -> <a href="Glut.html#TYPEwindow_id">window_id</a></code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node18.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutCreateSubWindow"><span class="keyword">val</span> glutCreateSubWindow</span> : <code class="type">win:<a href="Glut.html#TYPEwindow_id">window_id</a> -><br>       x:int -> y:int -> width:int -> height:int -> <a href="Glut.html#TYPEwindow_id">window_id</a></code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node17.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutDestroyWindow"><span class="keyword">val</span> glutDestroyWindow</span> : <code class="type">win:<a href="Glut.html#TYPEwindow_id">window_id</a> -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node19.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutPostRedisplay"><span class="keyword">val</span> glutPostRedisplay</span> : <code class="type">unit -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node20.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutSwapBuffers"><span class="keyword">val</span> glutSwapBuffers</span> : <code class="type">unit -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node21.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutPositionWindow"><span class="keyword">val</span> glutPositionWindow</span> : <code class="type">x:int -> y:int -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node22.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutReshapeWindow"><span class="keyword">val</span> glutReshapeWindow</span> : <code class="type">width:int -> height:int -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node23.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutFullScreen"><span class="keyword">val</span> glutFullScreen</span> : <code class="type">unit -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node24.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutPopWindow"><span class="keyword">val</span> glutPopWindow</span> : <code class="type">unit -> unit</code></pre><pre><span id="VALglutPushWindow"><span class="keyword">val</span> glutPushWindow</span> : <code class="type">unit -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node25.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutShowWindow"><span class="keyword">val</span> glutShowWindow</span> : <code class="type">unit -> unit</code></pre><pre><span id="VALglutHideWindow"><span class="keyword">val</span> glutHideWindow</span> : <code class="type">unit -> unit</code></pre><pre><span id="VALglutIconifyWindow"><span class="keyword">val</span> glutIconifyWindow</span> : <code class="type">unit -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node26.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutSetWindowTitle"><span class="keyword">val</span> glutSetWindowTitle</span> : <code class="type">name:string -> unit</code></pre><pre><span id="VALglutSetIconTitle"><span class="keyword">val</span> glutSetIconTitle</span> : <code class="type">name:string -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node27.html">
+    doc on opengl.org</a><br>
+</div>
+<br><code><span id="TYPEcursor_type"><span class="keyword">type</span> <code class="type"></code>cursor_type</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_RIGHT_ARROW</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_LEFT_ARROW</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_INFO</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_DESTROY</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_HELP</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_CYCLE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_SPRAY</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_WAIT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_TEXT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_CROSSHAIR</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_UP_DOWN</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_LEFT_RIGHT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_TOP_SIDE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_BOTTOM_SIDE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_LEFT_SIDE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_RIGHT_SIDE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_TOP_LEFT_CORNER</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_TOP_RIGHT_CORNER</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_BOTTOM_RIGHT_CORNER</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_BOTTOM_LEFT_CORNER</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_FULL_CROSSHAIR</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_NONE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_CURSOR_INHERIT</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutSetCursor"><span class="keyword">val</span> glutSetCursor</span> : <code class="type">cursor:<a href="Glut.html#TYPEcursor_type">cursor_type</a> -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node28.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutWarpPointer"><span class="keyword">val</span> glutWarpPointer</span> : <code class="type">x:int -> y:int -> unit</code></pre><pre><span id="VALglutIgnoreKeyRepeat"><span class="keyword">val</span> glutIgnoreKeyRepeat</span> : <code class="type">ignore:bool -> unit</code></pre><br>
+<span id="2_MenuManagement"><h2>Menu Management</h2></span><br>
+<br>
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node35.html">
+    doc on opengl.org</a><br>
+<pre><span id="TYPEmenu_id"><span class="keyword">type</span> <code class="type"></code>menu_id</span> </pre>
+
+<pre><span id="VALglutCreateMenu"><span class="keyword">val</span> glutCreateMenu</span> : <code class="type">menu:(value:int -> unit) -> <a href="Glut.html#TYPEmenu_id">menu_id</a></code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node36.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutGetMenu"><span class="keyword">val</span> glutGetMenu</span> : <code class="type">unit -> <a href="Glut.html#TYPEmenu_id">menu_id</a></code></pre><pre><span id="VALglutSetMenu"><span class="keyword">val</span> glutSetMenu</span> : <code class="type">menu:<a href="Glut.html#TYPEmenu_id">menu_id</a> -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node37.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutDestroyMenu"><span class="keyword">val</span> glutDestroyMenu</span> : <code class="type">menu:<a href="Glut.html#TYPEmenu_id">menu_id</a> -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node38.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutAddMenuEntry"><span class="keyword">val</span> glutAddMenuEntry</span> : <code class="type">name:string -> value:int -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node39.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutAddSubMenu"><span class="keyword">val</span> glutAddSubMenu</span> : <code class="type">name:string -> menu:<a href="Glut.html#TYPEmenu_id">menu_id</a> -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node40.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutChangeToMenuEntry"><span class="keyword">val</span> glutChangeToMenuEntry</span> : <code class="type">entry:int -> name:string -> value:int -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node41.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutChangeToSubMenu"><span class="keyword">val</span> glutChangeToSubMenu</span> : <code class="type">entry:int -> name:string -> menu:<a href="Glut.html#TYPEmenu_id">menu_id</a> -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node42.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutRemoveMenuItem"><span class="keyword">val</span> glutRemoveMenuItem</span> : <code class="type">entry:int -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node43.html">
+    doc on opengl.org</a><br>
+</div>
+<br><code><span id="TYPEmouse_button"><span class="keyword">type</span> <code class="type"></code>mouse_button</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_LEFT_BUTTON</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_MIDDLE_BUTTON</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_RIGHT_BUTTON</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WHEEL_UP</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WHEEL_DOWN</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutAttachMenu"><span class="keyword">val</span> glutAttachMenu</span> : <code class="type">button:<a href="Glut.html#TYPEmouse_button">mouse_button</a> -> unit</code></pre><pre><span id="VALglutDetachMenu"><span class="keyword">val</span> glutDetachMenu</span> : <code class="type">button:<a href="Glut.html#TYPEmouse_button">mouse_button</a> -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node44.html">
+    doc on opengl.org</a><br>
+</div>
+<br>
+<span id="2_CallbackRegistration"><h2>Callback Registration</h2></span><br>
+<br>
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node45.html">
+    Index of Callback Registration on OpenGL.org</a><br>
+<pre><span id="VALglutDisplayFunc"><span class="keyword">val</span> glutDisplayFunc</span> : <code class="type">display:(unit -> unit) -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node46.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutReshapeFunc"><span class="keyword">val</span> glutReshapeFunc</span> : <code class="type">reshape:(width:int -> height:int -> unit) -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node48.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutKeyboardFunc"><span class="keyword">val</span> glutKeyboardFunc</span> : <code class="type">keyboard:(key:char -> x:int -> y:int -> unit) -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node49.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutKeyboardUpFunc"><span class="keyword">val</span> glutKeyboardUpFunc</span> : <code class="type">keyboard_up:(key:char -> x:int -> y:int -> unit) -> unit</code></pre><br><code><span id="TYPEmouse_button_state"><span class="keyword">type</span> <code class="type"></code>mouse_button_state</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_DOWN</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_UP</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutMouseFunc"><span class="keyword">val</span> glutMouseFunc</span> : <code class="type">mouse:(button:<a href="Glut.html#TYPEmouse_button">mouse_button</a> -><br>              state:<a href="Glut.html#TYPEmouse_button_state">mouse_button_state</a> -> x:int -> y:int -> unit) -><br>       unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node50.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutMotionFunc"><span class="keyword">val</span> glutMotionFunc</span> : <code class="type">motion:(x:int -> y:int -> unit) -> unit</code></pre><pre><span id="VALglutPassiveMotionFunc"><span class="keyword">val</span> glutPassiveMotionFunc</span> : <code class="type">passive:(x:int -> y:int -> unit) -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node51.html">
+    doc on opengl.org</a><br>
+</div>
+<br><code><span id="TYPEvisibility_state"><span class="keyword">type</span> <code class="type"></code>visibility_state</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_NOT_VISIBLE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_VISIBLE</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutVisibilityFunc"><span class="keyword">val</span> glutVisibilityFunc</span> : <code class="type">visibility:(state:<a href="Glut.html#TYPEvisibility_state">visibility_state</a> -> unit) -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node52.html">
+    doc on opengl.org</a><br>
+</div>
+<br><code><span id="TYPEentry_state"><span class="keyword">type</span> <code class="type"></code>entry_state</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_LEFT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_ENTERED</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutEntryFunc"><span class="keyword">val</span> glutEntryFunc</span> : <code class="type">entry:(state:<a href="Glut.html#TYPEentry_state">entry_state</a> -> unit) -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node53.html">
+    doc on opengl.org</a><br>
+</div>
+<br><code><span id="TYPEspecial_key"><span class="keyword">type</span> <code class="type"></code>special_key</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_F1</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_F2</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_F3</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_F4</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_F5</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_F6</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_F7</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_F8</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_F9</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_F10</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_F11</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_F12</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_LEFT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_UP</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_RIGHT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_DOWN</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_PAGE_UP</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_PAGE_DOWN</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_HOME</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_END</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_KEY_INSERT</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutSpecialFunc"><span class="keyword">val</span> glutSpecialFunc</span> : <code class="type">special:(key:<a href="Glut.html#TYPEspecial_key">special_key</a> -> x:int -> y:int -> unit) -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node54.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutSpecialUpFunc"><span class="keyword">val</span> glutSpecialUpFunc</span> : <code class="type">special_up:(key:<a href="Glut.html#TYPEspecial_key">special_key</a> -> x:int -> y:int -> unit) -> unit</code></pre><pre><span id="VALglutIdleFunc"><span class="keyword">val</span> glutIdleFunc</span> : <code class="type">idle:(unit -> unit) -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node63.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutRemoveIdleFunc"><span class="keyword">val</span> glutRemoveIdleFunc</span> : <code class="type">unit -> unit</code></pre><pre><span id="VALglutTimerFunc"><span class="keyword">val</span> glutTimerFunc</span> : <code class="type">msecs:int -> timer:(value:'a -> unit) -> value:'a -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node64.html">
+    doc on opengl.org</a><br>
+</div>
+<br>
+<span id="2_ColorIndexColormapManagement"><h2>Color Index Colormap Management</h2></span><br>
+<pre><span id="VALglutSetColor"><span class="keyword">val</span> glutSetColor</span> : <code class="type">cell:int -> r:float -> g:float -> b:float -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node66.html">
+    doc on opengl.org</a>
+    to use with <code class="code">glIndex</code><br>
+</div>
+<pre><span id="VALglutGetColor"><span class="keyword">val</span> glutGetColor</span> : <code class="type">cell:int -> float * float * float</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node67.html">
+    doc on opengl.org</a><br>
+</div>
+<br>
+<span id="2_StateRetrieval"><h2>State Retrieval</h2></span><br>
+<br><code><span id="TYPEget_state"><span class="keyword">type</span> <code class="type"></code>get_state</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_X</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_Y</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_WIDTH</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_HEIGHT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_BUFFER_SIZE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_STENCIL_SIZE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_DEPTH_SIZE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_RED_SIZE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_GREEN_SIZE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_BLUE_SIZE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_ALPHA_SIZE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_ACCUM_RED_SIZE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_ACCUM_GREEN_SIZE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_ACCUM_BLUE_SIZE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_ACCUM_ALPHA_SIZE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_DOUBLEBUFFER</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_RGBA</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_PARENT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_NUM_CHILDREN</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_COLORMAP_SIZE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_NUM_SAMPLES</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_STEREO</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_WINDOW_CURSOR</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_SCREEN_WIDTH</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_SCREEN_HEIGHT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_SCREEN_WIDTH_MM</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_SCREEN_HEIGHT_MM</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_MENU_NUM_ITEMS</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_DISPLAY_MODE_POSSIBLE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_INIT_DISPLAY_MODE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_INIT_WINDOW_X</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_INIT_WINDOW_Y</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_INIT_WINDOW_WIDTH</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_INIT_WINDOW_HEIGHT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_ELAPSED_TIME</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutGet"><span class="keyword">val</span> glutGet</span> : <code class="type">state:<a href="Glut.html#TYPEget_state">get_state</a> -> int</code></pre><div class="info">
+<a href="http://www.opengl.org/documentation/specs/glut/spec3/node70.html">
+    doc on opengl.org</a><br>
+</div>
+<br><code><span id="TYPEglut_device"><span class="keyword">type</span> <code class="type"></code>glut_device</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_HAS_KEYBOARD</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_HAS_MOUSE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_HAS_SPACEBALL</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_HAS_DIAL_AND_BUTTON_BOX</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_HAS_TABLET</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_NUM_MOUSE_BUTTONS</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_NUM_SPACEBALL_BUTTONS</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_NUM_BUTTON_BOX_BUTTONS</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_NUM_DIALS</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_NUM_TABLET_BUTTONS</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutDeviceGet"><span class="keyword">val</span> glutDeviceGet</span> : <code class="type">device:<a href="Glut.html#TYPEglut_device">glut_device</a> -> int</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node72.html">
+    doc on opengl.org</a><br>
+</div>
+<br><code><span id="TYPEactive_modifier"><span class="keyword">type</span> <code class="type"></code>active_modifier</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_ACTIVE_SHIFT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_ACTIVE_CTRL</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_ACTIVE_ALT</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutGetModifiers"><span class="keyword">val</span> glutGetModifiers</span> : <code class="type">unit -> <a href="Glut.html#TYPEactive_modifier">active_modifier</a> list</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node73.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutGetModifiersB"><span class="keyword">val</span> glutGetModifiersB</span> : <code class="type">unit -> bool * bool * bool</code></pre><div class="info">
+same as <code class="code">glutGetModifiers</code> but returns a tuple
+<pre></pre><code class="code"><span class="keyword">let</span>&nbsp;(shift,&nbsp;ctrl,&nbsp;alt)&nbsp;=&nbsp;glutGetModifiersB()&nbsp;<span class="keyword">in</span></code><pre></pre><br>
+</div>
+<pre><span id="VALglutExtensionSupported"><span class="keyword">val</span> glutExtensionSupported</span> : <code class="type">extension:string -> bool</code></pre><div class="info">
+<a href="http://www.opengl.org/documentation/specs/glut/spec3/node74.html">
+    doc on opengl.org</a><br>
+</div>
+<br>
+<span id="2_FontRendering"><h2>Font Rendering</h2></span><br>
+<br>
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node75.html">
+    doc on opengl.org</a><br>
+<br><code><span id="TYPEstroke_font"><span class="keyword">type</span> <code class="type"></code>stroke_font</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_STROKE_ROMAN</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_STROKE_MONO_ROMAN</span></code></td>
+
+</tr></table>
+
+
+<br><code><span id="TYPEbitmap_font"><span class="keyword">type</span> <code class="type"></code>bitmap_font</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_BITMAP_9_BY_15</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_BITMAP_8_BY_13</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_BITMAP_TIMES_ROMAN_10</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_BITMAP_TIMES_ROMAN_24</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_BITMAP_HELVETICA_10</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_BITMAP_HELVETICA_12</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_BITMAP_HELVETICA_18</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutBitmapCharacter"><span class="keyword">val</span> glutBitmapCharacter</span> : <code class="type">font:<a href="Glut.html#TYPEbitmap_font">bitmap_font</a> -> c:char -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node76.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutBitmapWidth"><span class="keyword">val</span> glutBitmapWidth</span> : <code class="type">font:<a href="Glut.html#TYPEbitmap_font">bitmap_font</a> -> c:char -> int</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node77.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutStrokeCharacter"><span class="keyword">val</span> glutStrokeCharacter</span> : <code class="type">font:<a href="Glut.html#TYPEstroke_font">stroke_font</a> -> c:char -> unit</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node78.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutStrokeWidth"><span class="keyword">val</span> glutStrokeWidth</span> : <code class="type">font:<a href="Glut.html#TYPEstroke_font">stroke_font</a> -> c:char -> int</code></pre><div class="info">
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node79.html">
+    doc on opengl.org</a><br>
+</div>
+<pre><span id="VALglutBitmapHeight"><span class="keyword">val</span> glutBitmapHeight</span> : <code class="type">font:<a href="Glut.html#TYPEbitmap_font">bitmap_font</a> -> int</code></pre><pre><span id="VALglutStrokeHeight"><span class="keyword">val</span> glutStrokeHeight</span> : <code class="type">font:<a href="Glut.html#TYPEstroke_font">stroke_font</a> -> float</code></pre><pre><span id="VALglutBitmapLength"><span class="keyword">val</span> glutBitmapLength</span> : <code class="type">font:<a href="Glut.html#TYPEbitmap_font">bitmap_font</a> -> str:string -> int</code></pre><pre><span id="VALglutStrokeLength"><span class="keyword">val</span> glutStrokeLength</span> : <code class="type">font:<a href="Glut.html#TYPEstroke_font">stroke_font</a> -> str:string -> int</code></pre><br>
+<span id="2_GeometricObjectRendering"><h2>Geometric Object Rendering</h2></span><br>
+<br>
+<a href="http://www.opengl.org/resources/libraries/glut/spec3/node80.html">
+    doc on opengl.org</a><br>
+<pre><span id="VALglutWireSphere"><span class="keyword">val</span> glutWireSphere</span> : <code class="type">radius:float -> slices:int -> stacks:int -> unit</code></pre><pre><span id="VALglutSolidSphere"><span class="keyword">val</span> glutSolidSphere</span> : <code class="type">radius:float -> slices:int -> stacks:int -> unit</code></pre><pre><span id="VALglutWireCone"><span class="keyword">val</span> glutWireCone</span> : <code class="type">base:float -> height:float -> slices:int -> stacks:int -> unit</code></pre><pre><span id="VALglutSolidCone"><span class="keyword">val</span> glutSolidCone</span> : <code class="type">base:float -> height:float -> slices:int -> stacks:int -> unit</code></pre><pre><span id="VALglutWireCube"><span class="keyword">val</span> glutWireCube</span> : <code class="type">size:float -> unit</code></pre><pre><span id="VALglutSolidCube"><span class="keyword">val</span> glutSolidCube</span> : <code class="type">size:float -> unit</code></pre><pre><span id="VALglutWireTorus"><span class="keyword">val</span> glutWireTorus</span> : <code class="type">innerRadius:float -> outerRadius:float -> sides:int -> rings:int -> unit</code></pre><pre><span id="VALglutSolidTorus"><span class="keyword">val</span> glutSolidTorus</span> : <code class="type">innerRadius:float -> outerRadius:float -> sides:int -> rings:int -> unit</code></pre><pre><span id="VALglutWireDodecahedron"><span class="keyword">val</span> glutWireDodecahedron</span> : <code class="type">unit -> unit</code></pre><pre><span id="VALglutSolidDodecahedron"><span class="keyword">val</span> glutSolidDodecahedron</span> : <code class="type">unit -> unit</code></pre><pre><span id="VALglutWireTeapot"><span class="keyword">val</span> glutWireTeapot</span> : <code class="type">size:float -> unit</code></pre><pre><span id="VALglutSolidTeapot"><span class="keyword">val</span> glutSolidTeapot</span> : <code class="type">size:float -> unit</code></pre><pre><span id="VALglutWireOctahedron"><span class="keyword">val</span> glutWireOctahedron</span> : <code class="type">unit -> unit</code></pre><pre><span id="VALglutSolidOctahedron"><span class="keyword">val</span> glutSolidOctahedron</span> : <code class="type">unit -> unit</code></pre><pre><span id="VALglutWireTetrahedron"><span class="keyword">val</span> glutWireTetrahedron</span> : <code class="type">unit -> unit</code></pre><pre><span id="VALglutSolidTetrahedron"><span class="keyword">val</span> glutSolidTetrahedron</span> : <code class="type">unit -> unit</code></pre><pre><span id="VALglutWireIcosahedron"><span class="keyword">val</span> glutWireIcosahedron</span> : <code class="type">unit -> unit</code></pre><pre><span id="VALglutSolidIcosahedron"><span class="keyword">val</span> glutSolidIcosahedron</span> : <code class="type">unit -> unit</code></pre><pre><span id="VALglutWireRhombicDodecahedron"><span class="keyword">val</span> glutWireRhombicDodecahedron</span> : <code class="type">unit -> unit</code></pre><div class="info">
+<a href="http://openglut.sourceforge.net/group__geometry.html#ga18">
+    doc from openglut</a><br>
+</div>
+<pre><span id="VALglutSolidRhombicDodecahedron"><span class="keyword">val</span> glutSolidRhombicDodecahedron</span> : <code class="type">unit -> unit</code></pre><div class="info">
+<a href="http://openglut.sourceforge.net/group__geometry.html#ga19">
+    doc from openglut</a><br>
+</div>
+<br>
+<span id="2_GameMode"><h2>Game Mode</h2></span><br>
+<br>
+<a href="http://openglut.sourceforge.net/group__gamemode.html">
+    doc from OpenGlut</a><br>
+<pre><span id="VALglutGameModeString"><span class="keyword">val</span> glutGameModeString</span> : <code class="type">mode:string -> unit</code></pre><pre><span id="VALglutEnterGameMode"><span class="keyword">val</span> glutEnterGameMode</span> : <code class="type">unit -> unit</code></pre><div class="info">
+<a href="http://openglut.sourceforge.net/group__gamemode.html#ga1">
+    doc from openglut</a><br>
+</div>
+<pre><span id="VALglutLeaveGameMode"><span class="keyword">val</span> glutLeaveGameMode</span> : <code class="type">unit -> unit</code></pre><br><code><span id="TYPEgame_mode"><span class="keyword">type</span> <code class="type"></code>game_mode</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_GAME_MODE_ACTIVE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_GAME_MODE_POSSIBLE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_GAME_MODE_WIDTH</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_GAME_MODE_HEIGHT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_GAME_MODE_PIXEL_DEPTH</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_GAME_MODE_REFRESH_RATE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GLUT_GAME_MODE_DISPLAY_CHANGED</span></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALglutGameModeGet"><span class="keyword">val</span> glutGameModeGet</span> : <code class="type">game_mode:<a href="Glut.html#TYPEgame_mode">game_mode</a> -> int</code></pre></body></html>

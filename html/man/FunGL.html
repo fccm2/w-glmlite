@@ -1,0 +1,414 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Genimg_loader.html">
+<link rel="next" href="FunGlut.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><link title="Types" rel="Section" href="#3_Types">
+<link title="Replacement Functions" rel="Section" href="#3_ReplacementFunctions">
+<link title="Drawing" rel="Section" href="#3_Drawing">
+<title>FunGL</title>
+</head>
+<body>
+<div class="navbar"><a href="Genimg_loader.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="FunGlut.html">Next</a>
+</div>
+<center><h1>Module <a href="type_FunGL.html">FunGL</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> FunGL: <code class="code"><span class="keyword">sig</span></code> <a href="FunGL.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>An <i>experimental</i> attempt at a functional interface to OpenGL.<br>
+<hr width="100%">
+<br>
+This module tries to be a functional wrapper around OpenGL,
+    so you don't have to think about the side effects and restoring
+    the previous gl state when using these functions.
+    You can set parameters for a local effect.<br>
+<br>
+<span id="3_Types"><h3>Types</h3></span><br>
+<pre><span id="TYPEvertex2"><span class="keyword">type</span> <code class="type"></code>vertex2</span> = <code class="type">float * float</code> </pre>
+<div class="info">
+(x,y)<br>
+</div>
+
+<pre><span id="TYPEvertex3"><span class="keyword">type</span> <code class="type"></code>vertex3</span> = <code class="type">float * float * float</code> </pre>
+<div class="info">
+(x,y,z)<br>
+</div>
+
+<pre><span id="TYPEvertex4"><span class="keyword">type</span> <code class="type"></code>vertex4</span> = <code class="type">float * float * float * float</code> </pre>
+<div class="info">
+(x,y,z,w)<br>
+</div>
+
+<pre><span id="TYPEvector"><span class="keyword">type</span> <code class="type"></code>vector</span> = <code class="type">float * float * float</code> </pre>
+
+<pre><span id="TYPErgb"><span class="keyword">type</span> <code class="type"></code>rgb</span> = <code class="type">float * float * float</code> </pre>
+
+<pre><span id="TYPErgba"><span class="keyword">type</span> <code class="type"></code>rgba</span> = <code class="type">float * float * float * float</code> </pre>
+
+<pre><span id="TYPEuv"><span class="keyword">type</span> <code class="type"></code>uv</span> = <code class="type">float * float</code> </pre>
+
+<pre><span id="TYPEmatrix4x4"><span class="keyword">type</span> <code class="type"></code>matrix4x4</span> = <code class="type">float array</code> </pre>
+
+<br>
+<span id="3_ReplacementFunctions"><h3>Replacement Functions</h3></span><br>
+<pre><span id="VALdraw_translated"><span class="keyword">val</span> draw_translated</span> : <code class="type"><a href="FunGL.html#TYPEvector">vector</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+<span class="warning">Deprecated.</span>functional replacement for <a href="GL.html#VALglTranslate"><code class="code"><span class="constructor">GL</span>.glTranslate</code></a>
+    (<code class="code">glTranslate</code> is now deprecated)<br>
+</div>
+<pre><span id="VALdraw_rotated"><span class="keyword">val</span> draw_rotated</span> : <code class="type">float -> <a href="FunGL.html#TYPEvector">vector</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+<span class="warning">Deprecated.</span>functional replacement for <a href="GL.html#VALglRotate"><code class="code"><span class="constructor">GL</span>.glRotate</code></a>
+    (<code class="code">glRotate</code> is now deprecated)<br>
+</div>
+<pre><span id="VALdraw_scaled"><span class="keyword">val</span> draw_scaled</span> : <code class="type"><a href="FunGL.html#TYPEvector">vector</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+<span class="warning">Deprecated.</span>functional replacement for <a href="GL.html#VALglScale"><code class="code"><span class="constructor">GL</span>.glScale</code></a>
+    (<code class="code">glScale</code> is now deprecated)<br>
+</div>
+<pre><span id="VALdraw_as_identity"><span class="keyword">val</span> draw_as_identity</span> : <code class="type">(unit -> unit) -> unit</code></pre><div class="info">
+<span class="warning">Deprecated.</span>functional replacement for <a href="GL.html#VALglLoadIdentity"><code class="code"><span class="constructor">GL</span>.glLoadIdentity</code></a>
+    (<code class="code">glLoadIdentity</code> is now deprecated)<br>
+</div>
+<pre><span id="VALdraw_with_matrix"><span class="keyword">val</span> draw_with_matrix</span> : <code class="type"><a href="FunGL.html#TYPEmatrix4x4">matrix4x4</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+<span class="warning">Deprecated.</span>functional replacement for <a href="GL.html#VALglMultMatrix"><code class="code"><span class="constructor">GL</span>.glMultMatrix</code></a>/Flat
+    (<code class="code">glMultMatrix/<span class="constructor">Flat</span></code> is now deprecated)<br>
+</div>
+<pre><span id="VALdraw_with_rgb"><span class="keyword">val</span> draw_with_rgb</span> : <code class="type"><a href="FunGL.html#TYPErgb">rgb</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+<span class="warning">Deprecated.</span>functional replacement for <a href="GL.html#VALglColor3"><code class="code"><span class="constructor">GL</span>.glColor3</code></a>
+    (<code class="code">glColor3</code> is now deprecated)<br>
+</div>
+<pre><span id="VALdraw_with_rgba"><span class="keyword">val</span> draw_with_rgba</span> : <code class="type"><a href="FunGL.html#TYPErgba">rgba</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+<span class="warning">Deprecated.</span>functional replacement for <a href="GL.html#VALglColor4"><code class="code"><span class="constructor">GL</span>.glColor4</code></a>
+    (<code class="code">glColor4</code> is now deprecated)<br>
+</div>
+<pre><span id="VALdraw_with_material"><span class="keyword">val</span> draw_with_material</span> : <code class="type">face:<a href="GL.html#TYPEface_mode">GL.face_mode</a> -> mode:<a href="GL.Material.html#TYPEmaterial_mode">GL.Material.material_mode</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+<span class="warning">Deprecated.</span>functional replacement for <a href="GL.html#VALglMaterial"><code class="code"><span class="constructor">GL</span>.glMaterial</code></a>
+    (<code class="code">glMaterial</code> is now deprecated)<br>
+</div>
+<pre><span id="VALdraw_with_lightModel"><span class="keyword">val</span> draw_with_lightModel</span> : <code class="type">light_model:<a href="GL.html#TYPElight_model">GL.light_model</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+<span class="warning">Deprecated.</span>functional replacement for <a href="GL.html#VALglLightModel"><code class="code"><span class="constructor">GL</span>.glLightModel</code></a>
+    (<code class="code">glLightModel</code> is now deprecated)<br>
+</div>
+<pre><span id="VALdraw_with_shadeModel"><span class="keyword">val</span> draw_with_shadeModel</span> : <code class="type">shade_mode:<a href="GL.html#TYPEshade_mode">GL.shade_mode</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+<span class="warning">Deprecated.</span>functional replacement for <a href="GL.html#VALglShadeModel"><code class="code"><span class="constructor">GL</span>.glShadeModel</code></a>
+    (<code class="code">glShadeModel</code> is now deprecated)<br>
+</div>
+<pre><span id="VALdraw_with_frontFace"><span class="keyword">val</span> draw_with_frontFace</span> : <code class="type">orientation:<a href="GL.html#TYPEorientation">GL.orientation</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+use this function as replacement of <a href="GL.html#VALglFrontFace"><code class="code"><span class="constructor">GL</span>.glFrontFace</code></a><br>
+</div>
+<pre><span id="VALdraw_with_cullFace"><span class="keyword">val</span> draw_with_cullFace</span> : <code class="type">mode:<a href="GL.html#TYPEface_mode">GL.face_mode</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+use this function as replacement of <a href="GL.html#VALglCullFace"><code class="code"><span class="constructor">GL</span>.glCullFace</code></a><br>
+</div>
+<pre><span id="VALdraw_enabled"><span class="keyword">val</span> draw_enabled</span> : <code class="type">cap:<a href="GL.html#TYPEgl_capability">GL.gl_capability</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+use this function as replacement of <a href="GL.html#VALglEnable"><code class="code"><span class="constructor">GL</span>.glEnable</code></a><br>
+</div>
+<pre><span id="VALwith_enablements"><span class="keyword">val</span> with_enablements</span> : <code class="type">caps:<a href="GL.html#TYPEgl_capability">GL.gl_capability</a> list -> (unit -> unit) -> unit</code></pre><div class="info">
+same than <code class="code">draw_enabled</code> but with several capabilities<br>
+</div>
+<pre><span id="VALdraw_disabled"><span class="keyword">val</span> draw_disabled</span> : <code class="type">cap:<a href="GL.html#TYPEgl_capability">GL.gl_capability</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+use this function as replacement of <a href="GL.html#VALglDisable"><code class="code"><span class="constructor">GL</span>.glDisable</code></a><br>
+</div>
+<pre><span id="VALdraw_with_viewport"><span class="keyword">val</span> draw_with_viewport</span> : <code class="type">viewport:int * int * int * int -> (unit -> unit) -> unit</code></pre><div class="info">
+use this function instead of <a href="GL.html#VALglViewport"><code class="code"><span class="constructor">GL</span>.glViewport</code></a> when you use a local viewport<br>
+</div>
+<pre><span id="VALdraw_with_polygonMode"><span class="keyword">val</span> draw_with_polygonMode</span> : <code class="type">face:<a href="GL.html#TYPEface_mode">GL.face_mode</a> -> mode:<a href="GL.html#TYPEpolygon_mode">GL.polygon_mode</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+use this function as replacement of <a href="GL.html#VALglPolygonMode"><code class="code"><span class="constructor">GL</span>.glPolygonMode</code></a><br>
+</div>
+<pre><span id="VALdraw_with_polygonMode2"><span class="keyword">val</span> draw_with_polygonMode2</span> : <code class="type">front:<a href="GL.html#TYPEpolygon_mode">GL.polygon_mode</a> -> back:<a href="GL.html#TYPEpolygon_mode">GL.polygon_mode</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+use this function as replacement of <a href="GL.html#VALglPolygonMode"><code class="code"><span class="constructor">GL</span>.glPolygonMode</code></a><br>
+</div>
+<pre><span id="VALdo_with_matrixMode"><span class="keyword">val</span> do_with_matrixMode</span> : <code class="type">mode:<a href="GL.html#TYPEmatrix_mode">GL.matrix_mode</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+<span class="warning">Deprecated.</span>functional replacement for <a href="GL.html#VALglMatrixMode"><code class="code"><span class="constructor">GL</span>.glMatrixMode</code></a>
+    (<code class="code">glMatrixMode</code> is now deprecated)<br>
+</div>
+<pre><span id="VALdraw_with_lineWidth"><span class="keyword">val</span> draw_with_lineWidth</span> : <code class="type">width:float -> (unit -> unit) -> unit</code></pre><div class="info">
+use this function as replacement of <a href="GL.html#VALglLineWidth"><code class="code"><span class="constructor">GL</span>.glLineWidth</code></a>,
+    in OpenGL &gt;= 3.0, this function does not support values greater than 1.0 anymore.<br>
+</div>
+<pre><span id="VALdraw_with_pointSize"><span class="keyword">val</span> draw_with_pointSize</span> : <code class="type">size:float -> (unit -> unit) -> unit</code></pre><div class="info">
+use this function as replacement of <a href="GL.html#VALglPointSize"><code class="code"><span class="constructor">GL</span>.glPointSize</code></a><br>
+</div>
+<pre><span id="VALdraw_using_program"><span class="keyword">val</span> draw_using_program</span> : <code class="type">program:<a href="GL.html#TYPEshader_program">GL.shader_program</a> -> (unit -> unit) -> unit</code></pre><div class="info">
+</div>
+<br>
+<span id="3_Drawing"><h3>Drawing</h3></span><br>
+<br><code><span id="TYPEqualified_vertices"><span class="keyword">type</span> <code class="type"></code>qualified_vertices</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">Vertices2</span> <span class="keyword">of</span> <code class="type"><a href="FunGL.html#TYPEvertex2">vertex2</a> list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">Vertices3</span> <span class="keyword">of</span> <code class="type"><a href="FunGL.html#TYPEvertex3">vertex3</a> list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">Vertices4</span> <span class="keyword">of</span> <code class="type"><a href="FunGL.html#TYPEvertex4">vertex4</a> list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">Normal_Vertices2</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPEvertex2">vertex2</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">Normal_Vertices3</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPEvertex3">vertex3</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">Normal_Vertices4</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPEvertex4">vertex4</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">RGB_Vertices2</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPErgb">rgb</a> * <a href="FunGL.html#TYPEvertex2">vertex2</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">RGB_Vertices3</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPErgb">rgb</a> * <a href="FunGL.html#TYPEvertex3">vertex3</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">RGB_Vertices4</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPErgb">rgb</a> * <a href="FunGL.html#TYPEvertex4">vertex4</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">RGBA_Vertices2</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPErgba">rgba</a> * <a href="FunGL.html#TYPEvertex2">vertex2</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">RGBA_Vertices3</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPErgba">rgba</a> * <a href="FunGL.html#TYPEvertex3">vertex3</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">RGBA_Vertices4</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPErgba">rgba</a> * <a href="FunGL.html#TYPEvertex4">vertex4</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">Normal_RGB_Vertices2</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPErgb">rgb</a> * <a href="FunGL.html#TYPEvertex2">vertex2</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">Normal_RGB_Vertices3</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPErgb">rgb</a> * <a href="FunGL.html#TYPEvertex3">vertex3</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">Normal_RGB_Vertices4</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPErgb">rgb</a> * <a href="FunGL.html#TYPEvertex4">vertex4</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">Normal_RGBA_Vertices2</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPErgba">rgba</a> * <a href="FunGL.html#TYPEvertex2">vertex2</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">Normal_RGBA_Vertices3</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPErgba">rgba</a> * <a href="FunGL.html#TYPEvertex3">vertex3</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">Normal_RGBA_Vertices4</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPErgba">rgba</a> * <a href="FunGL.html#TYPEvertex4">vertex4</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_Vertices2</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPEvertex2">vertex2</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_Vertices3</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPEvertex3">vertex3</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_Vertices4</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPEvertex4">vertex4</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_Normal_Vertices2</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPEvertex2">vertex2</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_Normal_Vertices3</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPEvertex3">vertex3</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_Normal_Vertices4</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPEvertex4">vertex4</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_RGB_Vertices2</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPErgb">rgb</a> * <a href="FunGL.html#TYPEvertex2">vertex2</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_RGB_Vertices3</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPErgb">rgb</a> * <a href="FunGL.html#TYPEvertex3">vertex3</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_RGB_Vertices4</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPErgb">rgb</a> * <a href="FunGL.html#TYPEvertex4">vertex4</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_RGBA_Vertices2</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPErgba">rgba</a> * <a href="FunGL.html#TYPEvertex2">vertex2</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_RGBA_Vertices3</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPErgba">rgba</a> * <a href="FunGL.html#TYPEvertex3">vertex3</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_RGBA_Vertices4</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPErgba">rgba</a> * <a href="FunGL.html#TYPEvertex4">vertex4</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_Normal_RGB_Vertices2</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPErgb">rgb</a> * <a href="FunGL.html#TYPEvertex2">vertex2</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_Normal_RGB_Vertices3</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPErgb">rgb</a> * <a href="FunGL.html#TYPEvertex3">vertex3</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_Normal_RGB_Vertices4</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPErgb">rgb</a> * <a href="FunGL.html#TYPEvertex4">vertex4</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_Normal_RGBA_Vertices2</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPErgba">rgba</a> * <a href="FunGL.html#TYPEvertex2">vertex2</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_Normal_RGBA_Vertices3</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPErgba">rgba</a> * <a href="FunGL.html#TYPEvertex3">vertex3</a>) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UV_Normal_RGBA_Vertices4</span> <span class="keyword">of</span> <code class="type">(<a href="FunGL.html#TYPEuv">uv</a> * <a href="FunGL.html#TYPEvector">vector</a> * <a href="FunGL.html#TYPErgba">rgba</a> * <a href="FunGL.html#TYPEvertex4">vertex4</a>) list</code></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALrender_primitive"><span class="keyword">val</span> render_primitive</span> : <code class="type"><a href="GL.html#TYPEprimitive">GL.primitive</a> -> <a href="FunGL.html#TYPEqualified_vertices">qualified_vertices</a> -> unit</code></pre><div class="info">
+<span class="warning">Deprecated.</span>render the given list of qualified vertices as the required primitive.
+    This function uses the immediate mode which is deprecated, so use
+    <code class="code"><span class="constructor">Ogl_draw</span>.make_mesh</code> and <code class="code"><span class="constructor">Ogl_draw</span>.draw_mesh</code> instead.<br>
+</div>
+</body></html>

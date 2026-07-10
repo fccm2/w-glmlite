@@ -1,0 +1,310 @@
+<html><head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><title>VertArray</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;client_state&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GL_COLOR_ARRAY</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_EDGE_FLAG_ARRAY</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_FOG_COORD_ARRAY</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_INDEX_ARRAY</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_NORMAL_ARRAY</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_SECONDARY_COLOR_ARRAY</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_TEXTURE_COORD_ARRAY</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_VERTEX_ARRAY</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glEnableClientState&nbsp;:&nbsp;client_state:<span class="constructor">VertArray</span>.client_state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glenableclientstate"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glDisableClientState&nbsp;:&nbsp;client_state:<span class="constructor">VertArray</span>.client_state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gldisableclientstate"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glDrawArrays&nbsp;:&nbsp;mode:<span class="constructor">GL</span>.primitive&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;first:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;count:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gldrawarrays"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glMultiDrawArrays&nbsp;:&nbsp;mode:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;arr:(int&nbsp;*&nbsp;int)&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glmultidrawarrays"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glArrayElement&nbsp;:&nbsp;i:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glarrayelement"</span><br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Elem</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;elem_data_type&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GL_UNSIGNED_BYTE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_UNSIGNED_SHORT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_UNSIGNED_INT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glDrawElements&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mode:<span class="constructor">GL</span>.primitive&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;count:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Elem</span>.elem_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data:(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="constructor">Bigarray</span>.c_layout)&nbsp;<span class="constructor">Bigarray</span>.<span class="constructor">Array1</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gldrawelements"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glDrawRangeElements&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mode:<span class="constructor">GL</span>.primitive&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;start:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;end_:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;count:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Elem</span>.elem_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data:(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="constructor">Bigarray</span>.c_layout)&nbsp;<span class="constructor">Bigarray</span>.<span class="constructor">Array1</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gldrawrangeelements_bytecode"</span>&nbsp;<span class="string">"ml_gldrawrangeelements_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;interleaved_format&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GL_V2F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_V3F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_C4UB_V2F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_C4UB_V3F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_C3F_V3F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_N3F_V3F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_C4F_N3F_V3F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_T2F_V3F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_T4F_V4F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_T2F_C4UB_V3F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_T2F_C3F_V3F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_T2F_N3F_V3F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_T2F_C4F_N3F_V3F</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_T4F_C4F_N3F_V4F</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glInterleavedArrays&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fmt:<span class="constructor">VertArray</span>.interleaved_format&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;pointer:(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="constructor">Bigarray</span>.c_layout)&nbsp;<span class="constructor">Bigarray</span>.<span class="constructor">Array1</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glinterleavedarrays"</span><br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Coord</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span>&nbsp;<span class="keyword">type</span>&nbsp;coord_data_type&nbsp;=&nbsp;<span class="constructor">GL_SHORT</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_INT</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_FLOAT</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_DOUBLE</span>&nbsp;<span class="keyword">end</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glVertexPointer&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Coord</span>.coord_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;data:(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="constructor">Bigarray</span>.c_layout)&nbsp;<span class="constructor">Bigarray</span>.<span class="constructor">Array1</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glvertexpointer"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glTexCoordPointer&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Coord</span>.coord_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;data:(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="constructor">Bigarray</span>.c_layout)&nbsp;<span class="constructor">Bigarray</span>.<span class="constructor">Array1</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gltexcoordpointer"</span><br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Norm</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;norm_data_type&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GL_BYTE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_SHORT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_INT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_FLOAT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_DOUBLE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glNormalPointer&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Norm</span>.norm_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;data:(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="constructor">Bigarray</span>.c_layout)&nbsp;<span class="constructor">Bigarray</span>.<span class="constructor">Array1</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glnormalpointer"</span><br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Index</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;index_data_type&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GL_UNSIGNED_BYTE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_SHORT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_INT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_FLOAT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_DOUBLE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glIndexPointer&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Index</span>.index_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;data:(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="constructor">Bigarray</span>.c_layout)&nbsp;<span class="constructor">Bigarray</span>.<span class="constructor">Array1</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glindexpointer"</span><br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Color</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;color_data_type&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GL_BYTE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_UNSIGNED_BYTE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_SHORT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_UNSIGNED_SHORT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_INT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_UNSIGNED_INT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_FLOAT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_DOUBLE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glColorPointer&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Color</span>.color_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;data:(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="constructor">Bigarray</span>.c_layout)&nbsp;<span class="constructor">Bigarray</span>.<span class="constructor">Array1</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glcolorpointer"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glEdgeFlagPointer&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data:(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Bigarray</span>.int8_unsigned_elt,&nbsp;<span class="constructor">Bigarray</span>.c_layout)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Bigarray</span>.<span class="constructor">Array1</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_gledgeflagpointer"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glSecondaryColorPointer&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Color</span>.color_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;data:(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="constructor">Bigarray</span>.c_layout)&nbsp;<span class="constructor">Bigarray</span>.<span class="constructor">Array1</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glsecondarycolorpointer"</span><br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">VAttr</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;vertattr_data_type&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GL_BYTE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_UNSIGNED_BYTE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_SHORT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_UNSIGNED_SHORT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_INT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_UNSIGNED_INT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_FLOAT</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GL_DOUBLE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glVertexAttribPointer&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;index:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">VAttr</span>.vertattr_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;normalized:bool&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;data:(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="constructor">Bigarray</span>.c_layout)&nbsp;<span class="constructor">Bigarray</span>.<span class="constructor">Array1</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glvertexattribpointer_bytecode"</span>&nbsp;<span class="string">"ml_glvertexattribpointer_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glVertexPointer0&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Coord</span>.coord_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glvertexpointer0"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glTexCoordPointer0&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Coord</span>.coord_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gltexcoordpointer0"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glColorPointer0&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Color</span>.color_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glcolorpointer0"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glSecondaryColorPointer0&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Color</span>.color_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glsecondarycolorpointer0"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glIndexPointer0&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Index</span>.index_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glindexpointer0"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glNormalPointer0&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Norm</span>.norm_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glnormalpointer0"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glEdgeFlagPointer0&nbsp;:&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_gledgeflagpointer0"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glVertexAttribPointer0&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;index:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">VAttr</span>.vertattr_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;normalized:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glvertexattribpointer0"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glDrawElements0&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mode:<span class="constructor">GL</span>.primitive&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;count:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Elem</span>.elem_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gldrawelements0"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glVertexPointerOfs8&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Coord</span>.coord_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glvertexpointer_ofs8"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glVertexPointerOfs16&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Coord</span>.coord_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glvertexpointer_ofs16"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glVertexPointerOfs32&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Coord</span>.coord_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glvertexpointer_ofs32"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glIndexPointerOfs8&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Index</span>.index_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glindexpointer_ofs8"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glIndexPointerOfs16&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Index</span>.index_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glindexpointer_ofs16"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glIndexPointerOfs32&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Index</span>.index_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glindexpointer_ofs32"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glTexCoordPointerOfs8&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Coord</span>.coord_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_gltexcoordpointer_ofs8"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glTexCoordPointerOfs16&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Coord</span>.coord_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_gltexcoordpointer_ofs16"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glTexCoordPointerOfs32&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Coord</span>.coord_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_gltexcoordpointer_ofs32"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glColorPointerOfs8&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Color</span>.color_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glcolorpointer_ofs8"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glColorPointerOfs16&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Color</span>.color_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glcolorpointer_ofs16"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glColorPointerOfs32&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Color</span>.color_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glcolorpointer_ofs32"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glSecondaryColorPointerOfs8&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Color</span>.color_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glsecondarycolorpointer_ofs8"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glSecondaryColorPointerOfs16&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Color</span>.color_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glsecondarycolorpointer_ofs16"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glSecondaryColorPointerOfs32&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Color</span>.color_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glsecondarycolorpointer_ofs32"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glNormalPointerOfs8&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Norm</span>.norm_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glnormalpointer_ofs8"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glNormalPointerOfs16&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Norm</span>.norm_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glnormalpointer_ofs16"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glNormalPointerOfs32&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Norm</span>.norm_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glnormalpointer_ofs32"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glEdgeFlagPointerOfs8&nbsp;:&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gledgeflagpointer_ofs8"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glEdgeFlagPointerOfs16&nbsp;:&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gledgeflagpointer_ofs16"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glEdgeFlagPointerOfs32&nbsp;:&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gledgeflagpointer_ofs32"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glVertexAttribPointerOfs8&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;index:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">VAttr</span>.vertattr_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;normalized:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glvertexattribpointer_ofs8_bytecode"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"ml_glvertexattribpointer_ofs8_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glVertexAttribPointerOfs16&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;index:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">VAttr</span>.vertattr_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;normalized:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glvertexattribpointer_ofs16_bytecode"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"ml_glvertexattribpointer_ofs16_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glVertexAttribPointerOfs32&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;index:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;size:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">VAttr</span>.vertattr_data_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;normalized:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stride:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glvertexattribpointer_ofs32_bytecode"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"ml_glvertexattribpointer_ofs32_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glDrawElementsOfs8&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mode:<span class="constructor">GL</span>.primitive&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;count:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Elem</span>.elem_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gldrawelements_ofs8"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glDrawElementsOfs16&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mode:<span class="constructor">GL</span>.primitive&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;count:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Elem</span>.elem_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gldrawelements_ofs16"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glDrawElementsOfs32&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mode:<span class="constructor">GL</span>.primitive&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;count:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;data_type:<span class="constructor">VertArray</span>.<span class="constructor">Elem</span>.elem_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;ofs:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gldrawelements_ofs32"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glGenVertexArray&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;=&nbsp;<span class="string">"ml_glgenvertexarray"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glBindVertexArray&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_glbindvertexarray"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glDeleteVertexArray&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_gldeletevertexarray"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;glIsVertexArray&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool&nbsp;=&nbsp;<span class="string">"ml_glisvertexarray"</span><br>
+<span class="keyword">end</span></code></body></html>

@@ -1,0 +1,278 @@
+<html><head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><title>Glu</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluPerspective&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fovy:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;aspect:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;zNear:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;zFar:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluperspective"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluLookAt&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eyeX:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;eyeY:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;eyeZ:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;centerX:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;centerY:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;centerZ:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;upX:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;upY:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;upZ:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glulookat_bytecode"</span>&nbsp;<span class="string">"ml_glulookat_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluOrtho2D&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;left:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;right:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bottom:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;top:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluortho2d"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluErrorString&nbsp;:&nbsp;error:<span class="constructor">GL</span>.gl_error&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;=&nbsp;<span class="string">"ml_gluerrorstring"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluPickMatrix&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;y:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;width:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;height:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;viewport:int&nbsp;*&nbsp;int&nbsp;*&nbsp;int&nbsp;*&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glupickmatrix"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluUnProject&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;win_x:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;win_y:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;win_z:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;model:float&nbsp;array&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;proj:float&nbsp;array&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;viewport:int&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluunproject_bytecode"</span>&nbsp;<span class="string">"ml_gluunproject_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluUnProjectFlat&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;win_x:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;win_y:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;win_z:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;model:float&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;proj:float&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;viewport:int&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluunproject_flat_bytecode"</span>&nbsp;<span class="string">"ml_gluunproject_flat_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluUnProjectUtil&nbsp;:&nbsp;x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_util_gluunproject"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluUnProjectPixel&nbsp;:&nbsp;x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluunproject_pixel"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluProject&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;win_x:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;win_y:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;win_z:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;model:float&nbsp;array&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;proj:float&nbsp;array&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;viewport:int&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluproject_bytecode"</span>&nbsp;<span class="string">"ml_gluproject_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluProjectFlat&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;win_x:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;win_y:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;win_z:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;model:float&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;proj:float&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;viewport:int&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluproject_flat_bytecode"</span>&nbsp;<span class="string">"ml_gluproject_flat_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluProjectUtil&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;obj_x:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;obj_y:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;obj_z:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluproject_util"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;glu_desc&nbsp;=&nbsp;<span class="constructor">GLU_VERSION</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_EXTENSIONS</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluGetString&nbsp;:&nbsp;name:<span class="constructor">Glu</span>.glu_desc&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;=&nbsp;<span class="string">"ml_glugetstring"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluBuild2DMipmaps&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;internal_format:<span class="constructor">GL</span>.<span class="constructor">InternalFormat</span>.internal_format&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;width:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;height:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;format_:<span class="constructor">GL</span>.pixel_data_format&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;type_:<span class="constructor">GL</span>.pixel_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;pixels:<span class="constructor">GL</span>.image_data&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glubuild2dmipmaps_bytecode"</span>&nbsp;<span class="string">"ml_glubuild2dmipmaps_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluBuild1DMipmaps&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;internal_format:<span class="constructor">GL</span>.<span class="constructor">InternalFormat</span>.internal_format&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;width:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;format_:<span class="constructor">GL</span>.pixel_data_format&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;type_:<span class="constructor">GL</span>.pixel_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;pixels:<span class="constructor">GL</span>.image_data&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glubuild1dmipmaps"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluBuild3DMipmaps&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;internal_format:<span class="constructor">GL</span>.<span class="constructor">InternalFormat</span>.internal_format&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;width:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;height:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;depth:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;format_:<span class="constructor">GL</span>.pixel_data_format&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;type_:<span class="constructor">GL</span>.pixel_data_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;pixels:<span class="constructor">GL</span>.image_data&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glubuild3dmipmaps_bytecode"</span>&nbsp;<span class="string">"ml_glubuild3dmipmaps_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;glu_quadric<br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluNewQuadric&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Glu</span>.glu_quadric&nbsp;=&nbsp;<span class="string">"ml_glunewquadric"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluDeleteQuadric&nbsp;:&nbsp;quad:<span class="constructor">Glu</span>.glu_quadric&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gludeletequadric"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;draw_style&nbsp;=&nbsp;<span class="constructor">GLU_POINT</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_LINE</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_FILL</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_SILHOUETTE</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluQuadricDrawStyle&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;quad:<span class="constructor">Glu</span>.glu_quadric&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;draw_style:<span class="constructor">Glu</span>.draw_style&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluquadricdrawstyle"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluQuadricTexture&nbsp;:&nbsp;quad:<span class="constructor">Glu</span>.glu_quadric&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;texture:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluquadrictexture"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluSphere&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;quad:<span class="constructor">Glu</span>.glu_quadric&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;radius:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;slices:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stacks:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glusphere"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluCylinder&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;quad:<span class="constructor">Glu</span>.glu_quadric&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;base:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;top:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;height:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;slices:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;stacks:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glucylinder_bytecode"</span>&nbsp;<span class="string">"ml_glucylinder_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluDisk&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;quad:<span class="constructor">Glu</span>.glu_quadric&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;inner:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;outer:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;slices:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;loops:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gludisk"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluPartialDisk&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;quad:<span class="constructor">Glu</span>.glu_quadric&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;inner:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;outer:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;slices:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;loops:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;start:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;sweep:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glupartialdisk_bytecode"</span>&nbsp;<span class="string">"ml_glupartialdisk_native"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;orientation&nbsp;=&nbsp;<span class="constructor">GLU_OUTSIDE</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_INSIDE</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluQuadricOrientation&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;quad:<span class="constructor">Glu</span>.glu_quadric&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;orientation:<span class="constructor">Glu</span>.orientation&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluquadricorientation"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;normal&nbsp;=&nbsp;<span class="constructor">GLU_NONE</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_FLAT</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_SMOOTH</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluQuadricNormals&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;quad:<span class="constructor">Glu</span>.glu_quadric&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;normal:<span class="constructor">Glu</span>.normal&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluquadricnormals"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;glu_tesselator<br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluNewTess&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Glu</span>.glu_tesselator&nbsp;=&nbsp;<span class="string">"ml_glunewtess"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluDeleteTess&nbsp;:&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gludeletetess"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluBeginPolygon&nbsp;:&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glubeginpolygon"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluEndPolygon&nbsp;:&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_gluendpolygon"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluTessBeginPolygon&nbsp;:&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutessbeginpolygon"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluTessBeginPolygonData&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;data:<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutessbeginpolygon_data"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluTessEndPolygon&nbsp;:&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutessendpolygon"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluTessBeginContour&nbsp;:&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutessbegincontour"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluTessEndContour&nbsp;:&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutessendcontour"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;tess_contour&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLU_CW</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_CCW</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_INTERIOR</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_EXTERIOR</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_UNKNOWN</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluNextContour&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;contour:<span class="constructor">Glu</span>.tess_contour&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glunextcontour"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluTessVertex&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;x:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;z:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutessvertex"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluTessNormal&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;x:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;z:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutessnormal"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluTesselate&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(float&nbsp;*&nbsp;float&nbsp;*&nbsp;float)&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"tesselate_points"</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;gluTesselateIter&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;data:(float&nbsp;*&nbsp;float&nbsp;*&nbsp;float)&nbsp;array&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;tess_winding&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLU_TESS_WINDING_ODD</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_WINDING_NONZERO</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_WINDING_POSITIVE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_WINDING_NEGATIVE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_WINDING_ABS_GEQ_TWO</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;tess_property&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLU_TESS_WINDING_RULE</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Glu</span>.tess_winding<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_BOUNDARY_ONLY</span>&nbsp;<span class="keyword">of</span>&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_TOLERANCE</span>&nbsp;<span class="keyword">of</span>&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluGetTessWindingRule&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;winding:<span class="constructor">Glu</span>.tess_winding&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glugettesswindingrule"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluGetTessBoundaryOnly&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;boundary_only:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glugettessboundaryonly"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluGetTessTolerance&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;tolerance:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glugettesstolerance"</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;gluTessProperty&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;prop:<span class="constructor">Glu</span>.tess_property&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;tess_callback&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLU_TESS_BEGIN</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_BEGIN_DATA</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_EDGE_FLAG</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_EDGE_FLAG_DATA</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_VERTEX</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_VERTEX_DATA</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_END</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_END_DATA</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_COMBINE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_COMBINE_DATA</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_ERROR</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_ERROR_DATA</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluTessDefaultCallback&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;cb:<span class="constructor">Glu</span>.tess_callback&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutesscallback_default"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;tess_error&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLU_TESS_MISSING_BEGIN_POLYGON</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_MISSING_BEGIN_CONTOUR</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_MISSING_END_POLYGON</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_MISSING_END_CONTOUR</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_COORD_TOO_LARGE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_NEED_COMBINE_CALLBACK</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_OUT_OF_MEMORY</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_ERROR7</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_TESS_ERROR8</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;gluCallbackTessVertex&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess_vertex:(x:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;z:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;gluCallbackTessBegin&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;tess_begin:(prim:<span class="constructor">GL</span>.primitive&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;gluCallbackTessEnd&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;tess_end:(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;gluCallbackTessError&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess:<span class="constructor">Glu</span>.glu_tesselator&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;tess_error:(error:<span class="constructor">Glu</span>.tess_error&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluTessErrorString&nbsp;:&nbsp;error:<span class="constructor">Glu</span>.tess_error&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glutesserrorstring"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;glu_nurbs<br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluNewNurbsRenderer&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Glu</span>.glu_nurbs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glunewnurbsrenderer"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluBeginSurface&nbsp;:&nbsp;nurb:<span class="constructor">Glu</span>.glu_nurbs&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glubeginsurface"</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluEndSurface&nbsp;:&nbsp;nurb:<span class="constructor">Glu</span>.glu_nurbs&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;=&nbsp;<span class="string">"ml_gluendsurface"</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;nurbs_mode&nbsp;=&nbsp;<span class="constructor">GLU_NURBS_RENDERER</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_NURBS_TESSELLATOR</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;sampling_method&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLU_PATH_LENGTH</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_PARAMETRIC_ERROR</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_DOMAIN_DISTANCE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_OBJECT_PATH_LENGTH</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_OBJECT_PARAMETRIC_ERROR</span><br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Disp</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;display_mode&nbsp;=&nbsp;<span class="constructor">GLU_OUTLINE_POLYGON</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_FILL</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_OUTLINE_PATCH</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;nurbs_property&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GLU_SAMPLING_TOLERANCE</span>&nbsp;<span class="keyword">of</span>&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_DISPLAY_MODE</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Glu</span>.<span class="constructor">Disp</span>.display_mode<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_CULLING</span>&nbsp;<span class="keyword">of</span>&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_AUTO_LOAD_MATRIX</span>&nbsp;<span class="keyword">of</span>&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_PARAMETRIC_TOLERANCE</span>&nbsp;<span class="keyword">of</span>&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_SAMPLING_METHOD</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Glu</span>.sampling_method<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_U_STEP</span>&nbsp;<span class="keyword">of</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_V_STEP</span>&nbsp;<span class="keyword">of</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_NURBS_MODE</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Glu</span>.nurbs_mode<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;gluNurbsProperty&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nurb:<span class="constructor">Glu</span>.glu_nurbs&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;property:<span class="constructor">Glu</span>.nurbs_property&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;surface_type&nbsp;=&nbsp;<span class="constructor">GLU_MAP2_VERTEX_3</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">GLU_MAP2_VERTEX_4</span><br>
+&nbsp;&nbsp;<span class="keyword">external</span>&nbsp;gluNurbsSurface&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nurb:<span class="constructor">Glu</span>.glu_nurbs&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;sKnots:float&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;tKnots:float&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;sStride:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;tStride:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;control:float&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;sOrder:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;tOrder:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;surface_type:<span class="constructor">Glu</span>.surface_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"ml_glunurbssurface_bytecode"</span>&nbsp;<span class="string">"ml_glunurbssurface_native"</span><br>
+<span class="keyword">end</span></code></body></html>

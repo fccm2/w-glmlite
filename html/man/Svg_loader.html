@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Png_loader.html">
+<link rel="next" href="Genimg_loader.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html">
+<link title="Ogl_draw" rel="Chapter" href="Ogl_draw.html">
+<link title="Ogl_matrix" rel="Chapter" href="Ogl_matrix.html"><title>Svg_loader</title>
+</head>
+<body>
+<div class="navbar"><a href="Png_loader.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="Genimg_loader.html">Next</a>
+</div>
+<center><h1>Module <a href="type_Svg_loader.html">Svg_loader</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> Svg_loader: <code class="code"><span class="keyword">sig</span></code> <a href="Svg_loader.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>An SVG image loader<br>
+<hr width="100%">
+<br>
+This module uses the lib-rsvg to get from a SVG file a raster
+  version which you can use with OpenGL.
+<p>
+
+  The size of the SVG document (in pixels) will be the size of
+  the raster texture.<br>
+<pre><span id="VALload_img"><span class="keyword">val</span> <a href="code_VALSvg_loader.load_img.html">load_img</a></span> : <code class="type"><a href="GL.html#TYPEimg_input">GL.img_input</a> -><br>       <a href="GL.html#TYPEimage_data">GL.image_data</a> * int * int * <a href="GL.InternalFormat.html#TYPEinternal_format">GL.InternalFormat.internal_format</a> *<br>       <a href="GL.html#TYPEpixel_data_format">GL.pixel_data_format</a></code></pre><br>
+The 2 additionnal integers are the <code class="code">width</code> and <code class="code">height</code><br>
+</body></html>

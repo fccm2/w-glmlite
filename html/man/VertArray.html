@@ -1,0 +1,395 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Glut.html">
+<link rel="next" href="VBO.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html"><link title="VAO's" rel="Section" href="#3_VAOs">
+<title>VertArray</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Glut.html" title="Glut">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="VBO.html" title="VBO">Next</a>
+</div>
+<h1>Module <a href="type_VertArray.html">VertArray</a></h1>
+
+<pre><span id="MODULEVertArray"><span class="keyword">module</span> VertArray</span>: <code class="code"><span class="keyword">sig</span></code> <a href="VertArray.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<h4 id="3_VertexArrays">Vertex Arrays</h4></div>
+</div>
+<hr width="100%">
+<p><a href="http://www.opengl.org/documentation/specs/version1.1/glspec1.1/node21.html">
+    Vertex Array specs</a></p>
+
+<pre><code><span id="TYPEclient_state"><span class="keyword">type</span> <code class="type"></code>client_state</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTclient_state.GL_COLOR_ARRAY"><span class="constructor">GL_COLOR_ARRAY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTclient_state.GL_EDGE_FLAG_ARRAY"><span class="constructor">GL_EDGE_FLAG_ARRAY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTclient_state.GL_FOG_COORD_ARRAY"><span class="constructor">GL_FOG_COORD_ARRAY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTclient_state.GL_INDEX_ARRAY"><span class="constructor">GL_INDEX_ARRAY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTclient_state.GL_NORMAL_ARRAY"><span class="constructor">GL_NORMAL_ARRAY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTclient_state.GL_SECONDARY_COLOR_ARRAY"><span class="constructor">GL_SECONDARY_COLOR_ARRAY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTclient_state.GL_TEXTURE_COORD_ARRAY"><span class="constructor">GL_TEXTURE_COORD_ARRAY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTclient_state.GL_VERTEX_ARRAY"><span class="constructor">GL_VERTEX_ARRAY</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALglEnableClientState"><span class="keyword">val</span> glEnableClientState</span> : <code class="type">client_state:<a href="VertArray.html#TYPEclient_state">client_state</a> -> unit</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated.</span>in core OpenGL 3.</div>
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glEnableClientState.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALglDisableClientState"><span class="keyword">val</span> glDisableClientState</span> : <code class="type">client_state:<a href="VertArray.html#TYPEclient_state">client_state</a> -> unit</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated.</span>in core OpenGL 3.</div>
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glDisableClientState.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALglDrawArrays"><span class="keyword">val</span> glDrawArrays</span> : <code class="type">mode:<a href="GL.html#TYPEprimitive">GL.primitive</a> -> first:int -> count:int -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glDrawArrays.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALglMultiDrawArrays"><span class="keyword">val</span> glMultiDrawArrays</span> : <code class="type">mode:int -> arr:(int * int) array -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glMultiDrawArrays.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALglArrayElement"><span class="keyword">val</span> glArrayElement</span> : <code class="type">i:int -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glArrayElement.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="MODULEElem"><span class="keyword">module</span> <a href="VertArray.Elem.html">Elem</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="VertArray.Elem.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="VALglDrawElements"><span class="keyword">val</span> glDrawElements</span> : <code class="type">mode:<a href="GL.html#TYPEprimitive">GL.primitive</a> -><br>       count:int -><br>       data_type:<a href="VertArray.Elem.html#TYPEelem_data_type">Elem.elem_data_type</a> -><br>       data:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glDrawElements.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALglDrawRangeElements"><span class="keyword">val</span> glDrawRangeElements</span> : <code class="type">mode:<a href="GL.html#TYPEprimitive">GL.primitive</a> -><br>       start:int -><br>       end_:int -><br>       count:int -><br>       data_type:<a href="VertArray.Elem.html#TYPEelem_data_type">Elem.elem_data_type</a> -><br>       data:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glDrawRangeElements.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><code><span id="TYPEinterleaved_format"><span class="keyword">type</span> <code class="type"></code>interleaved_format</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_V2F"><span class="constructor">GL_V2F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_V3F"><span class="constructor">GL_V3F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_C4UB_V2F"><span class="constructor">GL_C4UB_V2F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_C4UB_V3F"><span class="constructor">GL_C4UB_V3F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_C3F_V3F"><span class="constructor">GL_C3F_V3F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_N3F_V3F"><span class="constructor">GL_N3F_V3F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_C4F_N3F_V3F"><span class="constructor">GL_C4F_N3F_V3F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_T2F_V3F"><span class="constructor">GL_T2F_V3F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_T4F_V4F"><span class="constructor">GL_T4F_V4F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_T2F_C4UB_V3F"><span class="constructor">GL_T2F_C4UB_V3F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_T2F_C3F_V3F"><span class="constructor">GL_T2F_C3F_V3F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_T2F_N3F_V3F"><span class="constructor">GL_T2F_N3F_V3F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_T2F_C4F_N3F_V3F"><span class="constructor">GL_T2F_C4F_N3F_V3F</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinterleaved_format.GL_T4F_C4F_N3F_V4F"><span class="constructor">GL_T4F_C4F_N3F_V4F</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALglInterleavedArrays"><span class="keyword">val</span> glInterleavedArrays</span> : <code class="type">fmt:<a href="VertArray.html#TYPEinterleaved_format">interleaved_format</a> -><br>       stride:int -><br>       pointer:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> unit</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated.</span>in core OpenGL 3.</div>
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glInterleavedArrays.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="MODULECoord"><span class="keyword">module</span> <a href="VertArray.Coord.html">Coord</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="VertArray.Coord.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="VALglVertexPointer"><span class="keyword">val</span> glVertexPointer</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Coord.html#TYPEcoord_data_type">Coord.coord_data_type</a> -><br>       stride:int -><br>       data:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> unit</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated.</span>in core OpenGL 3.</div>
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glVertexPointer.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALglTexCoordPointer"><span class="keyword">val</span> glTexCoordPointer</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Coord.html#TYPEcoord_data_type">Coord.coord_data_type</a> -><br>       stride:int -><br>       data:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> unit</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated.</span>in core OpenGL 3.</div>
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glTexCoordPointer.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="MODULENorm"><span class="keyword">module</span> <a href="VertArray.Norm.html">Norm</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="VertArray.Norm.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="VALglNormalPointer"><span class="keyword">val</span> glNormalPointer</span> : <code class="type">data_type:<a href="VertArray.Norm.html#TYPEnorm_data_type">Norm.norm_data_type</a> -><br>       stride:int -><br>       data:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> unit</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated.</span>in core OpenGL 3.</div>
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glNormalPointer.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="MODULEIndex"><span class="keyword">module</span> <a href="VertArray.Index.html">Index</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="VertArray.Index.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="VALglIndexPointer"><span class="keyword">val</span> glIndexPointer</span> : <code class="type">data_type:<a href="VertArray.Index.html#TYPEindex_data_type">Index.index_data_type</a> -><br>       stride:int -><br>       data:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> unit</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated.</span>in core OpenGL 3.</div>
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glIndexPointer.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="MODULEColor"><span class="keyword">module</span> <a href="VertArray.Color.html">Color</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="VertArray.Color.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="VALglColorPointer"><span class="keyword">val</span> glColorPointer</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Color.html#TYPEcolor_data_type">Color.color_data_type</a> -><br>       stride:int -><br>       data:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> unit</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated.</span>in core OpenGL 3.</div>
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glColorPointer.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALglEdgeFlagPointer"><span class="keyword">val</span> glEdgeFlagPointer</span> : <code class="type">stride:int -><br>       data:('a, Stdlib.Bigarray.int8_unsigned_elt, Stdlib.Bigarray.c_layout)<br>            Stdlib.Bigarray.Array1.t -><br>       unit</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated.</span>in core OpenGL 3.</div>
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glEdgeFlagPointer.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALglSecondaryColorPointer"><span class="keyword">val</span> glSecondaryColorPointer</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Color.html#TYPEcolor_data_type">Color.color_data_type</a> -><br>       stride:int -><br>       data:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> unit</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated.</span>in core OpenGL 3.</div>
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glSecondaryColorPointer.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="MODULEVAttr"><span class="keyword">module</span> <a href="VertArray.VAttr.html">VAttr</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="VertArray.VAttr.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="VALglVertexAttribPointer"><span class="keyword">val</span> glVertexAttribPointer</span> : <code class="type">index:int -><br>       size:int -><br>       data_type:<a href="VertArray.VAttr.html#TYPEvertattr_data_type">VAttr.vertattr_data_type</a> -><br>       normalized:bool -><br>       stride:int -><br>       data:('a, 'b, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glVertexAttribPointer.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALglVertexPointer0"><span class="keyword">val</span> glVertexPointer0</span> : <code class="type">size:int -> data_type:<a href="VertArray.Coord.html#TYPEcoord_data_type">Coord.coord_data_type</a> -> stride:int -> unit</code></pre>
+<pre><span id="VALglTexCoordPointer0"><span class="keyword">val</span> glTexCoordPointer0</span> : <code class="type">size:int -> data_type:<a href="VertArray.Coord.html#TYPEcoord_data_type">Coord.coord_data_type</a> -> stride:int -> unit</code></pre>
+<pre><span id="VALglColorPointer0"><span class="keyword">val</span> glColorPointer0</span> : <code class="type">size:int -> data_type:<a href="VertArray.Color.html#TYPEcolor_data_type">Color.color_data_type</a> -> stride:int -> unit</code></pre>
+<pre><span id="VALglSecondaryColorPointer0"><span class="keyword">val</span> glSecondaryColorPointer0</span> : <code class="type">size:int -> data_type:<a href="VertArray.Color.html#TYPEcolor_data_type">Color.color_data_type</a> -> stride:int -> unit</code></pre>
+<pre><span id="VALglIndexPointer0"><span class="keyword">val</span> glIndexPointer0</span> : <code class="type">data_type:<a href="VertArray.Index.html#TYPEindex_data_type">Index.index_data_type</a> -> stride:int -> unit</code></pre>
+<pre><span id="VALglNormalPointer0"><span class="keyword">val</span> glNormalPointer0</span> : <code class="type">data_type:<a href="VertArray.Norm.html#TYPEnorm_data_type">Norm.norm_data_type</a> -> stride:int -> unit</code></pre>
+<pre><span id="VALglEdgeFlagPointer0"><span class="keyword">val</span> glEdgeFlagPointer0</span> : <code class="type">stride:int -> unit</code></pre>
+<pre><span id="VALglVertexAttribPointer0"><span class="keyword">val</span> glVertexAttribPointer0</span> : <code class="type">index:int -><br>       size:int -><br>       data_type:<a href="VertArray.VAttr.html#TYPEvertattr_data_type">VAttr.vertattr_data_type</a> -><br>       normalized:bool -> stride:int -> unit</code></pre>
+<pre><span id="VALglDrawElements0"><span class="keyword">val</span> glDrawElements0</span> : <code class="type">mode:<a href="GL.html#TYPEprimitive">GL.primitive</a> -><br>       count:int -> data_type:<a href="VertArray.Elem.html#TYPEelem_data_type">Elem.elem_data_type</a> -> unit</code></pre><p>All the gl*Pointer0 functions are the equivalent of the gl*Pointer
+    functions except that the data argument is passed 0 to the C function,
+    which is for use with VBOs.</p>
+
+<p>It is also possible to achieve the same effect by passing an empty bigarray
+    to the gl*Pointer functions, but the gl*Pointer0 functions are probably
+    more handy.</p>
+
+<pre><span id="VALglVertexPointerOfs8"><span class="keyword">val</span> glVertexPointerOfs8</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Coord.html#TYPEcoord_data_type">Coord.coord_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglVertexPointerOfs16"><span class="keyword">val</span> glVertexPointerOfs16</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Coord.html#TYPEcoord_data_type">Coord.coord_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglVertexPointerOfs32"><span class="keyword">val</span> glVertexPointerOfs32</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Coord.html#TYPEcoord_data_type">Coord.coord_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglIndexPointerOfs8"><span class="keyword">val</span> glIndexPointerOfs8</span> : <code class="type">data_type:<a href="VertArray.Index.html#TYPEindex_data_type">Index.index_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglIndexPointerOfs16"><span class="keyword">val</span> glIndexPointerOfs16</span> : <code class="type">data_type:<a href="VertArray.Index.html#TYPEindex_data_type">Index.index_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglIndexPointerOfs32"><span class="keyword">val</span> glIndexPointerOfs32</span> : <code class="type">data_type:<a href="VertArray.Index.html#TYPEindex_data_type">Index.index_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglTexCoordPointerOfs8"><span class="keyword">val</span> glTexCoordPointerOfs8</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Coord.html#TYPEcoord_data_type">Coord.coord_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglTexCoordPointerOfs16"><span class="keyword">val</span> glTexCoordPointerOfs16</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Coord.html#TYPEcoord_data_type">Coord.coord_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglTexCoordPointerOfs32"><span class="keyword">val</span> glTexCoordPointerOfs32</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Coord.html#TYPEcoord_data_type">Coord.coord_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglColorPointerOfs8"><span class="keyword">val</span> glColorPointerOfs8</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Color.html#TYPEcolor_data_type">Color.color_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglColorPointerOfs16"><span class="keyword">val</span> glColorPointerOfs16</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Color.html#TYPEcolor_data_type">Color.color_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglColorPointerOfs32"><span class="keyword">val</span> glColorPointerOfs32</span> : <code class="type">size:int -><br>       data_type:<a href="VertArray.Color.html#TYPEcolor_data_type">Color.color_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglSecondaryColorPointerOfs8"><span class="keyword">val</span> glSecondaryColorPointerOfs8</span> : <code class="type">size:int -> data_type:<a href="VertArray.Color.html#TYPEcolor_data_type">Color.color_data_type</a> -> stride:int -> unit</code></pre>
+<pre><span id="VALglSecondaryColorPointerOfs16"><span class="keyword">val</span> glSecondaryColorPointerOfs16</span> : <code class="type">size:int -> data_type:<a href="VertArray.Color.html#TYPEcolor_data_type">Color.color_data_type</a> -> stride:int -> unit</code></pre>
+<pre><span id="VALglSecondaryColorPointerOfs32"><span class="keyword">val</span> glSecondaryColorPointerOfs32</span> : <code class="type">size:int -> data_type:<a href="VertArray.Color.html#TYPEcolor_data_type">Color.color_data_type</a> -> stride:int -> unit</code></pre>
+<pre><span id="VALglNormalPointerOfs8"><span class="keyword">val</span> glNormalPointerOfs8</span> : <code class="type">data_type:<a href="VertArray.Norm.html#TYPEnorm_data_type">Norm.norm_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglNormalPointerOfs16"><span class="keyword">val</span> glNormalPointerOfs16</span> : <code class="type">data_type:<a href="VertArray.Norm.html#TYPEnorm_data_type">Norm.norm_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglNormalPointerOfs32"><span class="keyword">val</span> glNormalPointerOfs32</span> : <code class="type">data_type:<a href="VertArray.Norm.html#TYPEnorm_data_type">Norm.norm_data_type</a> -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglEdgeFlagPointerOfs8"><span class="keyword">val</span> glEdgeFlagPointerOfs8</span> : <code class="type">stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglEdgeFlagPointerOfs16"><span class="keyword">val</span> glEdgeFlagPointerOfs16</span> : <code class="type">stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglEdgeFlagPointerOfs32"><span class="keyword">val</span> glEdgeFlagPointerOfs32</span> : <code class="type">stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglVertexAttribPointerOfs8"><span class="keyword">val</span> glVertexAttribPointerOfs8</span> : <code class="type">index:int -><br>       size:int -><br>       data_type:<a href="VertArray.VAttr.html#TYPEvertattr_data_type">VAttr.vertattr_data_type</a> -><br>       normalized:bool -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglVertexAttribPointerOfs16"><span class="keyword">val</span> glVertexAttribPointerOfs16</span> : <code class="type">index:int -><br>       size:int -><br>       data_type:<a href="VertArray.VAttr.html#TYPEvertattr_data_type">VAttr.vertattr_data_type</a> -><br>       normalized:bool -> stride:int -> ofs:int -> unit</code></pre>
+<pre><span id="VALglVertexAttribPointerOfs32"><span class="keyword">val</span> glVertexAttribPointerOfs32</span> : <code class="type">index:int -><br>       size:int -><br>       data_type:<a href="VertArray.VAttr.html#TYPEvertattr_data_type">VAttr.vertattr_data_type</a> -><br>       normalized:bool -> stride:int -> ofs:int -> unit</code></pre><p>All the gl*PointerOfs functions are the equivalent of the gl*Pointer0
+    functions but with pointer arithmetic (NULL + ofs), (for use with VBOs)</p>
+
+<p>Pointer arithmetic depends of the size of the pointed data, so there are
+    different versions of these functions for elements of size 8, 16 or 32 bits.</p>
+
+<pre><span id="VALglDrawElementsOfs8"><span class="keyword">val</span> glDrawElementsOfs8</span> : <code class="type">mode:<a href="GL.html#TYPEprimitive">GL.primitive</a> -><br>       count:int -> data_type:<a href="VertArray.Elem.html#TYPEelem_data_type">Elem.elem_data_type</a> -> ofs:int -> unit</code></pre>
+<pre><span id="VALglDrawElementsOfs16"><span class="keyword">val</span> glDrawElementsOfs16</span> : <code class="type">mode:<a href="GL.html#TYPEprimitive">GL.primitive</a> -><br>       count:int -> data_type:<a href="VertArray.Elem.html#TYPEelem_data_type">Elem.elem_data_type</a> -> ofs:int -> unit</code></pre>
+<pre><span id="VALglDrawElementsOfs32"><span class="keyword">val</span> glDrawElementsOfs32</span> : <code class="type">mode:<a href="GL.html#TYPEprimitive">GL.primitive</a> -><br>       count:int -> data_type:<a href="VertArray.Elem.html#TYPEelem_data_type">Elem.elem_data_type</a> -> ofs:int -> unit</code></pre><h4 id="3_VAOs">VAO's</h4>
+<pre><span id="VALglGenVertexArray"><span class="keyword">val</span> glGenVertexArray</span> : <code class="type">unit -> int</code></pre>
+<pre><span id="VALglBindVertexArray"><span class="keyword">val</span> glBindVertexArray</span> : <code class="type">int -> unit</code></pre>
+<pre><span id="VALglDeleteVertexArray"><span class="keyword">val</span> glDeleteVertexArray</span> : <code class="type">int -> unit</code></pre>
+<pre><span id="VALglIsVertexArray"><span class="keyword">val</span> glIsVertexArray</span> : <code class="type">int -> bool</code></pre></body></html>

@@ -1,0 +1,898 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="_style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="GL.html">
+<link rel="next" href="Glut.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="GL" rel="Chapter" href="GL.html">
+<link title="Glu" rel="Chapter" href="Glu.html">
+<link title="Glut" rel="Chapter" href="Glut.html">
+<link title="VertArray" rel="Chapter" href="VertArray.html">
+<link title="VBO" rel="Chapter" href="VBO.html">
+<link title="GLE" rel="Chapter" href="GLE.html">
+<link title="Ftgl" rel="Chapter" href="Ftgl.html">
+<link title="Jpeg_loader" rel="Chapter" href="Jpeg_loader.html">
+<link title="Png_loader" rel="Chapter" href="Png_loader.html">
+<link title="Svg_loader" rel="Chapter" href="Svg_loader.html">
+<link title="Genimg_loader" rel="Chapter" href="Genimg_loader.html">
+<link title="FunGL" rel="Chapter" href="FunGL.html">
+<link title="FunGlut" rel="Chapter" href="FunGlut.html"><link title="Mipmaps" rel="Section" href="#3_Mipmaps">
+<link title="Quadric Functions" rel="Section" href="#3_QuadricFunctions">
+<link title="Tesselation" rel="Section" href="#3_Tesselation">
+<link title="Nurbs Surfaces" rel="Section" href="#3_NurbsSurfaces">
+<title>Glu</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="GL.html" title="GL">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Glut.html" title="Glut">Next</a>
+</div>
+<h1>Module <a href="type_Glu.html">Glu</a></h1>
+
+<pre><span id="MODULEGlu"><span class="keyword">module</span> Glu</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Glu.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Glu interface</p>
+</div>
+</div>
+<hr width="100%">
+
+<pre><span id="VALgluPerspective"><span class="keyword">val</span> gluPerspective</span> : <code class="type">fovy:float -> aspect:float -> zNear:float -> zFar:float -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPerspective.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluLookAt"><span class="keyword">val</span> gluLookAt</span> : <code class="type">eyeX:float -><br>       eyeY:float -><br>       eyeZ:float -><br>       centerX:float -><br>       centerY:float -> centerZ:float -> upX:float -> upY:float -> upZ:float -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluLookAt.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluOrtho2D"><span class="keyword">val</span> gluOrtho2D</span> : <code class="type">left:float -> right:float -> bottom:float -> top:float -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluOrtho2D.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluErrorString"><span class="keyword">val</span> gluErrorString</span> : <code class="type">error:<a href="GL.html#TYPEgl_error">GL.gl_error</a> -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluErrorString.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluPickMatrix"><span class="keyword">val</span> gluPickMatrix</span> : <code class="type">x:float -><br>       y:float -><br>       width:float -> height:float -> viewport:int * int * int * int -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPickMatrix.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluUnProject"><span class="keyword">val</span> gluUnProject</span> : <code class="type">win_x:float -><br>       win_y:float -><br>       win_z:float -><br>       model:float array array -><br>       proj:float array array -> viewport:int array -> float * float * float</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluUnProject.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluUnProjectFlat"><span class="keyword">val</span> gluUnProjectFlat</span> : <code class="type">win_x:float -><br>       win_y:float -><br>       win_z:float -><br>       model:float array -><br>       proj:float array -> viewport:int array -> float * float * float</code></pre><div class="info ">
+<div class="info-desc">
+<p>same than <code class="code">gluUnProject</code> but optimised</p>
+</div>
+</div>
+
+<pre><span id="VALgluUnProjectUtil"><span class="keyword">val</span> gluUnProjectUtil</span> : <code class="type">x:int -> y:int -> float * float * float</code></pre><div class="info ">
+<div class="info-desc">
+<p><b>Utility</b> provides a classic use of <code class="code">gluUnProject</code> with default parameters,
+    the modelview matrix, the projection matrix, and the current viewport.</p>
+</div>
+</div>
+
+<pre><span id="VALgluUnProjectPixel"><span class="keyword">val</span> gluUnProjectPixel</span> : <code class="type">x:int -> y:int -> float * float * float</code></pre><div class="info ">
+<div class="info-desc">
+<p><b>Utility</b> Same as <code class="code">gluUnProjectUtil</code> but also checks the depth of the pixel.</p>
+</div>
+</div>
+
+<pre><span id="VALgluProject"><span class="keyword">val</span> gluProject</span> : <code class="type">win_x:float -><br>       win_y:float -><br>       win_z:float -><br>       model:float array array -><br>       proj:float array array -> viewport:int array -> float * float * float</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluProject.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluProjectFlat"><span class="keyword">val</span> gluProjectFlat</span> : <code class="type">win_x:float -><br>       win_y:float -><br>       win_z:float -><br>       model:float array -><br>       proj:float array -> viewport:int array -> float * float * float</code></pre><div class="info ">
+<div class="info-desc">
+<p>same than <code class="code">gluProject</code> but optimised</p>
+</div>
+</div>
+
+<pre><span id="VALgluProjectUtil"><span class="keyword">val</span> gluProjectUtil</span> : <code class="type">obj_x:float -> obj_y:float -> obj_z:float -> float * float * float</code></pre><div class="info ">
+<div class="info-desc">
+<p><b>Utility</b> provides a classic use of <code class="code">gluProject</code> with default parameters,
+    the modelview matrix, the projection matrix, and the current viewport.</p>
+</div>
+</div>
+
+<pre><code><span id="TYPEglu_desc"><span class="keyword">type</span> <code class="type"></code>glu_desc</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTglu_desc.GLU_VERSION"><span class="constructor">GLU_VERSION</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTglu_desc.GLU_EXTENSIONS"><span class="constructor">GLU_EXTENSIONS</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALgluGetString"><span class="keyword">val</span> gluGetString</span> : <code class="type">name:<a href="Glu.html#TYPEglu_desc">glu_desc</a> -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluGetString.xml">
+    manual page</a></p>
+</div>
+</div>
+<h4 id="3_Mipmaps">Mipmaps</h4>
+<pre><span id="VALgluBuild2DMipmaps"><span class="keyword">val</span> gluBuild2DMipmaps</span> : <code class="type">internal_format:<a href="GL.InternalFormat.html#TYPEinternal_format">GL.InternalFormat.internal_format</a> -><br>       width:int -><br>       height:int -><br>       format_:<a href="GL.html#TYPEpixel_data_format">GL.pixel_data_format</a> -><br>       type_:<a href="GL.html#TYPEpixel_data_type">GL.pixel_data_type</a> -> pixels:<a href="GL.html#TYPEimage_data">GL.image_data</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluBuild2DMipmaps.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluBuild1DMipmaps"><span class="keyword">val</span> gluBuild1DMipmaps</span> : <code class="type">internal_format:<a href="GL.InternalFormat.html#TYPEinternal_format">GL.InternalFormat.internal_format</a> -><br>       width:int -><br>       format_:<a href="GL.html#TYPEpixel_data_format">GL.pixel_data_format</a> -><br>       type_:<a href="GL.html#TYPEpixel_data_type">GL.pixel_data_type</a> -> pixels:<a href="GL.html#TYPEimage_data">GL.image_data</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluBuild1DMipmaps.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluBuild3DMipmaps"><span class="keyword">val</span> gluBuild3DMipmaps</span> : <code class="type">internal_format:<a href="GL.InternalFormat.html#TYPEinternal_format">GL.InternalFormat.internal_format</a> -><br>       width:int -><br>       height:int -><br>       depth:int -><br>       format_:<a href="GL.html#TYPEpixel_data_format">GL.pixel_data_format</a> -><br>       type_:<a href="GL.html#TYPEpixel_data_type">GL.pixel_data_type</a> -> pixels:<a href="GL.html#TYPEimage_data">GL.image_data</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluBuild3DMipmaps.xml">
+    manual page</a></p>
+</div>
+</div>
+<h4 id="3_QuadricFunctions">Quadric Functions</h4>
+<pre><span id="TYPEglu_quadric"><span class="keyword">type</span> <code class="type"></code>glu_quadric</span> </pre>
+
+
+<pre><span id="VALgluNewQuadric"><span class="keyword">val</span> gluNewQuadric</span> : <code class="type">unit -> <a href="Glu.html#TYPEglu_quadric">glu_quadric</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluNewQuadric.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluDeleteQuadric"><span class="keyword">val</span> gluDeleteQuadric</span> : <code class="type">quad:<a href="Glu.html#TYPEglu_quadric">glu_quadric</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluDeleteQuadric.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><code><span id="TYPEdraw_style"><span class="keyword">type</span> <code class="type"></code>draw_style</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdraw_style.GLU_POINT"><span class="constructor">GLU_POINT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdraw_style.GLU_LINE"><span class="constructor">GLU_LINE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdraw_style.GLU_FILL"><span class="constructor">GLU_FILL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdraw_style.GLU_SILHOUETTE"><span class="constructor">GLU_SILHOUETTE</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALgluQuadricDrawStyle"><span class="keyword">val</span> gluQuadricDrawStyle</span> : <code class="type">quad:<a href="Glu.html#TYPEglu_quadric">glu_quadric</a> -> draw_style:<a href="Glu.html#TYPEdraw_style">draw_style</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluQuadricDrawStyle.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluQuadricTexture"><span class="keyword">val</span> gluQuadricTexture</span> : <code class="type">quad:<a href="Glu.html#TYPEglu_quadric">glu_quadric</a> -> texture:bool -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluQuadricTexture.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluSphere"><span class="keyword">val</span> gluSphere</span> : <code class="type">quad:<a href="Glu.html#TYPEglu_quadric">glu_quadric</a> -> radius:float -> slices:int -> stacks:int -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluSphere.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluCylinder"><span class="keyword">val</span> gluCylinder</span> : <code class="type">quad:<a href="Glu.html#TYPEglu_quadric">glu_quadric</a> -><br>       base:float -> top:float -> height:float -> slices:int -> stacks:int -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluCylinder.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluDisk"><span class="keyword">val</span> gluDisk</span> : <code class="type">quad:<a href="Glu.html#TYPEglu_quadric">glu_quadric</a> -><br>       inner:float -> outer:float -> slices:int -> loops:int -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluDisk.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluPartialDisk"><span class="keyword">val</span> gluPartialDisk</span> : <code class="type">quad:<a href="Glu.html#TYPEglu_quadric">glu_quadric</a> -><br>       inner:float -><br>       outer:float -> slices:int -> loops:int -> start:float -> sweep:float -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPartialDisk.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><code><span id="TYPEorientation"><span class="keyword">type</span> <code class="type"></code>orientation</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTorientation.GLU_OUTSIDE"><span class="constructor">GLU_OUTSIDE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTorientation.GLU_INSIDE"><span class="constructor">GLU_INSIDE</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALgluQuadricOrientation"><span class="keyword">val</span> gluQuadricOrientation</span> : <code class="type">quad:<a href="Glu.html#TYPEglu_quadric">glu_quadric</a> -> orientation:<a href="Glu.html#TYPEorientation">orientation</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluQuadricOrientation.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><code><span id="TYPEnormal"><span class="keyword">type</span> <code class="type"></code>normal</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnormal.GLU_NONE"><span class="constructor">GLU_NONE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnormal.GLU_FLAT"><span class="constructor">GLU_FLAT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnormal.GLU_SMOOTH"><span class="constructor">GLU_SMOOTH</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALgluQuadricNormals"><span class="keyword">val</span> gluQuadricNormals</span> : <code class="type">quad:<a href="Glu.html#TYPEglu_quadric">glu_quadric</a> -> normal:<a href="Glu.html#TYPEnormal">normal</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluQuadricNormals.xml">
+    manual page</a></p>
+</div>
+</div>
+<h4 id="3_Tesselation">Tesselation</h4>
+<pre><span id="TYPEglu_tesselator"><span class="keyword">type</span> <code class="type"></code>glu_tesselator</span> </pre>
+
+
+<pre><span id="VALgluNewTess"><span class="keyword">val</span> gluNewTess</span> : <code class="type">unit -> <a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluNewTess.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluDeleteTess"><span class="keyword">val</span> gluDeleteTess</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluDeleteTess.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluBeginPolygon"><span class="keyword">val</span> gluBeginPolygon</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluBeginPolygon.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluEndPolygon"><span class="keyword">val</span> gluEndPolygon</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluEndPolygon.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluTessBeginPolygon"><span class="keyword">val</span> gluTessBeginPolygon</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> unit</code></pre>
+<pre><span id="VALgluTessBeginPolygonData"><span class="keyword">val</span> gluTessBeginPolygonData</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> data:'a -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluTessBeginPolygon.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluTessEndPolygon"><span class="keyword">val</span> gluTessEndPolygon</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluTessEndPolygon.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluTessBeginContour"><span class="keyword">val</span> gluTessBeginContour</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluTessBeginContour.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluTessEndContour"><span class="keyword">val</span> gluTessEndContour</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluTessEndContour.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><code><span id="TYPEtess_contour"><span class="keyword">type</span> <code class="type"></code>tess_contour</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_contour.GLU_CW"><span class="constructor">GLU_CW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_contour.GLU_CCW"><span class="constructor">GLU_CCW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_contour.GLU_INTERIOR"><span class="constructor">GLU_INTERIOR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_contour.GLU_EXTERIOR"><span class="constructor">GLU_EXTERIOR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_contour.GLU_UNKNOWN"><span class="constructor">GLU_UNKNOWN</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALgluNextContour"><span class="keyword">val</span> gluNextContour</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> contour:<a href="Glu.html#TYPEtess_contour">tess_contour</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluNextContour.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluTessVertex"><span class="keyword">val</span> gluTessVertex</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> x:float -> y:float -> z:float -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluTessVertex.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluTessNormal"><span class="keyword">val</span> gluTessNormal</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> x:float -> y:float -> z:float -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluTessNormal.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluTesselate"><span class="keyword">val</span> gluTesselate</span> : <code class="type"><a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> (float * float * float) array -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Is equivalent to:</p>
+<pre class="codepre"><code class="code">    gluTessBeginPolygon ~tess;
+      gluTessBeginContour ~tess;
+        <span class="constructor">Array</span>.iter (<span class="keyword">fun</span> (x,y,z) <span class="keywordsign">-&gt;</span> gluTessVertex ~tess ~x ~y ~z) points;
+      gluTessEndContour ~tess;
+    gluTessEndPolygon ~tess;</code></pre></div>
+</div>
+
+<pre><span id="VALgluTesselateIter"><span class="keyword">val</span> gluTesselateIter</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> data:(float * float * float) array list -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Is equivalent to:</p>
+<pre class="codepre"><code class="code">    gluTessBeginPolygon ~tess;
+      <span class="constructor">List</span>.iter (<span class="keyword">fun</span> points <span class="keywordsign">-&gt;</span>
+          gluTessBeginContour ~tess;
+            <span class="constructor">Array</span>.iter (<span class="keyword">fun</span> (x,y,z) <span class="keywordsign">-&gt;</span> gluTessVertex ~tess ~x ~y ~z) points;
+          gluTessEndContour ~tess;
+        ) datas;
+    gluTessEndPolygon ~tess;</code></pre></div>
+</div>
+
+<pre><code><span id="TYPEtess_winding"><span class="keyword">type</span> <code class="type"></code>tess_winding</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_winding.GLU_TESS_WINDING_ODD"><span class="constructor">GLU_TESS_WINDING_ODD</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_winding.GLU_TESS_WINDING_NONZERO"><span class="constructor">GLU_TESS_WINDING_NONZERO</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_winding.GLU_TESS_WINDING_POSITIVE"><span class="constructor">GLU_TESS_WINDING_POSITIVE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_winding.GLU_TESS_WINDING_NEGATIVE"><span class="constructor">GLU_TESS_WINDING_NEGATIVE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_winding.GLU_TESS_WINDING_ABS_GEQ_TWO"><span class="constructor">GLU_TESS_WINDING_ABS_GEQ_TWO</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEtess_property"><span class="keyword">type</span> <code class="type"></code>tess_property</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_property.GLU_TESS_WINDING_RULE"><span class="constructor">GLU_TESS_WINDING_RULE</span></span> <span class="keyword">of</span> <code class="type"><a href="Glu.html#TYPEtess_winding">tess_winding</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_property.GLU_TESS_BOUNDARY_ONLY"><span class="constructor">GLU_TESS_BOUNDARY_ONLY</span></span> <span class="keyword">of</span> <code class="type">bool</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_property.GLU_TESS_TOLERANCE"><span class="constructor">GLU_TESS_TOLERANCE</span></span> <span class="keyword">of</span> <code class="type">float</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALgluGetTessWindingRule"><span class="keyword">val</span> gluGetTessWindingRule</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> winding:<a href="Glu.html#TYPEtess_winding">tess_winding</a> -> unit</code></pre>
+<pre><span id="VALgluGetTessBoundaryOnly"><span class="keyword">val</span> gluGetTessBoundaryOnly</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> boundary_only:bool -> unit</code></pre>
+<pre><span id="VALgluGetTessTolerance"><span class="keyword">val</span> gluGetTessTolerance</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> tolerance:float -> unit</code></pre>
+<pre><span id="VALgluTessProperty"><span class="keyword">val</span> gluTessProperty</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> prop:<a href="Glu.html#TYPEtess_property">tess_property</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluTessProperty.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><code><span id="TYPEtess_callback"><span class="keyword">type</span> <code class="type"></code>tess_callback</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_callback.GLU_TESS_BEGIN"><span class="constructor">GLU_TESS_BEGIN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_callback.GLU_TESS_BEGIN_DATA"><span class="constructor">GLU_TESS_BEGIN_DATA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_callback.GLU_TESS_EDGE_FLAG"><span class="constructor">GLU_TESS_EDGE_FLAG</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_callback.GLU_TESS_EDGE_FLAG_DATA"><span class="constructor">GLU_TESS_EDGE_FLAG_DATA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_callback.GLU_TESS_VERTEX"><span class="constructor">GLU_TESS_VERTEX</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_callback.GLU_TESS_VERTEX_DATA"><span class="constructor">GLU_TESS_VERTEX_DATA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_callback.GLU_TESS_END"><span class="constructor">GLU_TESS_END</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_callback.GLU_TESS_END_DATA"><span class="constructor">GLU_TESS_END_DATA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_callback.GLU_TESS_COMBINE"><span class="constructor">GLU_TESS_COMBINE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_callback.GLU_TESS_COMBINE_DATA"><span class="constructor">GLU_TESS_COMBINE_DATA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_callback.GLU_TESS_ERROR"><span class="constructor">GLU_TESS_ERROR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_callback.GLU_TESS_ERROR_DATA"><span class="constructor">GLU_TESS_ERROR_DATA</span></span></code></td>
+
+</tr></table>
+
+
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluTessCallback.xml">
+    manual page</a></p>
+
+<pre><span id="VALgluTessDefaultCallback"><span class="keyword">val</span> gluTessDefaultCallback</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> cb:<a href="Glu.html#TYPEtess_callback">tess_callback</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Sets default callbacks for a classic use.
+    <code class="code"><span class="constructor">GLU_TESS_BEGIN</span></code> and <code class="code"><span class="constructor">GLU_TESS_END</span></code> callbacks are set to <code class="code">glBegin</code> and <code class="code">glEnd</code>.
+    <code class="code"><span class="constructor">GLU_TESS_VERTEX</span></code> callback calls <code class="code">glVertex3</code> preceded by a call to
+    <code class="code">glTexCoord2</code> with the x and y components
+    (the size of the texture mapping can by scaled with <code class="code">glMatrixMode<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GL_TEXTURE</span>;</code> and <code class="code">glScale</code>).
+    <code class="code"><span class="constructor">GLU_TESS_COMBINE</span></code> callback makes the alloc of the new vertex,
+    and a caml Failure with the Glu error message is raised for the
+    <code class="code"><span class="constructor">GLU_TESS_ERROR</span></code> callback.</p>
+</div>
+</div>
+
+<pre><code><span id="TYPEtess_error"><span class="keyword">type</span> <code class="type"></code>tess_error</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_error.GLU_TESS_MISSING_BEGIN_POLYGON"><span class="constructor">GLU_TESS_MISSING_BEGIN_POLYGON</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_error.GLU_TESS_MISSING_BEGIN_CONTOUR"><span class="constructor">GLU_TESS_MISSING_BEGIN_CONTOUR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_error.GLU_TESS_MISSING_END_POLYGON"><span class="constructor">GLU_TESS_MISSING_END_POLYGON</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_error.GLU_TESS_MISSING_END_CONTOUR"><span class="constructor">GLU_TESS_MISSING_END_CONTOUR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_error.GLU_TESS_COORD_TOO_LARGE"><span class="constructor">GLU_TESS_COORD_TOO_LARGE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_error.GLU_TESS_NEED_COMBINE_CALLBACK"><span class="constructor">GLU_TESS_NEED_COMBINE_CALLBACK</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_error.GLU_OUT_OF_MEMORY"><span class="constructor">GLU_OUT_OF_MEMORY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_error.GLU_TESS_ERROR7"><span class="constructor">GLU_TESS_ERROR7</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtess_error.GLU_TESS_ERROR8"><span class="constructor">GLU_TESS_ERROR8</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALgluCallbackTessVertex"><span class="keyword">val</span> gluCallbackTessVertex</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -><br>       tess_vertex:(x:float -> y:float -> z:float -> unit) -> unit</code></pre>
+<pre><span id="VALgluCallbackTessBegin"><span class="keyword">val</span> gluCallbackTessBegin</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> tess_begin:(prim:<a href="GL.html#TYPEprimitive">GL.primitive</a> -> unit) -> unit</code></pre>
+<pre><span id="VALgluCallbackTessEnd"><span class="keyword">val</span> gluCallbackTessEnd</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> tess_end:(unit -> unit) -> unit</code></pre>
+<pre><span id="VALgluCallbackTessError"><span class="keyword">val</span> gluCallbackTessError</span> : <code class="type">tess:<a href="Glu.html#TYPEglu_tesselator">glu_tesselator</a> -> tess_error:(error:<a href="Glu.html#TYPEtess_error">tess_error</a> -> unit) -> unit</code></pre>
+<pre><span id="VALgluTessErrorString"><span class="keyword">val</span> gluTessErrorString</span> : <code class="type">error:<a href="Glu.html#TYPEtess_error">tess_error</a> -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p>same than <code class="code">gluErrorString</code> but for type <code class="code">tess_error</code></p>
+</div>
+</div>
+<h4 id="3_NurbsSurfaces">Nurbs Surfaces</h4>
+<pre><span id="TYPEglu_nurbs"><span class="keyword">type</span> <code class="type"></code>glu_nurbs</span> </pre>
+
+
+<pre><span id="VALgluNewNurbsRenderer"><span class="keyword">val</span> gluNewNurbsRenderer</span> : <code class="type">unit -> <a href="Glu.html#TYPEglu_nurbs">glu_nurbs</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluNewNurbsRenderer.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluBeginSurface"><span class="keyword">val</span> gluBeginSurface</span> : <code class="type">nurb:<a href="Glu.html#TYPEglu_nurbs">glu_nurbs</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluBeginSurface.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><span id="VALgluEndSurface"><span class="keyword">val</span> gluEndSurface</span> : <code class="type">nurb:<a href="Glu.html#TYPEglu_nurbs">glu_nurbs</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluEndSurface.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><code><span id="TYPEnurbs_mode"><span class="keyword">type</span> <code class="type"></code>nurbs_mode</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnurbs_mode.GLU_NURBS_RENDERER"><span class="constructor">GLU_NURBS_RENDERER</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnurbs_mode.GLU_NURBS_TESSELLATOR"><span class="constructor">GLU_NURBS_TESSELLATOR</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEsampling_method"><span class="keyword">type</span> <code class="type"></code>sampling_method</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsampling_method.GLU_PATH_LENGTH"><span class="constructor">GLU_PATH_LENGTH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsampling_method.GLU_PARAMETRIC_ERROR"><span class="constructor">GLU_PARAMETRIC_ERROR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsampling_method.GLU_DOMAIN_DISTANCE"><span class="constructor">GLU_DOMAIN_DISTANCE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsampling_method.GLU_OBJECT_PATH_LENGTH"><span class="constructor">GLU_OBJECT_PATH_LENGTH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsampling_method.GLU_OBJECT_PARAMETRIC_ERROR"><span class="constructor">GLU_OBJECT_PARAMETRIC_ERROR</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="MODULEDisp"><span class="keyword">module</span> <a href="Glu.Disp.html">Disp</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Glu.Disp.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><code><span id="TYPEnurbs_property"><span class="keyword">type</span> <code class="type"></code>nurbs_property</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnurbs_property.GLU_SAMPLING_TOLERANCE"><span class="constructor">GLU_SAMPLING_TOLERANCE</span></span> <span class="keyword">of</span> <code class="type">float</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnurbs_property.GLU_DISPLAY_MODE"><span class="constructor">GLU_DISPLAY_MODE</span></span> <span class="keyword">of</span> <code class="type"><a href="Glu.Disp.html#TYPEdisplay_mode">Disp.display_mode</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnurbs_property.GLU_CULLING"><span class="constructor">GLU_CULLING</span></span> <span class="keyword">of</span> <code class="type">bool</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnurbs_property.GLU_AUTO_LOAD_MATRIX"><span class="constructor">GLU_AUTO_LOAD_MATRIX</span></span> <span class="keyword">of</span> <code class="type">bool</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnurbs_property.GLU_PARAMETRIC_TOLERANCE"><span class="constructor">GLU_PARAMETRIC_TOLERANCE</span></span> <span class="keyword">of</span> <code class="type">float</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnurbs_property.GLU_SAMPLING_METHOD"><span class="constructor">GLU_SAMPLING_METHOD</span></span> <span class="keyword">of</span> <code class="type"><a href="Glu.html#TYPEsampling_method">sampling_method</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnurbs_property.GLU_U_STEP"><span class="constructor">GLU_U_STEP</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnurbs_property.GLU_V_STEP"><span class="constructor">GLU_V_STEP</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnurbs_property.GLU_NURBS_MODE"><span class="constructor">GLU_NURBS_MODE</span></span> <span class="keyword">of</span> <code class="type"><a href="Glu.html#TYPEnurbs_mode">nurbs_mode</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALgluNurbsProperty"><span class="keyword">val</span> gluNurbsProperty</span> : <code class="type">nurb:<a href="Glu.html#TYPEglu_nurbs">glu_nurbs</a> -> property:<a href="Glu.html#TYPEnurbs_property">nurbs_property</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluNurbsProperty.xml">
+    manual page</a></p>
+</div>
+</div>
+
+<pre><code><span id="TYPEsurface_type"><span class="keyword">type</span> <code class="type"></code>surface_type</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsurface_type.GLU_MAP2_VERTEX_3"><span class="constructor">GLU_MAP2_VERTEX_3</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsurface_type.GLU_MAP2_VERTEX_4"><span class="constructor">GLU_MAP2_VERTEX_4</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALgluNurbsSurface"><span class="keyword">val</span> gluNurbsSurface</span> : <code class="type">nurb:<a href="Glu.html#TYPEglu_nurbs">glu_nurbs</a> -><br>       sKnots:float array -><br>       tKnots:float array -><br>       sStride:int -><br>       tStride:int -><br>       control:float array -><br>       sOrder:int -> tOrder:int -> surface_type:<a href="Glu.html#TYPEsurface_type">surface_type</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluNurbsSurface.xml">
+    manual page</a></p>
+</div>
+</div>
+</body></html>
