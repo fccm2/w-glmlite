@@ -1,0 +1,27 @@
+--- rolling_moon.ml	2022-06-30 12:26:26.000000000 +0200
++++ rolling_moon_2.ml	2026-07-19 20:32:59.289213198 +0200
+@@ -1022,23 +1022,9 @@
+ 
+ (* }}} *)
+ (* {{{ texture *)
+-#load "jpeg_loader.cma"
+ 
+-let load_texture ~filename =
+-  let texture, width, height, internal_format, pixel_data_format =
+-    Jpeg_loader.load_img (Filename filename)
+-  in
++let load_texture ~filename = () ;;
+ 
+-  let texid = glGenTexture() in
+-  glBindTexture BindTex.GL_TEXTURE_2D texid;
+-
+-  (* Parameters for applying the textures *)
+-  glTexParameter TexParam.GL_TEXTURE_2D (TexParam.GL_TEXTURE_MAG_FILTER  Mag.GL_NEAREST);
+-  glTexParameter TexParam.GL_TEXTURE_2D (TexParam.GL_TEXTURE_MIN_FILTER  Min.GL_NEAREST);
+-
+-  glTexImage2D TexTarget.GL_TEXTURE_2D  0 internal_format  width height
+-               pixel_data_format GL_UNSIGNED_BYTE texture;
+-;;
+ (* }}} *)
+ (* {{{ glut inits *)
+ 

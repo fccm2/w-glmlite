@@ -1,0 +1,181 @@
+diff -Naur ocaml-chipmunk-0.04.2/Chipmunk-5.2.0/src/clean.sh ocaml-chipmunk-0.04.2_c/Chipmunk-5.2.0/src/clean.sh
+--- ocaml-chipmunk-0.04.2/Chipmunk-5.2.0/src/clean.sh	1970-01-01 01:00:00.000000000 +0100
++++ ocaml-chipmunk-0.04.2_c/Chipmunk-5.2.0/src/clean.sh	2026-07-19 20:49:34.160076918 +0200
+@@ -0,0 +1 @@
++rm -f *.o
+diff -Naur ocaml-chipmunk-0.04.2/Chipmunk-5.2.0/src/comp.sh ocaml-chipmunk-0.04.2_c/Chipmunk-5.2.0/src/comp.sh
+--- ocaml-chipmunk-0.04.2/Chipmunk-5.2.0/src/comp.sh	1970-01-01 01:00:00.000000000 +0100
++++ ocaml-chipmunk-0.04.2_c/Chipmunk-5.2.0/src/comp.sh	2026-07-19 20:49:34.160076918 +0200
+@@ -0,0 +1,12 @@
++gcc -c -fPIC -I../include/chipmunk/ chipmunk.c
++gcc -c -fPIC -I../include/chipmunk/ cpArbiter.c
++gcc -c -fPIC -I../include/chipmunk/ cpArray.c
++gcc -c -fPIC -I../include/chipmunk/ cpBB.c
++gcc -c -fPIC -I../include/chipmunk/ cpBody.c
++gcc -c -fPIC -I../include/chipmunk/ cpCollision.c
++gcc -c -fPIC -I../include/chipmunk/ cpHashSet.c
++gcc -c -fPIC -I../include/chipmunk/ cpPolyShape.c
++gcc -c -fPIC -I../include/chipmunk/ cpShape.c
++gcc -c -fPIC -I../include/chipmunk/ cpSpace.c
++gcc -c -fPIC -I../include/chipmunk/ cpSpaceHash.c
++gcc -c -fPIC -I../include/chipmunk/ cpVect.c
+diff -Naur ocaml-chipmunk-0.04.2/Chipmunk-5.2.0/src/constraints/clean.sh ocaml-chipmunk-0.04.2_c/Chipmunk-5.2.0/src/constraints/clean.sh
+--- ocaml-chipmunk-0.04.2/Chipmunk-5.2.0/src/constraints/clean.sh	1970-01-01 01:00:00.000000000 +0100
++++ ocaml-chipmunk-0.04.2_c/Chipmunk-5.2.0/src/constraints/clean.sh	2026-07-19 20:49:34.159076915 +0200
+@@ -0,0 +1 @@
++rm -f *.o
+diff -Naur ocaml-chipmunk-0.04.2/Chipmunk-5.2.0/src/constraints/comp.sh ocaml-chipmunk-0.04.2_c/Chipmunk-5.2.0/src/constraints/comp.sh
+--- ocaml-chipmunk-0.04.2/Chipmunk-5.2.0/src/constraints/comp.sh	1970-01-01 01:00:00.000000000 +0100
++++ ocaml-chipmunk-0.04.2_c/Chipmunk-5.2.0/src/constraints/comp.sh	2026-07-19 20:49:34.159076915 +0200
+@@ -0,0 +1,12 @@
++gcc -c -fPIC -I../../include/chipmunk/ cpConstraint.c
++gcc -c -fPIC -I../../include/chipmunk/ cpDampedRotarySpring.c
++gcc -c -fPIC -I../../include/chipmunk/ cpDampedSpring.c
++gcc -c -fPIC -I../../include/chipmunk/ cpGearJoint.c
++gcc -c -fPIC -I../../include/chipmunk/ cpGrooveJoint.c
++gcc -c -fPIC -I../../include/chipmunk/ cpPinJoint.c
++gcc -c -fPIC -I../../include/chipmunk/ cpPivotJoint.c
++gcc -c -fPIC -I../../include/chipmunk/ cpRatchetJoint.c
++gcc -c -fPIC -I../../include/chipmunk/ cpRotaryLimitJoint.c
++gcc -c -fPIC -I../../include/chipmunk/ cpRotaryLimitJoint.c
++gcc -c -fPIC -I../../include/chipmunk/ cpSimpleMotor.c
++gcc -c -fPIC -I../../include/chipmunk/ cpSlideJoint.c
+diff -Naur ocaml-chipmunk-0.04.2/INSTALL.sh ocaml-chipmunk-0.04.2_c/INSTALL.sh
+--- ocaml-chipmunk-0.04.2/INSTALL.sh	1970-01-01 01:00:00.000000000 +0100
++++ ocaml-chipmunk-0.04.2_c/INSTALL.sh	2026-07-19 21:07:04.355216654 +0200
+@@ -0,0 +1,23 @@
++## $ bash INSTALL.sh
++pushd 'Chipmunk-5.2.0/src/'
++ sh comp.sh
++popd
++pushd 'Chipmunk-5.2.0/src/constraints/'
++ sh comp.sh
++popd
++
++make gens
++make wrap_chipmunk.o
++make stub
++
++make chipmunk.ml
++make chipmunk.mli
++
++make chipmunk.cmi
++make chipmunk.cmo
++
++make chipmunk.cmx
++
++make chipmunk.cma
++make chipmunk.cmxa
++
+diff -Naur ocaml-chipmunk-0.04.2/INSTALL.txt ocaml-chipmunk-0.04.2_c/INSTALL.txt
+--- ocaml-chipmunk-0.04.2/INSTALL.txt	1970-01-01 01:00:00.000000000 +0100
++++ ocaml-chipmunk-0.04.2_c/INSTALL.txt	2026-07-19 21:06:41.051241794 +0200
+@@ -0,0 +1 @@
++$ bash INSTALL.sh
+diff -Naur ocaml-chipmunk-0.04.2/Makefile ocaml-chipmunk-0.04.2_c/Makefile
+--- ocaml-chipmunk-0.04.2/Makefile	2022-06-30 12:08:13.000000000 +0200
++++ ocaml-chipmunk-0.04.2_c/Makefile	2026-07-19 20:49:34.163076926 +0200
+@@ -40,13 +40,37 @@
+ wrap_chipmunk.o: wrap_chipmunk.c  wrap_chipmunk.gen.c
+ 	ocamlc -c -ccopt "-I./Chipmunk-5.2.0/include -O3 -std=gnu99 -ffast-math" $<
+ 
+-dll_chipmunk_stubs.so  lib_chipmunk_stubs.a: wrap_chipmunk.o \
+-  Chipmunk-5.2.0/src/libchipmunk.a
++stub: dllchipmunk_stubs.so  libchipmunk_stubs.a
++dllchipmunk_stubs.so  libchipmunk_stubs.a: wrap_chipmunk.o \
++  Chipmunk-5.2.0/src/chipmunk.o \
++  Chipmunk-5.2.0/src/cpArbiter.o \
++  Chipmunk-5.2.0/src/cpArray.o \
++  Chipmunk-5.2.0/src/cpBB.o \
++  Chipmunk-5.2.0/src/cpBody.o \
++  Chipmunk-5.2.0/src/cpCollision.o \
++  Chipmunk-5.2.0/src/cpHashSet.o \
++  Chipmunk-5.2.0/src/cpPolyShape.o \
++  Chipmunk-5.2.0/src/cpShape.o \
++  Chipmunk-5.2.0/src/cpSpace.o \
++  Chipmunk-5.2.0/src/cpSpaceHash.o \
++  Chipmunk-5.2.0/src/cpVect.o \
++   Chipmunk-5.2.0/src/constraints/cpConstraint.o \
++   Chipmunk-5.2.0/src/constraints/cpDampedRotarySpring.o \
++   Chipmunk-5.2.0/src/constraints/cpDampedSpring.o \
++   Chipmunk-5.2.0/src/constraints/cpGearJoint.o \
++   Chipmunk-5.2.0/src/constraints/cpGrooveJoint.o \
++   Chipmunk-5.2.0/src/constraints/cpPinJoint.o \
++   Chipmunk-5.2.0/src/constraints/cpPivotJoint.o \
++   Chipmunk-5.2.0/src/constraints/cpRatchetJoint.o \
++   Chipmunk-5.2.0/src/constraints/cpRotaryLimitJoint.o \
++   Chipmunk-5.2.0/src/constraints/cpSimpleMotor.o \
++   Chipmunk-5.2.0/src/constraints/cpSlideJoint.o
+ 	ocamlmklib  \
+-	    -L./Chipmunk-5.2.0/src/  \
+-	    -o  _chipmunk_stubs  $<  \
++	    -o  chipmunk_stubs  $^  \
+ 	    -ccopt -O3  -ccopt -std=gnu99  -ccopt -ffast-math  \
+-	    -lchipmunk
++	    #eol
++#	    -L./Chipmunk-5.2.0/src/  \
++#	    -lchipmunk
+ 
+ #  Makes use of a minimal preprocessor for OCaml source files.
+ #  It is similar to cpp, but this replacement for cpp is because
+@@ -84,25 +108,25 @@
+ 
+ CUSTOM=-custom
+ 
+-chipmunk.cma:  chipmunk.cmo  dll_chipmunk_stubs.so \
+-  Chipmunk-5.2.0/src/libchipmunk.a
++chipmunk.cma:  chipmunk.cmo  dllchipmunk_stubs.so
+ 	ocamlc -a  $(CUSTOM)  -o $@  $<  \
+ 	       -ccopt -L./Chipmunk-5.2.0/src/  \
+-	       -dllib dll_chipmunk_stubs.so  \
+-	      -cclib -l_chipmunk_stubs  \
+-	      -cclib -lchipmunk 
++	       -dllib dllchipmunk_stubs.so  \
++	      -cclib -lchipmunk_stubs  \
++	  #eol
++#	      -cclib -lchipmunk 
+ 
+ # native
+ chipmunk.cmx: chipmunk.ml chipmunk.cmi
+ 	ocamlopt -w -6 -c $<
+ 
+-chipmunk.cmxa  chipmunk.a:  chipmunk.cmx  dll_chipmunk_stubs.so \
+-  Chipmunk-5.2.0/src/libchipmunk.a
++chipmunk.cmxa  chipmunk.a:  chipmunk.cmx  dllchipmunk_stubs.so
+ 	ocamlopt -a  -o $@  $<  \
+-	      -cclib -l_chipmunk_stubs  \
++	      -cclib -lchipmunk_stubs  \
+ 	  -ccopt -O3  -ccopt -std=gnu99  -ccopt -ffast-math  \
+-	  -ccopt -L./Chipmunk-5.2.0/src/  \
+-	      -cclib -lchipmunk
++	  #eol
++#	  -ccopt -L./Chipmunk-5.2.0/src/  \
++#	      -cclib -lchipmunk
+ 
+ .PHONY: clean-doc clean clean-mlpp run-opt-demo test install
+ 
+@@ -152,10 +176,10 @@
+     chipmunk.cma       \
+     chipmunk.cmx       \
+     chipmunk.cmxa      \
+-    lib_chipmunk_stubs.a
++    libchipmunk_stubs.a
+ 
+ SO_DIST_FILES=\
+-    dll_chipmunk_stubs.so
++    dllchipmunk_stubs.so
+ 
+ 
+ install: $(DIST_FILES)  $(SO_DIST_FILES)
+diff -Naur ocaml-chipmunk-0.04.2/demo_dist.txt ocaml-chipmunk-0.04.2_c/demo_dist.txt
+--- ocaml-chipmunk-0.04.2/demo_dist.txt	1970-01-01 01:00:00.000000000 +0100
++++ ocaml-chipmunk-0.04.2_c/demo_dist.txt	2026-07-19 21:06:25.299260586 +0200
+@@ -0,0 +1,2 @@
++GLMLITE_PATH='../glmlite/SRC/'
++ocaml -I $GLMLITE_PATH GL.cma Glu.cma Glut.cma -I . chipmunk.cma demos/demo_dist.ml
+diff -Naur ocaml-chipmunk-0.04.2/moon_buggy.txt ocaml-chipmunk-0.04.2_c/moon_buggy.txt
+--- ocaml-chipmunk-0.04.2/moon_buggy.txt	1970-01-01 01:00:00.000000000 +0100
++++ ocaml-chipmunk-0.04.2_c/moon_buggy.txt	2026-07-19 20:57:57.308366842 +0200
+@@ -0,0 +1,2 @@
++GLMLITE_PATH='../glmlite/SRC/'
++ocaml -I $GLMLITE_PATH GL.cma Glu.cma Glut.cma -I . chipmunk.cma demos/moon_buggy.ml
