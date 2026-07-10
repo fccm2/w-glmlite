@@ -6,7 +6,7 @@ License: CC-by
 body            { margin:0; font-size:0.9em; line-height:20px;
                   background: #ffffff;
                   font-family: "Myriad Pro", "Trebuchet MS", Arial; }
-a               { color:#FF5220; }
+a               { color:#04dd1d; }
 a:hover         { text-decoration:none; }
 
 #header         { background:url(../requisites/header_bckg.2.jpg) repeat-x; }
@@ -21,14 +21,14 @@ a:hover         { text-decoration:none; }
                   text-align:center; height:32px; }
 #menu a         { display:block; float:left; width:100px; color:#FFFFFF;
                   font-size:14px; font-weight:bold; text-decoration:none; padding-top:8px; }
-#menu a:hover   { background: #FF5220; padding-top:8px; height:24px; }
+#menu a:hover   { background: #08ee05; padding-top:8px; height:24px; }
 
 #main           { width:100%; }
 #content        { margin:0 auto; width:720px; padding:30px 10px 40px 10px; }
 #content h1     { margin:0; font-size:2em; }
 #content h2     { margin:10px; font-size:1.4em; }
 #content p      { border-bottom:15px solid #f8f8f8; padding-bottom:20px; }
-.red            { color:#FF5220; }
+.red            { color:#03bf1b; }
 
 #footer         { background:url(../requisites/footer_bckg.2.jpg) repeat-x #000000; height:102px; }
 #left_footer    { float:left; padding:40px 0 0 60px; text-transform:uppercase; color:#FFFFFF;

@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<?xml version="1.0"?>
+<html>
+<head>
+<title>sort90.ml</title>
+<meta name="Generator" content="Vim/6.3"/>
+<meta name="Author" content="Florent Monnier"/>
+<meta http-equiv="content-type" content="text/html; charset=utf8"/>
+<style type="text/css">
+<!--
+body { color: #ffffff; background-color: #000000; }
+pre { color: #ffffff; background-color: #000000; border: 1px solid #444; }
+a { color: #4080ff; font-weight: bold; }
+.Ident { color: #00ffff; font-weight: bold; }
+.Const { color: #ff40ff; font-weight: bold; }
+.Type { color: #00ff00; font-weight: bold; }
+.PrPr { color: #8080ff; font-weight: bold; }
+.Comm { color: #00ffff; font-weight: bold; }
+.Stat { color: #ffff00; font-weight: bold; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Comm">(* Copyright (C) 2008 Florent Monnier &lt;user (AT-SIGN) host &gt;</span>
+<span class="Comm">   Basic Z-sorting demo without Z-Buffer.</span>
+<span class="Comm">   You can use this code along the terms of the <a href="http://www.fsf.org/licensing/licenses/gpl.html">GPL license</a>. *)</span>
+<span class="Stat">open</span> <span class="PrPr">GL</span>
+<span class="Stat">open</span> <span class="PrPr">Glu</span>
+<span class="Stat">open</span> <span class="PrPr">Glut</span>
+
+<span class="Stat">let</span> anglex <span class="Stat">=</span> ref <span class="Const">0</span>.
+<span class="Stat">let</span> angley <span class="Stat">=</span> ref <span class="Const">0</span>.
+
+<span class="Stat">let</span> assoc_color <span class="Stat">=</span>
+  <span class="Stat">let</span> tbl <span class="Stat">=</span> <span class="PrPr">Hashtbl</span>.create <span class="Const">30</span> <span class="Stat">in</span>
+  <span class="Stat">let</span> get <span class="Stat">=</span> <span class="PrPr">Hashtbl</span>.find tbl <span class="Stat">in</span>
+  <span class="Stat">fun</span> i j k <span class="Stat">-&gt;</span>
+  <span class="Stat">let</span> ndx <span class="Stat">=</span> <span class="Stat">(</span>i, j, k<span class="Stat">)</span> <span class="Stat">in</span>
+  <span class="Stat">try</span> get ndx
+  <span class="Stat">with</span> <span class="Const">Not_found</span> <span class="Stat">-&gt;</span>
+    <span class="Stat">let</span> r,g,b <span class="Stat">=</span>
+      <span class="Stat">match</span> <span class="PrPr">Random</span>.<span class="Type">int</span> <span class="Const">4</span> <span class="Stat">with</span>
+      <span class="Stat">|</span> <span class="Const">0</span> <span class="Stat">-&gt;</span> <span class="Stat">(</span><span class="Const">1.0</span>, <span class="Const">0.0</span>, <span class="Const">0.0</span><span class="Stat">)</span>
+      <span class="Stat">|</span> <span class="Const">1</span> <span class="Stat">-&gt;</span> <span class="Stat">(</span><span class="Const">0.1</span>, <span class="Const">0.8</span>, <span class="Const">0.0</span><span class="Stat">)</span>
+      <span class="Stat">|</span> <span class="Const">2</span> <span class="Stat">-&gt;</span> <span class="Stat">(</span><span class="Const">0.1</span>, <span class="Const">0.4</span>, <span class="Const">1.0</span><span class="Stat">)</span>
+      <span class="Stat">|</span> <span class="Const">3</span> <span class="Stat">-&gt;</span> <span class="Stat">(</span><span class="Const">0.7</span>, <span class="Const">0.0</span>, <span class="Const">0.6</span><span class="Stat">)</span>
+      <span class="Stat">|</span> <span class="Stat">_</span> <span class="Stat">-&gt;</span> <span class="Stat">raise</span> <span class="Const">Exit</span>
+    <span class="Stat">in</span>
+    <span class="PrPr">Hashtbl</span>.add tbl ndx <span class="Stat">(</span>r,g,b<span class="Stat">)</span><span class="Stat">;</span>
+    <span class="Stat">(</span>r,g,b<span class="Stat">)</span>
+<span class="Stat">;;</span>
+
+<span class="Stat">let</span> mat_get_z m <span class="Stat">=</span> m.<span class="Stat">(</span><span class="Const">3</span><span class="Stat">)</span>.<span class="Stat">(</span><span class="Const">2</span><span class="Stat">)</span>
+<span class="Stat">let</span> mat_get_y m <span class="Stat">=</span> m.<span class="Stat">(</span><span class="Const">3</span><span class="Stat">)</span>.<span class="Stat">(</span><span class="Const">1</span><span class="Stat">)</span>
+
+<span class="Stat">let</span> assoc_vis, step_vis <span class="Stat">=</span>
+  <span class="Stat">let</span> tbl <span class="Stat">=</span> <span class="PrPr">Hashtbl</span>.create <span class="Const">30</span> <span class="Stat">in</span>
+  <span class="Stat">let</span> get <span class="Stat">=</span> <span class="PrPr">Hashtbl</span>.find tbl <span class="Stat">in</span>
+  <span class="Stat">(fun</span> i j k <span class="Stat">-&gt;</span>
+     <span class="Stat">let</span> ndx <span class="Stat">=</span> <span class="Stat">(</span>i, j, k<span class="Stat">)</span> <span class="Stat">in</span>
+     <span class="Stat">try</span> get ndx
+     <span class="Stat">with</span> <span class="Const">Not_found</span> <span class="Stat">-&gt;</span>
+       <span class="Stat">let</span> vis <span class="Stat">=</span> <span class="PrPr">Random</span>.<span class="Type">bool</span><span class="Const">()</span> <span class="Stat">in</span>
+       <span class="PrPr">Hashtbl</span>.add tbl ndx <span class="Stat">(</span>vis<span class="Stat">)</span><span class="Stat">;</span>
+       <span class="Stat">(</span>vis<span class="Stat">))</span>,
+  <span class="Stat">(fun</span> i j k <span class="Stat">-&gt;</span>
+     <span class="Stat">if</span> <span class="Stat">(</span><span class="PrPr">Random</span>.<span class="Type">int</span> <span class="Const">30000</span><span class="Stat">)</span> <span class="Stat">&lt;</span> <span class="Const">10</span> <span class="Stat">then</span>
+       <span class="Stat">let</span> ndx <span class="Stat">=</span> <span class="Stat">(</span>i, j, k<span class="Stat">)</span>
+       <span class="Stat">and</span> vis <span class="Stat">=</span> <span class="PrPr">Random</span>.<span class="Type">bool</span><span class="Const">()</span> <span class="Stat">in</span>
+       <span class="PrPr">Hashtbl</span>.replace tbl ndx vis<span class="Stat">)</span>
+<span class="Stat">;;</span>
+
+<span class="Stat">let</span> gradient_switch <span class="Stat">=</span> ref <span class="Const">true</span>
+<span class="Stat">let</span> gradient_toggle <span class="Const">()</span> <span class="Stat">=</span>
+  <span class="Stat">if</span> <span class="Stat">(</span><span class="PrPr">Random</span>.<span class="Type">int</span> <span class="Const">30_000_000</span><span class="Stat">)</span> <span class="Stat">&lt;</span> <span class="Const">100_000</span> <span class="Stat">then</span>
+    gradient_switch <span class="Stat">:=</span> <span class="Stat">not</span><span class="Stat">(</span><span class="Stat">!</span>gradient_switch<span class="Stat">)</span><span class="Stat">;</span>
+<span class="Stat">;;</span>
+
+<span class="Stat">let</span> display_z_sorted_cubes n <span class="Const">()</span> <span class="Stat">=</span>
+  <span class="Stat">if</span> <span class="Stat">!</span>gradient_switch
+  <span class="Stat">then</span> glClearColor <span class="Const">0.3</span> <span class="Const">0.25</span> <span class="Const">0.2</span>  <span class="Const">0.0</span>
+  <span class="Stat">else</span> glClearColor <span class="Const">0.4</span> <span class="Const">0.2</span> <span class="Const">0.0</span>  <span class="Const">0.0</span><span class="Stat">;</span>
+
+  glClear <span class="Stat">[</span><span class="Const">GL_COLOR_BUFFER_BIT</span><span class="Stat">]</span><span class="Stat">;</span>
+  glLoadIdentity <span class="Const">()</span><span class="Stat">;</span>
+
+  glTranslate <span class="Const">0</span>. <span class="Const">0</span>. <span class="Stat">(</span>-. <span class="Const">4.0</span><span class="Stat">)</span><span class="Stat">;</span>
+
+  glRotate <span class="Stat">(</span><span class="Stat">!</span>angley<span class="Stat">)</span> <span class="Const">1.0</span> <span class="Const">0.0</span> <span class="Const">0.0</span><span class="Stat">;</span>
+  glRotate <span class="Stat">(</span><span class="Stat">!</span>anglex<span class="Stat">)</span> <span class="Const">0.0</span> <span class="Const">1.0</span> <span class="Const">0.0</span><span class="Stat">;</span>
+
+  glScale <span class="Const">0.5</span> <span class="Const">0.5</span> <span class="Const">0.5</span><span class="Stat">;</span>
+
+  <span class="Stat">let</span> prop <span class="Stat">=</span> ref <span class="Const">[]</span> <span class="Stat">in</span>
+
+  <span class="Stat">let</span> step <span class="Stat">=</span> <span class="Const">0.8</span> <span class="Stat">in</span>
+  <span class="Stat">let</span> half <span class="Stat">=</span> step <span class="Stat">*</span>. <span class="Stat">(</span><span class="Type">float</span><span class="Stat">(</span>pred n<span class="Stat">))</span> /. <span class="Const">2.0</span> <span class="Stat">in</span>
+
+  <span class="Stat">for</span> i<span class="Stat">=</span><span class="Const">0</span> <span class="Stat">to</span> pred n <span class="Stat">do</span>
+    <span class="Stat">for</span> j<span class="Stat">=</span><span class="Const">0</span> <span class="Stat">to</span> pred n <span class="Stat">do</span>
+      <span class="Stat">for</span> k<span class="Stat">=</span><span class="Const">0</span> <span class="Stat">to</span> pred n <span class="Stat">do</span>
+        <span class="Stat">let</span> r,g,b <span class="Stat">=</span> assoc_color i j k
+        <span class="Stat">and</span> vis <span class="Stat">=</span> assoc_vis i j k
+        <span class="Stat">and</span> x <span class="Stat">=</span> <span class="Stat">((</span><span class="Type">float</span> i<span class="Stat">)</span><span class="Stat">*</span>. step<span class="Stat">)</span> -. half
+        <span class="Stat">and</span> y <span class="Stat">=</span> <span class="Stat">((</span><span class="Type">float</span> j<span class="Stat">)</span><span class="Stat">*</span>. step<span class="Stat">)</span> -. half
+        <span class="Stat">and</span> z <span class="Stat">=</span> <span class="Stat">((</span><span class="Type">float</span> k<span class="Stat">)</span><span class="Stat">*</span>. step<span class="Stat">)</span> -. half <span class="Stat">in</span>
+
+        step_vis i j k<span class="Stat">;</span>
+
+        prop <span class="Stat">:=</span> <span class="Stat">(</span>x,y,z, r,g,b, vis<span class="Stat">)</span> <span class="Stat">::</span> <span class="Stat">!</span>prop<span class="Stat">;</span>
+      <span class="Stat">done</span><span class="Stat">;</span>
+    <span class="Stat">done</span><span class="Stat">;</span>
+  <span class="Stat">done</span><span class="Stat">;</span>
+
+  <span class="Stat">let</span> item_get_mat <span class="Stat">(</span>x,y,z, r,g,b, vis<span class="Stat">)</span> <span class="Stat">=</span>
+    glPushMatrix<span class="Const">()</span><span class="Stat">;</span>
+      glTranslate x y z<span class="Stat">;</span>
+      <span class="Stat">let</span> m <span class="Stat">=</span> glGetMatrix <span class="PrPr">Get</span>.<span class="Const">GL_MODELVIEW_MATRIX</span> <span class="Stat">in</span>
+    glPopMatrix<span class="Const">()</span><span class="Stat">;</span>
+    <span class="Stat">(</span>m, r,g,b, vis<span class="Stat">)</span>
+  <span class="Stat">in</span>
+  <span class="Stat">let</span> items_prop <span class="Stat">=</span> <span class="PrPr">List</span>.map <span class="Stat">(</span>item_get_mat<span class="Stat">)</span> <span class="Stat">!</span>prop <span class="Stat">in</span>
+
+  <span class="Comm">(* sort the items along the Z axis *)</span>
+  <span class="Stat">let</span> z_sort_vert <span class="Stat">(</span>m1,<span class="Stat">_</span>,<span class="Stat">_</span>,<span class="Stat">_</span>,<span class="Stat">_</span><span class="Stat">)</span> <span class="Stat">(</span>m2,<span class="Stat">_</span>,<span class="Stat">_</span>,<span class="Stat">_</span>,<span class="Stat">_</span><span class="Stat">)</span> <span class="Stat">=</span>
+    <span class="Stat">let</span> z1 <span class="Stat">=</span> mat_get_z m1
+    <span class="Stat">and</span> z2 <span class="Stat">=</span> mat_get_z m2 <span class="Stat">in</span>
+    <span class="Stat">if</span> z1 <span class="Stat">&lt;</span> z2 <span class="Stat">then</span> -<span class="Const">1</span> <span class="Stat">else</span> <span class="Const">1</span>
+  <span class="Stat">in</span>
+  <span class="Stat">let</span> sorted_items <span class="Stat">=</span> <span class="PrPr">List</span>.sort z_sort_vert items_prop <span class="Stat">in</span>
+
+  <span class="Stat">let</span> gradient <span class="Stat">(</span>m, r,g,b, vis<span class="Stat">)</span> <span class="Stat">=</span>
+    <span class="Stat">let</span> y <span class="Stat">=</span> mat_get_y m <span class="Stat">in</span>
+    <span class="Stat">let</span> r <span class="Stat">=</span> sqrt<span class="Stat">(</span>half <span class="Stat">**</span> <span class="Const">2</span>. <span class="Stat">*</span>. <span class="Const">3</span>.<span class="Stat">)</span> <span class="Stat">*</span>. <span class="Const">0.5</span> <span class="Stat">in</span>
+    <span class="Stat">let</span> v <span class="Stat">=</span> y +. r <span class="Stat">in</span>
+    <span class="Stat">let</span> v <span class="Stat">=</span> v /. r /. <span class="Const">2</span>. <span class="Stat">in</span>
+    <span class="Stat">let</span> v <span class="Stat">=</span> v <span class="Stat">*</span>. <span class="Const">1.4</span> <span class="Stat">in</span>
+    <span class="Stat">let</span> r <span class="Stat">=</span> v
+    <span class="Stat">and</span> b <span class="Stat">=</span> <span class="Const">1.0</span> -. v
+    <span class="Stat">and</span> g <span class="Stat">=</span> <span class="Const">0.0</span> <span class="Stat">in</span>
+    <span class="Stat">(</span>m, r,g,b, vis<span class="Stat">)</span>
+  <span class="Stat">in</span>
+  <span class="Stat">let</span> sorted_items <span class="Stat">=</span>
+    <span class="Stat">if</span> <span class="Stat">!</span>gradient_switch
+    <span class="Stat">then</span> <span class="PrPr">List</span>.map <span class="Stat">(</span>gradient<span class="Stat">)</span> sorted_items
+    <span class="Stat">else</span> sorted_items
+  <span class="Stat">in</span>
+  gradient_toggle<span class="Const">()</span><span class="Stat">;</span>
+
+  <span class="Stat">let</span> draw_item <span class="Stat">(</span>m, r,g,b, vis<span class="Stat">)</span> <span class="Stat">=</span>
+    <span class="Stat">if</span> vis <span class="Stat">then</span>
+    <span class="Stat">begin</span>
+      glLoadIdentity <span class="Const">()</span><span class="Stat">;</span>
+      glMultMatrix m<span class="Stat">;</span>
+
+      glScale <span class="Const">0.5</span> <span class="Const">0.5</span> <span class="Const">0.5</span><span class="Stat">;</span>
+      glColor3 <span class="Const">0.0</span> <span class="Const">0.0</span> <span class="Const">0.0</span><span class="Stat">;</span>
+      glutSolidCube <span class="Const">1.0</span><span class="Stat">;</span>
+
+      glColor3 r g b<span class="Stat">;</span>
+      glutSolidCube <span class="Const">0.89</span><span class="Stat">;</span>
+      glColor3 <span class="Const">1.0</span> <span class="Const">1.0</span> <span class="Const">1.0</span><span class="Stat">;</span>
+      glutWireCube <span class="Const">0.89</span><span class="Stat">;</span>
+    <span class="Stat">end</span>
+  <span class="Stat">in</span>
+  <span class="PrPr">List</span>.iter <span class="Stat">(</span>draw_item<span class="Stat">)</span> sorted_items<span class="Stat">;</span>
+
+  glutSwapBuffers <span class="Const">()</span><span class="Stat">;</span>
+<span class="Stat">;;</span>
+
+<span class="Stat">let</span> display <span class="Stat">=</span> display_z_sorted_cubes <span class="Const">6</span> <span class="Stat">;;</span>
+
+<span class="Stat">let</span> sleep_ticks <span class="Stat">=</span> <span class="Const">16</span> <span class="Stat">;;</span>
+
+<span class="Stat">let</span> <span class="Stat">rec</span> rot_timer <span class="Stat">~</span><span class="Ident">value</span> <span class="Stat">=</span>
+  angley <span class="Stat">:=</span> <span class="Stat">!</span>angley +. <span class="Const">0.2</span><span class="Stat">;</span>
+  anglex <span class="Stat">:=</span> <span class="Stat">!</span>anglex +. <span class="Const">0.02</span><span class="Stat">;</span>
+  glutTimerFunc <span class="Stat">~</span><span class="Ident">msecs</span>:sleep_ticks <span class="Stat">~</span><span class="Ident">timer</span>:rot_timer <span class="Stat">~</span><span class="Ident">value</span>:<span class="Const">0</span><span class="Stat">;</span>
+  glutPostRedisplay<span class="Const">()</span><span class="Stat">;</span>
+<span class="Stat">;;</span>
+
+<span class="Stat">let</span> reshape <span class="Stat">~</span><span class="Ident">width</span>:w <span class="Stat">~</span><span class="Ident">height</span>:h <span class="Stat">=</span>
+  glViewport <span class="Const">0</span> <span class="Const">0</span> w h<span class="Stat">;</span>
+<span class="Stat">;;</span>
+
+<span class="Stat">let</span> keyboard <span class="Stat">~</span><span class="Ident">key</span> <span class="Stat">~</span><span class="Ident">x</span> <span class="Stat">~</span><span class="Ident">y</span> <span class="Stat">=</span>
+  <span class="Stat">match</span> key <span class="Stat">with</span>
+  <span class="Stat">|</span> <span class="Const">'q'</span> <span class="Stat">|</span> <span class="Const">'\027'</span> <span class="Stat">-&gt;</span> exit <span class="Const">0</span><span class="Stat">;</span>
+  <span class="Stat">|</span> <span class="Stat">_</span> <span class="Stat">-&gt;</span> <span class="Const">()</span>
+<span class="Stat">;;</span>
+
+<span class="Stat">let</span> gl_init <span class="Const">()</span> <span class="Stat">=</span>
+  glShadeModel <span class="Const">GL_FLAT</span><span class="Stat">;</span>
+  glDisable <span class="Const">GL_DEPTH_TEST</span><span class="Stat">;</span>
+  glClearColor <span class="Const">0.4</span> <span class="Const">0.0</span> <span class="Const">0.0</span>  <span class="Const">0.0</span><span class="Stat">;</span>
+<span class="Stat">;;</span>
+
+<span class="Comm">(* main *)</span>
+<span class="Stat">let</span> <span class="Const">()</span> <span class="Stat">=</span>
+  <span class="PrPr">Random</span>.self_init <span class="Const">()</span><span class="Stat">;</span>
+
+  ignore<span class="Stat">(</span>glutInit <span class="PrPr">Sys</span>.argv<span class="Stat">)</span><span class="Stat">;</span>
+
+  glutInitDisplayMode <span class="Stat">[</span><span class="Const">GLUT_RGB</span><span class="Stat">;</span> <span class="Const">GLUT_DOUBLE</span><span class="Stat">]</span><span class="Stat">;</span> <span class="Comm">(* dont use GLUT_DEPTH *)</span>
+  <span class="Comm">(* glutInitWindowSize 640 480; *)</span>
+  ignore<span class="Stat">(</span>glutCreateWindow <span class="Const">&quot;demo&quot;</span><span class="Stat">)</span><span class="Stat">;</span>
+
+  glutFullScreen <span class="Const">()</span><span class="Stat">;</span>
+  glutSetCursor <span class="Const">GLUT_CURSOR_NONE</span><span class="Stat">;</span>
+  gl_init <span class="Const">()</span><span class="Stat">;</span>
+
+  <span class="Comm">(* Parameters of perspective projection *)</span>
+  glMatrixMode <span class="Const">GL_PROJECTION</span><span class="Stat">;</span>
+  glLoadIdentity <span class="Const">()</span><span class="Stat">;</span>
+  gluPerspective <span class="Stat">~</span><span class="Ident">fovy</span>:<span class="Const">60.0</span> <span class="Stat">~</span><span class="Ident">aspect</span>:<span class="Const">1.0</span> <span class="Stat">~</span><span class="Ident">zNear</span>:<span class="Const">0.5</span> <span class="Stat">~</span><span class="Ident">zFar</span>:<span class="Const">100.0</span><span class="Stat">;</span>
+  glMatrixMode <span class="Const">GL_MODELVIEW</span><span class="Stat">;</span>
+
+  <span class="Comm">(* callbacks *)</span>
+  glutDisplayFunc <span class="Stat">~</span><span class="Ident">display</span><span class="Stat">;</span>
+  glutKeyboardFunc <span class="Stat">~</span><span class="Ident">keyboard</span><span class="Stat">;</span>
+  glutReshapeFunc <span class="Stat">~</span><span class="Ident">reshape</span><span class="Stat">;</span>
+  glutTimerFunc <span class="Stat">~</span><span class="Ident">msecs</span>:sleep_ticks <span class="Stat">~</span><span class="Ident">timer</span>:rot_timer <span class="Stat">~</span><span class="Ident">value</span>:<span class="Const">0</span><span class="Stat">;</span>
+
+  glutMainLoop <span class="Const">()</span><span class="Stat">;</span>
+<span class="Stat">;;</span>
+</pre>
+</body>
+</html>
