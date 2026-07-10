@@ -2,7 +2,7 @@ License For the Template:
 [to the extent permitted by law],  
 cc-by.3.0,
 
-License For the Content:  
+License For the Text:  
 [to the extent permitted by law],  
 cc-by-sa.2.5, and / or later,
 
@@ -13,6 +13,6 @@ Author For the Template:
   http://creativecommons.org/licenses/by/3.0/
 
 
-Author For the Content:  
-  Florent Monnier (C. C.),
+Author For the Text:  
+  Florent C. C. Monnier,
 
