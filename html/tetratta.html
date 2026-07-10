@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -45,6 +45,17 @@
         <h2>Download</h2>
         <ul><li>download:<br />
           <strong><a href="https://fccm2.github.io/fccm-ocaml-download/download/tetratta/tetratta-0.01.tgz">tetratta-0.01.tgz</a></strong></li></ul>
+        <p></p>
+
+        <h2>Functioning</h2>
+        <pre style='background:#f4f4f4;padding-left:3px;'>
+$ tar xzf tetratta-0.01.tgz
+$ git clone https://github.com/fccm2/glmlite.alt
+$ cd glmlite.alt
+$ make -C SRC gl glu glut
+$ GLMLITE_PATH='glmlite.alt/SRC'
+$ ocaml -I $GLMLITE_PATH GL.cma Glu.cma Glut.cma tetratta-0.01/
+        </pre>
 
       </div>
     </div>
